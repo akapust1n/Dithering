@@ -29,4 +29,11 @@
 \newblock IEEE International Conference on Communications, Conference Records,
   1973.
 
+\bibitem{Habr1}
+\selectlanguageifdefined{english}
+\BibEmph{Инсаф,~Ашрапов}. PSNR и SSIM или как
+  работать с изображениями под С~/
+  Ашрапов~Инсаф. ---
+\newblock https://habrahabr.ru/post/126848/, 2011.
+
 \end{thebibliography}
