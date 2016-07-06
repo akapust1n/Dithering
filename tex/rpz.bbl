@@ -7,10 +7,20 @@
 \ifx\undefined\BibAnnote\long\def\BibAnnote#1{}\else\fi
 \ifx\undefined\BibEmph\def\BibEmph#1{\emph{#1}}\else\fi
 
+\bibitem{Wiki}
+\selectlanguageifdefined{english}
+Википедия. ---
+\newblock \url{https://en.wikipedia.org}.
+
 \bibitem{Dh}
 \selectlanguageifdefined{english}
 \BibEmph{Crocker,~Lee~Daniel}. Digital Halftoning~/ Lee~Daniel~Crocker. ---
 \newblock 1989.
+
+\bibitem{Ulich}
+\selectlanguageifdefined{english}
+\BibEmph{Ulichney,~R.} Digital Halftoning~/ R.~Ulichney. ---
+\newblock The MIT Press, 1987.
 
 \bibitem{Bayer}
 \selectlanguageifdefined{english}
@@ -18,10 +28,5 @@
   Tone Pictures~/ B.E.~Bayer. ---
 \newblock IEEE International Conference on Communications, Conference Records,
   1973.
-
-\bibitem{Ulich}
-\selectlanguageifdefined{english}
-\BibEmph{Ulichney,~R.} Digital Halftoning~/ R.~Ulichney. ---
-\newblock The MIT Press, 1987.
 
 \end{thebibliography}

@@ -17,44 +17,44 @@ The style file: gost780u.bst
 A level-1 auxiliary file: 90-appendix1.aux
 A level-1 auxiliary file: 91-appendix2.aux
 Database file #1: rpz.bib
-You've used 3 entries,
+You've used 4 entries,
             2674 wiz_defined-function locations,
-            667 strings with 5423 characters,
-and the built_in function-call counts, 724 in all, are:
-= -- 89
-> -- 12
+            671 strings with 5479 characters,
+and the built_in function-call counts, 877 in all, are:
+= -- 104
+> -- 13
 < -- 3
-+ -- 6
++ -- 7
 - -- 3
-* -- 19
-:= -- 88
-add.period$ -- 9
-call.type$ -- 3
+* -- 20
+:= -- 103
+add.period$ -- 11
+call.type$ -- 4
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 42
-empty$ -- 100
+cite$ -- 4
+duplicate$ -- 53
+empty$ -- 128
 format.name$ -- 6
-if$ -- 198
+if$ -- 242
 int.to.chr$ -- 0
-int.to.str$ -- 3
+int.to.str$ -- 4
 missing$ -- 0
-newline$ -- 25
+newline$ -- 30
 num.names$ -- 6
-pop$ -- 25
+pop$ -- 34
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 9
+skip$ -- 13
 stack$ -- 0
 substring$ -- 0
-swap$ -- 17
+swap$ -- 19
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
 while$ -- 3
-width$ -- 4
-write$ -- 50
+width$ -- 5
+write$ -- 61

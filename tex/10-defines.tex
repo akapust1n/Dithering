@@ -1,51 +1,19 @@
 \Defines % Необходимые определения. Вряд ли понадобться
 \begin{description}
-\item[Artifacts] 
+\item[Артефакт] 
 %\textbf{test} 
+ аномалия, возникающая во время визуального представления изображения\cite{Wiki}
+\item[Цифровой шум] дефект изображения, вносимый фотосенсорами и электроникой устройств, которые их используют вследствие несовершенства технологий.
+Цифровой шум заметен на изображении в виде наложенной маски из пикселей случайного цвета и яркости\cite{Wiki}
 
-Phenomena like contouring, which are not present in the source image but
-produced by the digital signal processing, are called artifacts.  The most
-common type of artifact is the Moire' pattern.  If you display or print an
-image of several lines, closely spaced and radiating from a single point,
-you will see what appear to be flower-like patterns.  These are not part of
-the original image but are an illusion produced by the jaggedness of the
-display.\cite{Dh}
-Error Noise
+\item[Фиксированная пороговая обработка (eng. fixed thresholding)] -обработка пикселя на основе какого-то фиксированного порового значения. В случае если текущее значения пикселя больше этого порогового значения, пиксель закрашивает одним фиксированным цветом, иначе -другим. 
+\cite{Dh}
+\item[Интенсивность цвета]  степень отличия хроматического цвета от равного ему по светлоте ахроматического, «глубина» цвета. Два оттенка одного тона могут различаться степенью блёклости. При уменьшении насыщенности каждый хроматический цвет приближается к серому.\cite{Wiki}
+\item[Ахроматические цвета] оттенки серого (в диапазоне белый — чёрный).\cite{Wiki}
 
-Returning to our fixed-thresholded (and badly-rendered) image, how could we
-document what has taken place to make this image so inaccurate?  Expressing
-it in technical terms, a relatively large amount of error "noise" is present
-in the fixed-thresholded image.  The error value is the difference between
-the image's original intensity at a given dot and the intensity of the
-displayed dot.  Obviously, very dark values like 1 or 2 (which are almost
-full black) incur very small errors when they are rendered as a 0 value
-(black) dot.  On the other hand, a gross error is incurred when a 129 value
-dot (a medium gray) is displayed at 255 value (white), for instance.\cite{Dh}
 
-Fixed Thresholding
 
-A good place to start is with the example of performing a simple (or fixed)
-thresholding operation on our grayscale image in order to display it on our
-black and white device.  This is accomplished by establishing a demarcation
-point, or threshold, at the 50\% gray level.  Each dot of the source image is
-compared against this threshold value: if it is darker than the value, the
-device plots it black, and if it's lighter, the device plots it white.
 
-What happens to the image during this operation?  Well, some detail
-survives, but our perception of gray levels is completely gone.  This means
-that a lot of the image content is obliterated.  Take an area of the image
-which is made up of various gray shades in the range of 60-90\%.  After fixed
-thresholding, all of those shades (being darker than the 50\% gray threshold)
-will be mapped to solid black.  So much for variations of intensity.
-
-Another portion of the image might show an object with an increasing,
-diffused shadow across one of its surfaces, with gray shades in the range of
-20-70\%.  This gradual variation in intensity will be lost in fixed
-thresholding, giving way to two separate areas (one white, one black) and a
-distinct, visible boundary between them.  The situation where a transition
-from one intensity or shade to another is very conspicuous is known as
-contouring.\cite{Dh}
-ШУМЫ(нужно тоже дать определение)
 \end{description}
 
 %%% Local Variables:
