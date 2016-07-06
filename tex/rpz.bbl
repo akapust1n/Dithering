@@ -19,4 +19,9 @@
 \newblock IEEE International Conference on Communications, Conference Records,
   1973.
 
+\bibitem{Ulich}
+\selectlanguageifdefined{english}
+\BibEmph{Ulichney,~R.} Digital Halftoning~/ R.~Ulichney. ---
+\newblock The MIT Press, 1987.
+
 \end{thebibliography}
