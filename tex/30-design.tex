@@ -29,15 +29,88 @@ SSIM(x,y) = \frac{(2\mu_x\mu_y +c_1)(\sigma_xy+c_2)}{(\mu^2_x+\mu^2_y+c_1)(\sigm
 %я не понимаю что это за формула, пишу как читаю
   $c_1$ и $c_2$ -  поправочные коэффициенты, которые нужны вследствие малости знаменателя.
 \begin{equation}
-c_1= (0,01*d)^2  
+c_1= (0,01*d)^2 
+\label{F:F5} 
 \end{equation}
 \begin{equation}
 c_2=(0,03*d)^2
-\label{F:F5}
+\label{F:F6}
 \end{equation}  
   d - количество цветов, соответствующих данной битности изображения 
-  
+\section{Виды случайных распределений} 
+\subsection{Белый шум}
+Белый шумом называют сигнал с равномерной спектральной плотностью на всех частотах и дисперсией, равной бесконечности. Является стационарным случайным процессом.
+В качестве сигнала в задаче дизеринга  рассматриватся последовать последовательность чисел, получаемых от генератора случайных чисел.
+
+\begin{figure}[H]
+	\centering
+    \includegraphics[width=\textwidth]{img/2_white_noise.png}
+	\caption{Диаграмма белого шума//почему-то очень много места сверху}
+	\label{fig:spire05}
+\end{figure}
+
+\subsection{Красный шум}
+Спектральная плотность красного шума пропорциональна 1/f², где f — частота. Это означает, что на низких частотах шум имеет больше энергии, чем на высоких.																									\begin{figure}[h]
+	\centering
+ \includegraphics[width=\textwidth ]{img/3_red_noise.png}
+	\caption{Диаграмма красного шума }
+	\label{fig:spire04}
+\end{figure} 
+Коричневый шум можно получить при помощи алгоритма случайного блуждания. Выбиратся наугад число в определенном диапазоне,
+%Я НЕ УВЕРЕН, ЧТО ЭТО И ЕСТЬ АЛГОРИТМ СЛУЧАЙНОГ БЛУЖДАНИЯ
+  прибавляются к значению предыдущего числа(тоже полученного случайно) и делится пополам.Например, если первое значение равно 103, а нам случайно выпало число 67, то следующее значение будет 170. Если  построить так длинную последовательность значений, получится красный шум. 
+  \begin{lstlisting}[style=pseudocode,caption={Получение коричневого шума}] 
+  def smoother(noise):
+     output = []
+     for i in range(len(noise) - 1):
+          output.append(0.5 * (noise[i] + noise[i+1]))
+  return output
+  \end{lstlisting}
+ \subsection{Гауссовский шум}
+ 
+ Гауссовский шум  - шум, имеющий функцию плотности вероятности (PDF), равную нормальному распределению, которое также известно как гауссово распределение. 
+
+ \begin{equation}
+ p_g(z)=\frac{1}{\sigma\sqrt{2*\pi}}e^{-\frac{(z-\mu)^2}{2\sigma^2}}
+ \end{equation}
+ z - количество цветов, $\mu$ -среднее значение, $\sigma$ - стандартное отклонение.
+  \begin{figure}
+  	\centering
+  	%  \includegraphics[width=\textwidth]{inc/svg/pic01}
+  	\caption{Диаграмма гауссовского шума}
+  	\label{fig:spire02}
+  \end{figure}
+ \subsection{Розовый шум}
+ Розовый шум представляет собой что-то среднее между коричневым шумом и белым шумом.Получение его аналогично получению коричневого шума.
+ \begin{lstlisting}[style=pseudocode,caption={Получение розового шума}]
+ def rougher(noise):
+     output = []
+     for i in range(len(noise) - 1):
+         output.append(0.5 * (noise[i] - noise[i+1]))
+ return output
+ \end{lstlisting}
+ \subsection{Алгоритм Флойда-Стейнберга}
+ Рассмотрим более детально алгоритм Флойда-Стейнберга.
+\\\\
+ \begin{figure}
+ 	\centering
+ 	 \includegraphics[width=\textwidth]{img/1.png}
+ 	\caption{Схема рассеивания ошибки}
+ 	\label{fig:spire03}
+ \end{figure}
+ 
+   \begin{lstlisting}[style=pseudocode,caption={Алгоритм Флойда-Стейнберга}]
+   for(x = 0; x < width; x++)
+       for(y = 0; y < height; y++){
+           P(x,y) = trunc(I(x,y)+0.5);
+           e = I(x,y) - P(x,y);
+           I(x,y+1) += \alpha*e;
+           I(x+1, y-1) += \beta*e;
+           I(x+1, y) = \gamma*e;
+           I(x+1, y+1) +=\sigma*e; }
+   \end{lstlisting}
 %%% Local Variables:
+
 %%% mode: latex
 %%% TeX-master: "rpz"
 %%% End:
