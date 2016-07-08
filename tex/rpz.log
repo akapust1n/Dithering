@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.1)  7 JUL 2016 23:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.1)  8 JUL 2016 08:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -292,15 +292,7 @@ slashbox style by K.Yasuoka, May 1993.
 \@slashboxht=\count115
 \@slashsepl=\dimen130
 \@slashsepr=\dimen131
-) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count116
-\float@exts=\toks29
-\float@box=\box35
-\@float@everytoks=\toks30
-\@floatcapt=\box36
-)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
@@ -353,14 +345,14 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen132
-\Hy@linkcounter=\count117
-\Hy@pagecounter=\count118
+\Hy@linkcounter=\count116
+\Hy@pagecounter=\count117
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 \symPD1letters=\mathgroup8
 )
-\Hy@SavedSpaceFactor=\count119
+\Hy@SavedSpaceFactor=\count118
 Package hyperref Info: Option `unicode' set `true' on input line 3411.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
@@ -380,7 +372,7 @@ Package hyperref Info: Plain pages OFF on input line 4458.
 Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
-\c@Hy@tempcnt=\count120
+\c@Hy@tempcnt=\count119
 
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
@@ -388,7 +380,7 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
 \XeTeXLinkMargin=\dimen133
-\Fld@menulength=\count121
+\Fld@menulength=\count120
 \Field@Width=\dimen134
 \Fld@charsize=\dimen135
 Package hyperref Info: Hyper figures OFF on input line 6295.
@@ -400,17 +392,17 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count122
-\c@Item=\count123
-\c@Hfootnote=\count124
+\Hy@abspage=\count121
+\c@Item=\count122
+\c@Hfootnote=\count123
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count125
-\c@bookmark@seq@number=\count126
+\Fld@listcount=\count124
+\c@bookmark@seq@number=\count125
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
@@ -435,7 +427,7 @@ Package graphics Info: Driver file: pdftex.def on input line 95.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-\Gread@gobject=\count127
+\Gread@gobject=\count126
 ))
 \Gin@req@height=\dimen136
 \Gin@req@width=\dimen137
@@ -444,13 +436,13 @@ File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks31
+\pgfutil@everybye=\toks29
 \pgfutil@tempdima=\dimen138
 \pgfutil@tempdimb=\dimen139
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
 ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box37
+\pgfutil@abb=\box35
 (/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
@@ -465,12 +457,12 @@ Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
 Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks32
-\pgfkeys@temptoks=\toks33
+\pgfkeys@pathtoks=\toks30
+\pgfkeys@temptoks=\toks31
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
 ex
-\pgfkeys@tmptoks=\toks34
+\pgfkeys@tmptoks=\toks32
 ))
 \pgf@x=\dimen140
 \pgf@y=\dimen141
@@ -482,13 +474,13 @@ ex
 \pgf@yc=\dimen147
 \w@pgf@writea=\write3
 \r@pgf@reada=\read1
-\c@pgf@counta=\count128
-\c@pgf@countb=\count129
-\c@pgf@countc=\count130
-\c@pgf@countd=\count131
-\t@pgf@toka=\toks35
-\t@pgf@tokb=\toks36
-\t@pgf@tokc=\toks37
+\c@pgf@counta=\count127
+\c@pgf@countb=\count128
+\c@pgf@countc=\count129
+\c@pgf@countd=\count130
+\t@pgf@toka=\toks33
+\t@pgf@tokb=\toks34
+\t@pgf@tokc=\toks35
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
 )
@@ -504,8 +496,8 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count132
-\pgfsyssoftpath@bigbuffer@items=\count133
+\pgfsyssoftpath@smallbuffer@items=\count131
+\pgfsyssoftpath@bigbuffer@items=\count132
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
@@ -535,11 +527,11 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen148
-\pgfmath@count=\count134
-\pgfmath@box=\box38
-\pgfmath@toks=\toks38
-\pgfmath@stack@operand=\toks39
-\pgfmath@stack@operation=\toks40
+\pgfmath@count=\count133
+\pgfmath@box=\box36
+\pgfmath@toks=\toks36
+\pgfmath@stack@operand=\toks37
+\pgfmath@stack@operation=\toks38
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
@@ -559,7 +551,7 @@ tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
 thmetics.code.tex)))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count135
+\c@pgfmathroundto@lastzeros=\count134
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
 x
@@ -594,10 +586,10 @@ File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
 x
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
-\pgfpic=\box39
-\pgf@hbox=\box40
-\pgf@layerbox@main=\box41
-\pgf@picture@serial@count=\count136
+\pgfpic=\box37
+\pgf@hbox=\box38
+\pgf@layerbox@main=\box39
+\pgf@picture@serial@count=\count135
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
 ode.tex
@@ -630,7 +622,7 @@ File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
 \pgf@max=\dimen172
-\pgf@sys@shading@range@num=\count137
+\pgf@sys@shading@range@num=\count136
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
@@ -638,7 +630,7 @@ File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
 tex
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
-\pgfexternal@startupbox=\box42
+\pgfexternal@startupbox=\box40
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
 x
@@ -654,7 +646,7 @@ File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 )))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
-\pgfnodeparttextbox=\box43
+\pgfnodeparttextbox=\box41
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 )
@@ -678,8 +670,8 @@ Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen175
 \pgffor@skip=\dimen176
-\pgffor@stack=\toks41
-\pgffor@toks=\toks42
+\pgffor@stack=\toks39
+\pgffor@toks=\toks40
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
@@ -687,7 +679,7 @@ Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
 .code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count138
+\pgf@plot@mark@count=\count137
 \pgfplotmarksize=\dimen177
 )
 \tikz@lastx=\dimen178
@@ -696,22 +688,22 @@ File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \tikz@lastysaved=\dimen181
 \tikzleveldistance=\dimen182
 \tikzsiblingdistance=\dimen183
-\tikz@figbox=\box44
-\tikz@figbox@bg=\box45
-\tikz@tempbox=\box46
-\tikz@tempbox@bg=\box47
-\tikztreelevel=\count139
-\tikznumberofchildren=\count140
-\tikznumberofcurrentchild=\count141
-\tikz@fig@count=\count142
+\tikz@figbox=\box42
+\tikz@figbox@bg=\box43
+\tikz@tempbox=\box44
+\tikz@tempbox@bg=\box45
+\tikztreelevel=\count138
+\tikznumberofchildren=\count139
+\tikznumberofcurrentchild=\count140
+\tikz@fig@count=\count141
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count143
-\pgfmatrixcurrentcolumn=\count144
-\pgf@matrix@numberofcolumns=\count145
+\pgfmatrixcurrentrow=\count142
+\pgfmatrixcurrentcolumn=\count143
+\pgf@matrix@numberofcolumns=\count144
 )
-\tikz@expandcount=\count146
+\tikz@expandcount=\count145
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex
@@ -743,7 +735,7 @@ File: tikzlibraryfadings.code.tex 2009/11/15 v3.0.1a (rcs-revision 1.2)
 File: pgflibraryfadings.code.tex 2008/02/07 v3.0.1a (rcs-revision 1.3)
 ))) (/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
-\@enLab=\toks43
+\@enLab=\toks41
 )
 (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
 \bigstrutjot=\dimen185
@@ -754,13 +746,13 @@ Package: paralist 2015/12/30 v2.5 Extended list environments
 \plpartopsep=\skip67
 \plitemsep=\skip68
 \plparsep=\skip69
-\pl@lab=\toks44
+\pl@lab=\toks42
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
 Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen186
 \extrarowheight=\dimen187
-\NC@list=\toks45
+\NC@list=\toks43
 \extratabsurround=\skip70
 \backup@length=\skip71
 ))
@@ -769,24 +761,24 @@ Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 
 (./listings.inc.tex
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count147
-\lst@gtempboxa=\box48
-\lst@token=\toks46
-\lst@length=\count148
+\lst@mode=\count146
+\lst@gtempboxa=\box46
+\lst@token=\toks44
+\lst@length=\count147
 \lst@currlwidth=\dimen188
-\lst@column=\count149
-\lst@pos=\count150
+\lst@column=\count148
+\lst@pos=\count149
 \lst@lostspace=\dimen189
 \lst@width=\dimen190
-\lst@newlines=\count151
-\lst@lineno=\count152
+\lst@newlines=\count150
+\lst@lineno=\count151
 \lst@maxwidth=\dimen191
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count153
-\lst@skipnumbers=\count154
-\lst@framebox=\box49
+\c@lstnumber=\count152
+\lst@skipnumbers=\count153
+\lst@framebox=\box47
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
@@ -796,9 +788,9 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 (/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen192
 \WF@size=\dimen193
-\c@WF@wrappedlines=\count155
-\WF@box=\box50
-\WF@everypar=\toks47
+\c@WF@wrappedlines=\count154
+\WF@box=\box48
+\WF@everypar=\toks45
 Package: wrapfig 2003/01/31  v 3.6
 ))
 \@input{macros.inc.aux}
@@ -833,7 +825,6 @@ LaTeX Font Info:    ... okay on input line 19.
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: longtable package is loaded.
@@ -877,7 +868,7 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box51
+\AtBeginShipoutBox=\box49
 Package hyperref Info: Link coloring ON on input line 19.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -885,7 +876,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count156
+\c@section@level=\count155
 )
 LaTeX Info: Redefining \ref on input line 19.
 LaTeX Info: Redefining \pageref on input line 19.
@@ -898,17 +889,17 @@ LaTeX Info: Redefining \nameref on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count157
+\scratchcounter=\count156
 \scratchdimen=\dimen194
-\scratchbox=\box52
-\nofMPsegments=\count158
-\nofMParguments=\count159
-\everyMPshowfont=\toks48
-\MPscratchCnt=\count160
+\scratchbox=\box50
+\nofMPsegments=\count157
+\nofMParguments=\count158
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count159
 \MPscratchDim=\dimen195
-\MPnumerator=\count161
-\makeMPintoPDFobject=\count162
-\everyMPtoPDFconversion=\toks49
+\MPnumerator=\count160
+\makeMPintoPDFobject=\count161
+\everyMPtoPDFconversion=\toks47
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -925,7 +916,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-\c@lstlisting=\count163
+\c@lstlisting=\count162
 \openout2 = `00-abstract.aux'.
 
  (./00-abstract.tex
@@ -1173,32 +1164,33 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 161.
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--176
+Underfull \hbox (badness 10000) in paragraph at lines 162--177
 []\T2A/cmr/m/n/12 ¬ышеприведенные ме^^?то^^?ды упо^^?р€^^?до^^?че^^?ны по ка^^?
 че^^?ству по^^?лу^^?ча^^?е^^?мо^^?го
  []
 
 
-Underfull \hbox (badness 5008) in paragraph at lines 162--176
+Underfull \hbox (badness 5008) in paragraph at lines 162--177
 \T2A/cmr/m/n/12 на вы^^?хо^^?де изоб^^?ра^^?же^^?ни€, од^^?на^^?ко, та^^?кие со
 ^^?об^^?ра^^?же^^?ни€ как вре^^?м€, эко^^?но^^?ми€
  []
 
 
-Underfull \hbox (badness 5050) in paragraph at lines 162--176
+Underfull \hbox (badness 5050) in paragraph at lines 162--177
 \T2A/cmr/m/n/12 па^^?м€^^?ти и про^^?чие €в^^?л€^^?ют^^?с€ опре^^?де^^?л€^^?ю^^
 ?щи^^?ми при вы^^?бо^^?ре алгоритма[[]]. Ќа
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--176
+Underfull \hbox (badness 10000) in paragraph at lines 162--177
 \T2A/cmr/m/n/12 ос^^?но^^?ве вы^^?ше^^?при^^?ве^^?ден^^?ных дан^^?ных срав^^?ни
 м клас^^?сы ал^^?го^^?рит^^?мов ди^^?зе^^?рин^^?га.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--176
-[] \T2A/cmr/m/n/12 —а^^?мым
+Underfull \hbox (badness 5077) in paragraph at lines 162--177
+\T2A/cmr/m/n/12 —амым быст^^?рым клас^^?сом ал^^?го^^?рит^^?мов ди^^?зе^^?рин^^
+?га €в^^?л€^^?ет^^?с€ слу^^?чай^^?ный ди^^?зе^^?
  []
 
 )
@@ -1252,7 +1244,7 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 41.
 
-<img/2_white_noise.png, id=261, 578.16pt x 433.62pt>
+<img/2_white_noise.png, id=262, 578.16pt x 433.62pt>
 File: img/2_white_noise.png Graphic file (type png)
 
 <use img/2_white_noise.png>
@@ -1262,7 +1254,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 52.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 52.
- <img/3_red_noise.png, id=263, 578.16pt x 433.62pt>
+ <img/3_red_noise.png, id=264, 578.16pt x 433.62pt>
 File: img/3_red_noise.png Graphic file (type png)
 
 <use img/3_red_noise.png>
@@ -1314,38 +1306,46 @@ Package babel Info: Redefining russian shorthand "~
 /koi8-r.def
 File: koi8-r.def 2014/10/28 v1.0d Input encoding file
 )
+<img/4_pink_noise.png, id=292, 578.16pt x 433.62pt>
+File: img/4_pink_noise.png Graphic file (type png)
+ <use img/4_pink_noise.png>
+Package pdftex.def Info: img/4_pink_noise.png used on input line 94.
+(pdftex.def)             Requested size: 455.24411pt x 341.43124pt.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 92.
+(babel)             in language append on input line 98.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 92.
-
-<img/1.png, id=291, 686.565pt x 327.2225pt>
-File: img/1.png Graphic file (type png)
- <use img/1.png>
-Package pdftex.def Info: img/1.png used on input line 97.
-(pdftex.def)             Requested size: 455.24411pt x 216.9711pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 93--101
-
- []
+(babel)             in language append on input line 98.
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
 File: koi8-r.def 2014/10/28 v1.0d Input encoding file
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 106.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 105.
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <7> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 106.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 105.
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <5> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 106.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 105.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 106.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 106.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <5> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 106.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 107.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 106.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 107.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 107.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 107.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 107.
+ [13 <./img/4_pink_noise.png>] <img/1.png, id=312, 686.565pt x 327.2225pt>
+File: img/1.png Graphic file (type png)
+ <use img/1.png>
+Package pdftex.def Info: img/1.png used on input line 113.
+(pdftex.def)             Requested size: 455.24411pt x 216.9711pt.
 )
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 42.
@@ -1355,16 +1355,8 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 42.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 42.
- [13]
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 42.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 42.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 42.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 42.
- [14 <./img/1.png>]
+
+[14 <./img/1.png>]
 \openout2 = `40-impl.aux'.
 
  (./40-impl.tex
@@ -1409,11 +1401,11 @@ Package babel Info: Redefining russian shorthand "~
 ]
 \openout2 = `60-economics.aux'.
 
- (./60-economics.tex)
+
+(./60-economics.tex)
 \openout2 = `70-bzd.aux'.
 
-
-(./70-bzd.tex)
+ (./70-bzd.tex)
 \openout2 = `80-conclusion.aux'.
 
  (./80-conclusion.tex
@@ -1448,8 +1440,7 @@ Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 1.
 LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 13.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )))
 Package babel Info: Redefining russian shorthand "|
@@ -1460,15 +1451,15 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 53.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 53.
- [18
+
+[18
 
 
 
 ]
 \openout2 = `90-appendix1.aux'.
 
-
-(./90-appendix1.tex)
+ (./90-appendix1.tex)
 \openout2 = `91-appendix2.aux'.
 
  (./91-appendix2.tex)
@@ -1490,13 +1481,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 60.
  ) 
 Here is how much of TeX's memory you used:
- 26650 strings out of 493030
- 451510 string characters out of 6136239
- 543638 words of memory out of 5000000
- 29468 multiletter control sequences out of 15000+600000
+ 26611 strings out of 493030
+ 451036 string characters out of 6136239
+ 535864 words of memory out of 5000000
+ 29432 multiletter control sequences out of 15000+600000
  20758 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,12n,84p,2123b,1683s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,12n,84p,2123b,2394s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dis
@@ -1517,10 +1508,10 @@ re/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1
 m1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/shar
 e/texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/
 public/cm-super/sftt1200.pfb>
-Output written on rpz.pdf (18 pages, 483470 bytes).
+Output written on rpz.pdf (18 pages, 547691 bytes).
 PDF statistics:
- 432 PDF objects out of 1000 (max. 8388607)
- 360 compressed objects within 4 object streams
+ 435 PDF objects out of 1000 (max. 8388607)
+ 361 compressed objects within 4 object streams
  88 named destinations out of 1000 (max. 500000)
- 360 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 365 words of extra memory for PDF output out of 10000 (max. 10000000)
 
