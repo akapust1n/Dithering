@@ -103,10 +103,10 @@ c_2=(0,03*d)^2
        for(y = 0; y < height; y++){
            P(x,y) = trunc(I(x,y)+0.5);
            e = I(x,y) - P(x,y);
-           I(x,y+1) += \alpha*e;
-           I(x+1, y-1) += \beta*e;
-           I(x+1, y) = \gamma*e;
-           I(x+1, y+1) +=\sigma*e; }
+           I(x,y+1) += alpha*e;
+           I(x+1, y-1) += beta*e;
+           I(x+1, y) = gamma*e;
+           I(x+1, y+1) += sigma*e; }
    \end{lstlisting}
     \begin{figure}
     	\centering
