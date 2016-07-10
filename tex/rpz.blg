@@ -17,49 +17,58 @@ The style file: gost780u.bst
 A level-1 auxiliary file: 90-appendix1.aux
 A level-1 auxiliary file: 91-appendix2.aux
 Database file #1: rpz.bib
-"{" immediately follows a field name---line 38 of file rpz.bib
+"{" immediately follows a field name---line 7 of file rpz.bib
  :  language
  :          {russian}
 I'm skipping whatever remains of this entry
-You've used 5 entries,
+I was expecting a `,' or a `}'---line 10 of file rpz.bib
+ :  title= 
+ :         "Noise functions and map generation",
+I'm skipping whatever remains of this entry
+"{" immediately follows a field name---line 45 of file rpz.bib
+ :  language
+ :          {english}
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "Wiki_hrom"
+You've used 11 entries,
             2674 wiz_defined-function locations,
-            677 strings with 5634 characters,
-and the built_in function-call counts, 1107 in all, are:
-= -- 134
-> -- 17
-< -- 4
-+ -- 9
-- -- 4
-* -- 26
-:= -- 128
-add.period$ -- 14
-call.type$ -- 5
+            701 strings with 6185 characters,
+and the built_in function-call counts, 2104 in all, are:
+= -- 239
+> -- 26
+< -- 5
++ -- 16
+- -- 5
+* -- 37
+:= -- 230
+add.period$ -- 27
+call.type$ -- 11
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 67
-empty$ -- 161
-format.name$ -- 8
-if$ -- 308
+cite$ -- 11
+duplicate$ -- 136
+empty$ -- 334
+format.name$ -- 10
+if$ -- 594
 int.to.chr$ -- 0
-int.to.str$ -- 5
+int.to.str$ -- 11
 missing$ -- 0
-newline$ -- 35
-num.names$ -- 8
-pop$ -- 42
+newline$ -- 65
+num.names$ -- 10
+pop$ -- 95
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 16
+skip$ -- 38
 stack$ -- 0
 substring$ -- 0
-swap$ -- 25
+swap$ -- 41
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 4
-width$ -- 6
-write$ -- 75
-(There was 1 error message)
+while$ -- 5
+width$ -- 13
+write$ -- 144
+(There were 3 error messages)

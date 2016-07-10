@@ -16,7 +16,7 @@ MSE =\frac{1}{m*n}\sum_{i=0}^{m-1}\sum_{j=0}^{n-1}|I(i,j)-K(i,j)|^2
 Индекс структурного сходства (SSIM от англ. structure similarity) — метод измерения схожести между двумя изображениями путем полного сопоставления. SSIM-индекс является развитием традиционных методов, таких как PSNR (peak signal-to-noise ratio) и метод среднеквадратичной ошибки MSE, которые оказались несовместимы с физиологией человеческого восприятия.
 
 Отличительной особенностью метода, в отличие от MSE и PSNR, является то, что он учитывает «восприятие ошибки» благодаря учёту структурного изменения информации. Идея заключается в том, что пиксели имеют сильную взаимосвязь, особенно когда они близки пространственно. Данные зависимости несут важную информацию о структуре объектов и о сцене в целом.
- Особенностью является, что SSIM всегда лежит в промежутке от -1 до 1, причем при его значении равном 1, означает, что мы имеем две одинаковые картинки. Общая формула имеет вид
+Особенностью является, что SSIM всегда лежит в промежутке от -1 до 1, причем при его значении равном 1, означает, что мы имеем две одинаковые картинки. Общая формула имеет вид
 \begin{equation}
 SSIM(x,y) = \frac{(2\mu_x\mu_y +c_1)(\sigma_xy+c_2)}{(\mu^2_x+\mu^2_y+c_1)(\sigma^2_x+\sigma^2_y+c_2)}
 \label{F:F3}
@@ -27,7 +27,7 @@ SSIM(x,y) = \frac{(2\mu_x\mu_y +c_1)(\sigma_xy+c_2)}{(\mu^2_x+\mu^2_y+c_1)(\sigm
 \label{F:F4}
 \end{equation} 
 %я не понимаю что это за формула, пишу как читаю
-  $c_1$ и $c_2$ -  поправочные коэффициенты, которые нужны вследствие малости знаменателя.
+$c_1$ и $c_2$ -  поправочные коэффициенты, которые нужны вследствие малости знаменателя.
 \begin{equation}
 c_1= (0,01*d)^2 
 \label{F:F5} 
@@ -36,7 +36,7 @@ c_1= (0,01*d)^2
 c_2=(0,03*d)^2
 \label{F:F6}
 \end{equation}  
-  d - количество цветов, соответствующих данной битности изображения 
+d - количество цветов, соответствующих данной битности изображения 
 \section{Виды случайных распределений} 
 \subsection{Белый шум}
 Белый шумом называют сигнал с равномерной спектральной плотностью на всех частотах и дисперсией, равной бесконечности. Является стационарным случайным процессом.
@@ -44,78 +44,81 @@ c_2=(0,03*d)^2
 
 \begin{figure}[h]
 	\centering
-    \includegraphics[width=\textwidth]{img/2_white_noise.png}
+	\includegraphics[width=\textwidth]{img/8_white_noise.png}
 	\caption{Диаграмма белого шума//почему-то очень много места сверху}
 	\label{fig:spire05}
 \end{figure}
 
-\subsection{Красный шум}
-Спектральная плотность красного шума пропорциональна 1/f², где f — частота..																									\begin{figure}[h]
+\subsection{Коричневый шум}
+Спектральная плотность коричневого шума пропорциональна 1/f², где f — частота.																									\begin{figure}[h]
 	\centering
- \includegraphics[width=\textwidth ]{img/3_red_noise.png}
+	\includegraphics[width=\textwidth ]{img/6_brown_noise.png}
 	\caption{Диаграмма красного шума }
 	\label{fig:spire04}
 \end{figure} 
-Коричневый шум можно получить при помощи алгоритма случайного блуждания. Выбиратся наугад число в определенном диапазоне,
-%Я НЕ УВЕРЕН, ЧТО ЭТО И ЕСТЬ АЛГОРИТМ СЛУЧАЙНОГ БЛУЖДАНИЯ
-  прибавляется к значению предыдущего числа(тоже полученного случайно) и делится пополам.Например, если первое значение равно 103, а нам случайно выпало число 67, то следующее значение будет 170. Если  построить так длинную последовательность значений, получится красный шум. 
-  \begin{lstlisting}[style=pseudocode,caption={Получение коричневого шума}] 
-  def smoother(noise):
-     output = []
-     for i in range(len(noise) - 1):
-          output.append(0.5 * (noise[i] + noise[i+1]))
-  return output
-  \end{lstlisting}
- \subsection{Гауссовский шум}
- 
- Гауссовский шум  - шум, имеющий функцию плотности вероятности (PDF), равную нормальному распределению, которое также известно как гауссово распределение. 
+Это означает, что на низких частотах шум имеет больше энергии, чем на высоких. То есть пикселей темных цветов большей, чем пикселей светлого цвета.Применение фильтра коричневого шума в целом затемняет получаемое изображение.
+\begin{lstlisting}[style=pseudocode,caption={Получение коричневого шума}] 
+def smoother(noise):
+output = []
+for i in range(len(noise) - 1):
+output.append(0.5 * (noise[i] + noise[i+1]))
+return output
+\end{lstlisting}
+\subsection{Гауссовский шум}
 
- \begin{equation}
- p_g(z)=\frac{1}{\sigma\sqrt{2*\pi}}e^{-\frac{(z-\mu)^2}{2\sigma^2}}
- \end{equation}
- z - количество цветов, $\mu$ -среднее значение, $\sigma$ - стандартное отклонение.
-  %\begin{figure}
-  %	\centering
-  	%  \includegraphics[width=\textwidth]{inc/svg/pic01}
-  %	\caption{Диаграмма гауссовского шума}
-  %	\label{fig:spire02}
- % \end{figure}
- \subsection{Розовый шум}
- Розовый шум представляет собой что-то среднее между коричневым шумом и белым шумом.Получение его аналогично получению красного шума.
- \begin{lstlisting}[style=pseudocode,caption={Получение розового шума}]
- def rougher(noise):
-     output = []
-     for i in range(len(noise) - 1):
-         output.append(0.5 * (noise[i] - noise[i+1]))
- return output
- \end{lstlisting}
-   \begin{figure}[h]
-   	\centering
-     \includegraphics[width=\textwidth]{img/4_pink_noise.png}
-   	\caption{Диаграмма розового шума}
-   	\label{fig:spire02}
-    \end{figure}
- \subsection{Алгоритм Флойда-Стейнберга}
- Рассмотрим более детально алгоритм Флойда-Стейнберга.
+Гауссовский шум  - шум, имеющий функцию плотности вероятности (PDF), равную нормальному распределению, которое также известно как гауссово распределение. 
 
-   \begin{lstlisting}[style=pseudocode,caption={Алгоритм Флойда-Стейнберга}]
-   for(x = 0; x < width; x++)
-       for(y = 0; y < height; y++){
-           P(x,y) = trunc(I(x,y)+0.5);
-           e = I(x,y) - P(x,y);
-           I(x,y+1) += alpha*e;
-           I(x+1, y-1) += beta*e;
-           I(x+1, y) = gamma*e;
-           I(x+1, y+1) += sigma*e; }
-   \end{lstlisting}
-    \begin{figure}
-    	\centering
-    	\includegraphics[width=\textwidth]{img/1.png}
-    	\caption{Схема рассеивания ошибки}
-    	\label{fig:spire03}
-    \end{figure}
+\begin{equation}
+p_g(z)=\frac{1}{\sigma\sqrt{2*\pi}}e^{-\frac{(z-\mu)^2}{2\sigma^2}}
+\end{equation}
+z - количество цветов, $\mu$ -среднее значение, $\sigma$ - стандартное отклонение.
+%\begin{figure}
+%	\centering
+%  \includegraphics[width=\textwidth]{inc/svg/pic01}
+%	\caption{Диаграмма гауссовского шума}
+%	\label{fig:spire02}
+% \end{figure}
+\subsection{Розовый шум}
+Розовый шум представляет собой что-то среднее между коричневым шумом и белым шумом.Получение его аналогично получению коричневого шума.
+Применение фильтра розового шума в целом затемняет получаемое изображение, но не так сильно как применение фильтра коричневого шума.
+\begin{lstlisting}[style=pseudocode,caption={Получение розового шума}]
+def rougher(noise):
+output = []
+for i in range(len(noise) - 1):
+output.append(0.5 * (noise[i] - noise[i+1]))
+return output
+\end{lstlisting}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{img/7_pink_noise.png}
+	\caption{Диаграмма розового шума}
+	\label{fig:spire02}
+\end{figure}
+\subsection{Алгоритм Флойда-Стейнберга}
+Рассмотрим более детально алгоритм Флойда-Стейнберга.
+
+\begin{lstlisting}[style=pseudocode,caption={Алгоритм Флойда-Стейнберга}]
+for(x = 0; x < width; x++)
+for(y = 0; y < height; y++){
+P(x,y) = trunc(I(x,y)+0.5);
+e = I(x,y) - P(x,y);
+I(x,y+1) += alpha*e;
+I(x+1, y-1) += beta*e;
+I(x+1, y) = gamma*e;
+I(x+1, y+1) += sigma*e; }
+\end{lstlisting}
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{img/1.png}
+	\caption{Схема рассеивания ошибки}
+	\label{fig:spire03}
+\end{figure}
+\subsection{Фиолетовый и синий шумы}
+Эти шумы являются противоположностью коричневому и розовуму шуму соотвественно. Изображения, становятся светлее после того как к ним применили дизеринг фиолетового/синего шума. Их получение аналогично вышеописанному получению шумов.
 %%% Local Variables:
 
 %%% mode: latex
 %%% TeX-master: "rpz"
 %%% End:
+%--количество цветов
+%||количество пикселей
