@@ -4,3 +4,5 @@
 *.bbl
 *.toc
 *.log
+*.o
+*autosave
