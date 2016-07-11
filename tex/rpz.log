@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.1)  11 JUL 2016 00:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.1)  11 JUL 2016 03:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1192,16 +1192,15 @@ Underfull \hbox (badness 5077) in paragraph at lines 164--179
 ?га яв^^?ля^^?ет^^?ся слу^^?чай^^?ный ди^^?зе^^?
  []
 
-)
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 41.
+(babel)             in language append on input line 179.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 41.
+(babel)             in language append on input line 179.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 41.
+(babel)             in language append on input line 179.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 41.
- [9]
+(babel)             in language append on input line 179.
+[9])
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 41.
 Package babel Info: Redefining russian shorthand "~
@@ -1231,136 +1230,244 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 15.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 40.
+(babel)             in language append on input line 41.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 40.
+(babel)             in language append on input line 41.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 40.
+(babel)             in language append on input line 41.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 40.
+(babel)             in language append on input line 41.
  [11
 
 
 
 ]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 40.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 40.
-Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 41.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 41.
-
-<img/8_white_noise.png, id=282, 602.25pt x 451.6875pt>
-File: img/8_white_noise.png Graphic file (type png)
-
-<use img/8_white_noise.png>
-Package pdftex.def Info: img/8_white_noise.png used on input line 47.
-(pdftex.def)             Requested size: 455.24411pt x 341.44585pt.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 52.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 52.
-
-<img/6_brown_noise.png, id=284, 602.25pt x 451.6875pt>
-File: img/6_brown_noise.png Graphic file (type png)
-
-<use img/6_brown_noise.png>
-Package pdftex.def Info: img/6_brown_noise.png used on input line 55.
-(pdftex.def)             Requested size: 455.24411pt x 341.44585pt.
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 43.
+
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2014/10/28 v1.0d Input encoding file
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 44.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 44.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 51.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 51.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 52.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 52.
+
+<img/8_white_noise.png, id=293, 602.25pt x 451.6875pt>
+File: img/8_white_noise.png Graphic file (type png)
+
+<use img/8_white_noise.png>
+Package pdftex.def Info: img/8_white_noise.png used on input line 58.
+(pdftex.def)             Requested size: 455.24411pt x 341.44585pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--62
+
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 63.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 63.
+<img/6_brown_noise.png, id=295, 602.25pt x 451.6875pt>
+File: img/6_brown_noise.png Graphic file (type png)
+
+<use img/6_brown_noise.png>
+Package pdftex.def Info: img/6_brown_noise.png used on input line 69.
+(pdftex.def)             Requested size: 455.24411pt x 341.44585pt.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 73.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 73.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 73.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 73.
+ [12]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 60.
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
 File: koi8-r.def 2014/10/28 v1.0d Input encoding file
 )
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 61.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 61.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 61.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 61.
- [12 <./img/8_white_noise.png>]
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 61.
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 61.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 67.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 67.
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 81.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 81.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 84.
+(babel)             in language append on input line 85.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 84.
+(babel)             in language append on input line 85.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 84.
+(babel)             in language append on input line 85.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 84.
- [13 <./img/6_brown_noise.png>]
-(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
-File: koi8-r.def 2014/10/28 v1.0d Input encoding file
-)
-<img/7_pink_noise.png, id=313, 602.25pt x 451.6875pt>
+(babel)             in language append on input line 85.
+ [13 <./img/8_white_noise.png>]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 95.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 95.
+ <img/7_pink_noise.png, id=326, 602.25pt x 451.6875pt>
 File: img/7_pink_noise.png Graphic file (type png)
 
 <use img/7_pink_noise.png>
-Package pdftex.def Info: img/7_pink_noise.png used on input line 93.
+Package pdftex.def Info: img/7_pink_noise.png used on input line 101.
 (pdftex.def)             Requested size: 455.24411pt x 341.44585pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--105
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--105
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--105
+
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 97.
+(babel)             in language append on input line 105.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 97.
+(babel)             in language append on input line 105.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 105.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 105.
+[14 <./img/6_brown_noise.png>]
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2014/10/28 v1.0d Input encoding file
+)
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 113.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 113.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 116.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 116.
+
+<img/1.png, id=338, 686.565pt x 327.2225pt>
+File: img/1.png Graphic file (type png)
+ <use img/1.png>
+Package pdftex.def Info: img/1.png used on input line 122.
+(pdftex.def)             Requested size: 455.24411pt x 216.9711pt.
+
+Underfull \hbox (badness 2662) in paragraph at lines 117--126
+\T2A/cmr/m/n/12 пик^^?се^^?ля в точ^^?ке x,y I(x,y) - пред^^?пол^^?га^^?е^^?мый
+ цвет пик^^?се^^?ля с уче^^?том ошиб^^?
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 126.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 126.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 126.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 126.
+[15 <./img/7_pink_noise.png>]
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
+File: koi8-r.def 2014/10/28 v1.0d Input encoding file
+)
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language append on input line 136.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language append on input line 136.
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/koi8-r.def
 File: koi8-r.def 2014/10/28 v1.0d Input encoding file
 )
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 103.
+(babel)             in language append on input line 145.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 103.
+(babel)             in language append on input line 145.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 103.
+(babel)             in language append on input line 145.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 103.
- [14 <./img/7_pink_noise.png>]
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 104.
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <7> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 104.
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <5> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 104.
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 104.
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 104.
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <5> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 104.
-LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
- <img/1.png, id=329, 686.565pt x 327.2225pt>
-File: img/1.png Graphic file (type png)
- <use img/1.png>
-Package pdftex.def Info: img/1.png used on input line 112.
-(pdftex.def)             Requested size: 455.24411pt x 216.9711pt.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 116.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 116.
-)
+(babel)             in language append on input line 145.
+ [16 <./img/1.png>])
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 42.
 Package babel Info: Redefining russian shorthand "~
@@ -1369,8 +1476,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 42.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 42.
-
-[15 <./img/1.png>]
+ [17]
 \openout2 = `40-impl.aux'.
 
  (./40-impl.tex
@@ -1387,7 +1493,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 43.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 43.
- [16
+ [18
 
 
 
@@ -1408,18 +1514,18 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 44.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 44.
- [17
+ [19
 
 
 
 ]
 \openout2 = `60-economics.aux'.
 
-
-(./60-economics.tex)
+ (./60-economics.tex)
 \openout2 = `70-bzd.aux'.
 
- (./70-bzd.tex)
+
+(./70-bzd.tex)
 \openout2 = `80-conclusion.aux'.
 
  (./80-conclusion.tex
@@ -1436,7 +1542,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 51.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 51.
- [18
+ [20
 
 
 
@@ -1471,7 +1577,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language append on input line 53.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 53.
- [19
+ [21
 
 
 
@@ -1493,7 +1599,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 60.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 60.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 60.
 Package rerunfilecheck Info: File `rpz.out' has not changed.
-(rerunfilecheck)             Checksum: 8F10C4A47BBF3F85EDC6154567F35E6F;6265.
+(rerunfilecheck)             Checksum: F69F48525E010E3DC7DCD242F8AC6380;7244.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1504,13 +1610,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 60.
  ) 
 Here is how much of TeX's memory you used:
- 26627 strings out of 493030
- 451292 string characters out of 6136239
- 531042 words of memory out of 5000000
- 29440 multiletter control sequences out of 15000+600000
- 20758 words of font info for 61 fonts, out of 8000000 for 9000
+ 26619 strings out of 493030
+ 451270 string characters out of 6136239
+ 537554 words of memory out of 5000000
+ 29431 multiletter control sequences out of 15000+600000
+ 17585 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,12n,84p,2123b,2430s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,12n,84p,2123b,2334s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dis
@@ -1528,13 +1634,12 @@ are/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type
 bx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/sha
 re/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1
 /public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfr
-m1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/shar
-e/texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/
-public/cm-super/sftt1200.pfb>
-Output written on rpz.pdf (19 pages, 402240 bytes).
+m1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/shar
+e/texmf/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on rpz.pdf (21 pages, 388260 bytes).
 PDF statistics:
- 462 PDF objects out of 1000 (max. 8388607)
- 387 compressed objects within 4 object streams
- 96 named destinations out of 1000 (max. 500000)
- 373 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 499 PDF objects out of 1000 (max. 8388607)
+ 422 compressed objects within 5 object streams
+ 116 named destinations out of 1000 (max. 500000)
+ 389 words of extra memory for PDF output out of 10000 (max. 10000000)
 
