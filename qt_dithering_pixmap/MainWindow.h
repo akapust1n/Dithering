@@ -1,9 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include <QMainWindow>
-#include <string>
+#include <QString>
 #include <QFileDialog>
 #include <DataRead.h>
+#include <MainManager.h>
 using namespace  std;
 namespace Ui {
 class MainWindow;
@@ -22,7 +23,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    DataRead dataread;
+    MainManager mainmanager;
 };
 
 #endif // MAINWINDOW_H

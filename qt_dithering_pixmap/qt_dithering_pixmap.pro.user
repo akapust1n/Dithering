@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.0.2, 2016-07-12T01:55:26. -->
+<!-- Written by QtCreator 4.0.2, 2016-07-12T17:12:10. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -269,8 +269,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">qt_dithering_pixmap</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/alexey/15/smth/untitled/qt_dithering_pixmap/qt_dithering_pixmap.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">qt_dithering_pixmap2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/alexey/15/gost/latex-g7-32/cg_cursach/qt_dithering_pixmap/qt_dithering_pixmap.pro</value>
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">qt_dithering_pixmap.pro</value>

@@ -15,10 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         MainWindow.cpp \
     DataRead.cpp \
-    Dithering.cpp
+    Dithering.cpp \
+    MainManager.cpp
 
 HEADERS  += MainWindow.h \
     DataRead.h \
-    Dithering.h
+    Dithering.h \
+    MainManager.h \
+    Quality.h
 
 FORMS    += MainWindow.ui
