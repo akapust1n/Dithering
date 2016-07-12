@@ -19,6 +19,7 @@ private:
    QImage image2;
    QImage image_temp;
    WhiteNoiseDithering wndithering;
+   //BrownNoiseDithering bndothering;
 };
 
 #endif // MAINMANAGER_H

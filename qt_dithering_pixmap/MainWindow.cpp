@@ -19,6 +19,7 @@ void MainWindow::on_pushButton_clicked()
                             QDir::currentPath(), "images (*.*)");
     mainmanager.loadFile(sourceName);
     mainmanager.dither(WHITE_DITH);
+  // mainmanager.dither(BROWN_DITH);
 
 
 }

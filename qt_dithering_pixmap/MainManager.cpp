@@ -1,16 +1,17 @@
 #include <MainManager.h>
-void MainManager::loadFile(QString &fname)
+void MainManager::loadFile(QString& fname)
 {
-   image1= dataread.openImage(fname);
-
+    image1 = dataread.openImage(fname);
 }
 void MainManager::dither(dither_kind kind)
 {
     switch (kind) {
-    case(WHITE_DITH): wndithering.Dither(image1,image2);
+    case (WHITE_DITH):
+        wndithering.Dither(image1, image2);
         break;
-    default:
+    case (BROWN_DITH):
+        //bndothering.Dither(image1,image2);
         break;
-
+    default : break;
     };
 }
