@@ -9,6 +9,7 @@ QImage DataRead::openImage(QString filename)
     image1 = image1.convertToFormat(QImage::Format_Indexed8);
     image1.save("4bit.bmp","bmp");
 
-     cout<<image1.depth();
+     //cout<<image1.depth();
+
     return image1;
 }

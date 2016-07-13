@@ -5,7 +5,7 @@
 #include <QImage>
 #include <Dithering.h>
 enum dither_kind {
-    WHITE_DITH, BROWN_DITH,BLUE_DITH
+    WHITE_DITH, BROWN_DITH,PINK_DITH
 };
 class MainManager
 {
@@ -19,7 +19,8 @@ private:
    QImage image2;
    QImage image_temp;
    WhiteNoiseDithering wndithering;
-   //BrownNoiseDithering bndothering;
+   BrownNoiseDithering bndithering;
+   PinkNoiseDithering pndithering;
 };
 
 #endif // MAINMANAGER_H

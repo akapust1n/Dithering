@@ -10,7 +10,10 @@ void MainManager::dither(dither_kind kind)
         wndithering.Dither(image1, image2);
         break;
     case (BROWN_DITH):
-        //bndothering.Dither(image1,image2);
+        bndithering.Dither(image1,image2);
+        break;
+    case (PINK_DITH):
+        pndithering.Dither(image1,image2);
         break;
     default : break;
     };
