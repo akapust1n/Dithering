@@ -7,7 +7,8 @@ using namespace std;
 
 class DataRead {
 public:
-    QImage openImage(QString filename);
+    QImage* openImage(QString filename);
+
 };
 
 #endif // DATAREAD_H

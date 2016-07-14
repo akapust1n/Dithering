@@ -18,9 +18,14 @@ void MainWindow::on_pushButton_clicked()
     QString sourceName = QFileDialog::getOpenFileName(this, QString::fromUtf8("Открыть файл"),
                             QDir::currentPath(), "images (*.*)");
     mainmanager.loadFile(sourceName);
-    //mainmanager.dither(WHITE_DITH);
-   // mainmanager.dither(BROWN_DITH);
-    mainmanager.dither(PINK_DITH);
+   mainmanager.dither(WHITE_DITH);
+
+   mainmanager.dither(VIOLET_DITH);
+
+        mainmanager.dither(BROWN_DITH);
+
+            mainmanager.dither(PINK_DITH);
+         mainmanager.dither(BLUE_DITH);
 
 
 }

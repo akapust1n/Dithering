@@ -3,34 +3,41 @@
 #include <QColor>
 #include <QPixmap>
 #include <QMap>
+#include <time.h>
+#include <stdlib.h>
 class Dithering {
 public:
     QMap<QRgb,int> map;
-    virtual void Dither(QImage& image1, QImage& image2) = 0;
-    protected:
+    virtual void Dither(QImage*& image1, QImage*& image2) = 0;
+protected:
     QRgb NewCOLOR(QColor pixel, int number);
-    //int addColorToTable()
+
 };
 class WhiteNoiseDithering : public Dithering {
 public:
-    virtual void Dither(QImage& image1, QImage& image2);
+    virtual void Dither(QImage*& image1, QImage*& image2);
 
-private:
-    // virtual QColor NewCOLOR(QColor pixel, int number);
 };
 class BrownNoiseDithering : public Dithering {
 public:
-    virtual void Dither(QImage& image1, QImage& image2);
+    int key= 0;
+    virtual void Dither(QImage*& image1, QImage*& image2);
 
-private:
-    //virtual QColor NewCOLOR(QColor pixel, int number);
+};
+class VioletNoiseDithering : public Dithering {
+public:
+    virtual void Dither(QImage*& image1, QImage*& image2);
 };
 class PinkNoiseDithering : public Dithering {
-public:
-    virtual void Dither(QImage& image1, QImage& image2);
 
-private:
-    //virtual QColor NewCOLOR(QColor pixel, int number);
+public:
+    virtual void Dither(QImage*& image1, QImage*& image2);
 };
+class BlueNoiseDithering : public Dithering {
+
+public:
+    virtual void Dither(QImage*& image1, QImage*& image2);
+};
+
 
 #endif // DITHERING_H
