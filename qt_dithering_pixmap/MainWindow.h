@@ -3,7 +3,7 @@
 #include <QMainWindow>
 #include <QString>
 #include <QFileDialog>
-#include <DataRead.h>
+#include <DataManager.h>
 #include <MainManager.h>
 using namespace  std;
 namespace Ui {

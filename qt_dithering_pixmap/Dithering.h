@@ -5,12 +5,14 @@
 #include <QMap>
 #include <time.h>
 #include <stdlib.h>
+
 class Dithering {
 public:
-    QMap<QRgb,int> map;
     virtual void Dither(QImage*& image1, QImage*& image2) = 0;
 protected:
     QRgb NewCOLOR(QColor pixel, int number);
+    QMap<QRgb,int> map;
+
 
 };
 class WhiteNoiseDithering : public Dithering {

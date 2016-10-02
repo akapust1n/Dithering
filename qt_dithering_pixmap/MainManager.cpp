@@ -1,33 +1,22 @@
 #include <MainManager.h>
-void MainManager::loadFile(QString& fname)
+void MainManager::loadFile(QString& fname, QImage *&image1)
 {
-    image1 = dataread.openImage(fname);
+    image1 = dataManager.openImage(fname);
 
 }
+
 void MainManager::dither(dither_kind kind)
 {
-    switch (kind) {
-    case (WHITE_DITH): {
-        wndithering.Dither(image1, image2);
-        break;
-    }
-    case (BROWN_DITH): {
-        bndithering.Dither(image1, image2);
-        break;
-    }
-    case (VIOLET_DITH): {
-        vndithering.Dither(image1, image2);
-        break;
-    }
-    case (PINK_DITH): {
-        pndithering.Dither(image1, image2);
-        break;
-    }
-    case (BLUE_DITH): {
-        blndithering.Dither(image1, image2);
-        break;
-    }
-    default:
-        break;
-    };
+    ditherManager.dither(kind);
+}
+
+void MainManager::init(QImage *image)
+{
+    ditherManager.initImage(image);
+}
+
+void MainManager::changeDepth(int depth,QImage *image)
+{
+    //тут в теории можно будет изменять глубину цвета
+    dataManager.convertTo4Bit(image);
 }

@@ -6,3 +6,12 @@
 *.log
 *.o
 *autosave
+build*
+*jpg
+*JPG
+*BMP
+*bmp
+*png
+*PNG
+*pro.user
+

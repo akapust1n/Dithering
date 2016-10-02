@@ -14,14 +14,17 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         MainWindow.cpp \
-    DataRead.cpp \
     Dithering.cpp \
-    MainManager.cpp
+    MainManager.cpp \
+    DitherManager.cpp \
+    DataManager.cpp
 
 HEADERS  += MainWindow.h \
-    DataRead.h \
     Dithering.h \
     MainManager.h \
-    Quality.h
+    Quality.h \
+    DitherManager.h \
+    DataManager.h
 
 FORMS    += MainWindow.ui
+CONFIG += c++14

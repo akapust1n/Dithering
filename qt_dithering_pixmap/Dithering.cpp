@@ -25,7 +25,7 @@ QRgb Dithering::NewCOLOR(QColor pixel, int number)
 //----------------------------------белый шум-------------------------------------
 void WhiteNoiseDithering::Dither(QImage*& image1, QImage*& image2)
 {
-    std::cout << "color count" << image1->colorCount() << std::endl;
+    //std::cout << "color count" << image1->colorCount() << std::endl;
     image2 = new QImage;
     *image2 = image1->copy();
     std::cout << "color count" << image2->colorCount() << std::endl;

@@ -5,9 +5,10 @@
 #include <QImage>
 using namespace std;
 
-class DataRead {
+class DataManager {
 public:
     QImage* openImage(QString filename);
+    void convertTo4Bit(QImage *&image);
 
 };
 
