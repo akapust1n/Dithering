@@ -48,23 +48,23 @@ double SSIM::var(QImage* img, double mu)
 
     int width = img->width() - 1;
     int height = img->height() - 1;
-    int x, y, b = 0, g = 0;
-    double r = 0;
+    int x, y, b = 0, g = 0, r = 0;
+
     double col = 0;
 
     for (x = 0; x <= width; x++) {
         for (y = 0; y <= height; y++) {
 
             QColor pixel = img->pixel(x, y);
-            // b = pixel.blue();
-            //  col += (abs(1.0 * b - mu)) * (abs(1.0 * b - mu));
-            // g = pixel.green();
-            //  col += (abs(1.0 * g - mu)) * (abs(1.0 * g - mu));
-            r = pixel.red() * 1.0;
-            col += abs(((r - mu)) * ((r - mu)));
+            b = pixel.blue();
+            col += abs(((1.0 * b - mu)) * ((1.0 * b - mu)));
+            g = pixel.green();
+            col += abs(((1.0 * g - mu)) * ((1.0 * g - mu)));
+            r = pixel.red();
+            col += abs(((1.0*r  - mu)) * ((1.0 *r - mu)));
         }
     }
-    return col / (width * height);
+    return col / (width * height) / 3;
 }
 
 double SSIM::cov(QImage* img1, QImage* img2, double mu1, double mu2)
@@ -80,20 +80,21 @@ double SSIM::cov(QImage* img1, QImage* img2, double mu1, double mu2)
             QColor pixel1 = img1->pixel(x, y);
             QColor pixel2 = img2->pixel(x, y);
 
-            // b1 = pixel1.blue();
-            // g1 = pixel1.green();
+            b1 = pixel1.blue();
+            g1 = pixel1.green();
             r1 = pixel1.red();
 
-            // b2 = pixel2.blue();
-            // g2 = pixel2.green();
+            b2 = pixel2.blue();
+            g2 = pixel2.green();
             r2 = pixel2.red();
-            col += abs((r1 * 1.0 - mu1) * (r2 *1.0 - mu2));
-            // col+= (((b1-mu1)+(g1-mu1)+(r1-mu1))/3)*(((b2-mu2)+(g2-mu2)+(r2-mu2))/3);
-            //col += (b1 - mu1) * (b2 - mu2) + (g1 - mu1) * (g2 - mu2) + (r1 - mu2) * (r2 - mu2);
+            // col += abs((r1 * 1.0 - mu1) * (r2 *1.0 - mu2));
+           // col+= (((b1-mu1)+(g1-mu1)+(r1-mu1))/3)*(((b2-mu2)+(g2-mu2)+(r2-mu2))/3);
+            //модули поставлены ПОТОМУ ЧТО так точнее (не знаю почему)
+            col += abs((b1 - mu1) * (b2 - mu2)) + abs((g1 - mu1) * (g2 - mu2)) + abs((r1 - mu2) * (r2 - mu2));
         }
     }
 
-    return col / (width * height);
+    return col / (width * height)/3 ;
 }
 
 double SSIM::calculate(int64_t depth)
