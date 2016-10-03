@@ -48,7 +48,7 @@ void WhiteNoiseDithering::Dither(QImage*& image1, QImage*& image2)
             image2->setPixel(j, i, map.value(value));
         }
     image2->save("0_WHITE_noise.bmp", "bmp");
-    delete  image2;
+    delete image2;
     map.clear();
 }
 
@@ -84,11 +84,10 @@ void BrownNoiseDithering::Dither(QImage*& image1, QImage*& image2)
             number[0] = rand() % 256;
         }
 
-
-        image2->save("0_BROWN_noise.bmp", "bmp");
+    image2->save("0_BROWN_noise.bmp", "bmp");
 
     key++;
-     delete image2;
+    delete image2;
     map.clear();
 }
 //------------------------------------фиолетовый шум------------------
@@ -106,7 +105,7 @@ void VioletNoiseDithering::Dither(QImage*& image1, QImage*& image2)
     for (int i = 0; i < height; i++)
         for (int j = 0; j < width; j++) {
 
-            number[2] = 0.5 * (number[0] -number[1]);
+            number[2] = 0.5 * (number[0] - number[1]);
             if (number[2] < 0)
                 number[2] = -number[2];
             if (number[2] > 255)
@@ -163,7 +162,7 @@ void PinkNoiseDithering::Dither(QImage*& image1, QImage*& image2)
     map.clear();
 }
 //--------------------------голубой шум-------------------------------------
-void BlueNoiseDithering  ::Dither(QImage*& image1, QImage*& image2)
+void BlueNoiseDithering::Dither(QImage*& image1, QImage*& image2)
 {
     image2 = new QImage;
     *image2 = image1->copy();
@@ -177,7 +176,7 @@ void BlueNoiseDithering  ::Dither(QImage*& image1, QImage*& image2)
     for (int i = 0; i < height; i++)
         for (int j = 0; j < width; j++) {
 
-            number[2] = 0.7 * (number[0] -number[1]);
+            number[2] = 0.7 * (number[0] - number[1]);
             if (number[2] < 0)
                 number[2] = -number[2];
             if (number[2] > 255)

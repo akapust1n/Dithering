@@ -17,14 +17,20 @@ SOURCES += main.cpp\
     Dithering.cpp \
     MainManager.cpp \
     DitherManager.cpp \
-    DataManager.cpp
+    DataManager.cpp \
+    Metrics.cpp \
+    PSNR.cpp \
+    SSIM.cpp
 
 HEADERS  += MainWindow.h \
     Dithering.h \
     MainManager.h \
-    Quality.h \
     DitherManager.h \
-    DataManager.h
+    DataManager.h \
+    Metrics.h \
+    PSNR.h \
+    SSIM.h \
+    Method.h
 
 FORMS    += MainWindow.ui
 CONFIG += c++14

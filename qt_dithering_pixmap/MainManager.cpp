@@ -1,8 +1,7 @@
 #include <MainManager.h>
-void MainManager::loadFile(QString& fname, QImage *&image1)
+void MainManager::loadFile(QString& fname, DataManager::kind kindImage)
 {
-    image1 = dataManager.openImage(fname);
-
+   dataManager.loadImage(fname, kindImage);
 }
 
 void MainManager::dither(dither_kind kind)
@@ -10,13 +9,30 @@ void MainManager::dither(dither_kind kind)
     ditherManager.dither(kind);
 }
 
-void MainManager::init(QImage *image)
+void MainManager::init(DataManager::kind kindImage)
 {
-    ditherManager.initImage(image);
+    QImage *temp = *dataManager.getImage(kindImage);
+    ditherManager.initImage(temp);
 }
 
-void MainManager::changeDepth(int depth,QImage *image)
+void MainManager::changeDepth(int depthk, DataManager::kind kindImage)
 {
     //тут в теории можно будет изменять глубину цвета
-    dataManager.convertTo4Bit(image);
+    QImage *temp = *dataManager.getImage(kindImage);
+    dataManager.convertTo4Bit(temp);
+}
+
+void MainManager::initSampleImage()
+{
+    metrics.initFirstImage(dataManager.getImage(DataManager::IMAGE_SAMPLE));
+}
+
+void MainManager::initDitheredImage()
+{
+    metrics.initSecondImage(dataManager.getImage(DataManager::IMAGE_DITHERED));
+}
+
+double MainManager::getSSIM()
+{
+   metrics.getSSIM();
 }

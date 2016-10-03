@@ -17,12 +17,11 @@ void MainWindow::on_pushButton_clicked()
 {
     QString sourceName = QFileDialog::getOpenFileName(this, QString::fromUtf8("Открыть файл"),
         QDir::currentPath(), "images (*.*)");
-    QImage *image1;
     ui->progressBar->setValue(5);
-    mainmanager.loadFile(sourceName, image1);
-    mainmanager.changeDepth(4,image1);
+    mainmanager.loadFile(sourceName, DataManager::IMAGE_FOR_DITH);
+    mainmanager.changeDepth(4, DataManager::IMAGE_FOR_DITH);
     ui->progressBar->setValue(10);
-    mainmanager.init(image1);
+    mainmanager.init(DataManager::IMAGE_FOR_DITH);
     mainmanager.dither(WHITE_DITH);
     ui->progressBar->setValue(20);
     mainmanager.dither(VIOLET_DITH);
@@ -33,5 +32,22 @@ void MainWindow::on_pushButton_clicked()
     ui->progressBar->setValue(75);
     mainmanager.dither(BLUE_DITH);
     ui->progressBar->setValue(100);
-    delete image1;
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    QString sourceName = QFileDialog::getOpenFileName(this, QString::fromUtf8("Открыть файл"),
+        QDir::currentPath(), "images (*.*)");
+    mainmanager.loadFile(sourceName, DataManager::IMAGE_SAMPLE);
+    mainmanager.initSampleImage();
+
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QString sourceName = QFileDialog::getOpenFileName(this, QString::fromUtf8("Открыть файл"),
+        QDir::currentPath(), "images (*.*)");
+    mainmanager.loadFile(sourceName, DataManager::IMAGE_DITHERED);
+    mainmanager.initDitheredImage();
+    mainmanager.getSSIM();
 }
