@@ -34,5 +34,10 @@ void MainManager::initDitheredImage()
 
 double MainManager::getSSIM()
 {
-   metrics.getSSIM();
+    return metrics.getSSIM();
+}
+
+double MainManager::getPSNR()
+{
+    return metrics.getPSNR();
 }

@@ -3,6 +3,7 @@
 #include "Method.h"
 
 class PSNR: public Method{
+public:
    virtual double getResult(QImage *image1, QImage *image2);
 };
 

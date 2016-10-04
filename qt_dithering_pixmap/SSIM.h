@@ -16,8 +16,8 @@ private:
     double ox;
     double oy;
     double oxy;
-    double getC1(int64_t depth);
-    double getC2(int64_t depth);
+    double getC1(int depth);
+    double getC2(int depth);
 };
 
 #endif // SSIM_H

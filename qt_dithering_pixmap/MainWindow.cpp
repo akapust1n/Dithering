@@ -49,5 +49,7 @@ void MainWindow::on_pushButton_2_clicked()
         QDir::currentPath(), "images (*.*)");
     mainmanager.loadFile(sourceName, DataManager::IMAGE_DITHERED);
     mainmanager.initDitheredImage();
-    mainmanager.getSSIM();
+   double ssim = mainmanager.getSSIM();
+   ui->Results->append("SSIM: ");
+   ui->Results->append(QString::number(ssim));
 }

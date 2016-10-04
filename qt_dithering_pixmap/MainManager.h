@@ -17,6 +17,7 @@ public:
    void initSampleImage();
    void initDitheredImage();
    double getSSIM();
+   double getPSNR();
 private:
    DitherManager ditherManager;
    QString filename;

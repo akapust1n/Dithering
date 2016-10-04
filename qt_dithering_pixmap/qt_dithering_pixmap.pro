@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     DataManager.cpp \
     Metrics.cpp \
     PSNR.cpp \
-    SSIM.cpp
+    SSIM.cpp \
+    Method.cpp
 
 HEADERS  += MainWindow.h \
     Dithering.h \
