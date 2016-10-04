@@ -13,13 +13,13 @@ double SSIM::getResult(QImage* _image1, QImage* _image2)
     //std::cout << "SR___________" << avg1 << std::endl;
     // auto var1= var(_image1, avg1);
     // std::cout << "VR___________" << var1 << std::endl;
- //   std::cout << "there";
+    //   std::cout << "there";
     oxy = cov(_image1, _image2, ux, uy);
     std::cout << std::endl
-             << "Comparsion " << ox << " vs " << oxy << std::endl;
+              << "Comparsion " << ox << " vs " << oxy << std::endl;
     double temp = calculate(_image1->depth());
 
-    return  temp;
+    return temp;
 }
 
 double SSIM::avg(QImage* img)
@@ -34,13 +34,13 @@ double SSIM::avg(QImage* img)
         for (y = 0; y <= height; y++) {
             QColor pixel = img->pixel(x, y);
 
-               b = pixel.blue();
-             g = pixel.green(); // вот так мы как раз обращаемся к различным компонентам цветов
+            b = pixel.blue();
+            g = pixel.green(); // вот так мы как раз обращаемся к различным компонентам цветов
             r = pixel.red(); // b - blue, r - red, g - green
-             col += b + g + r;
+            col += b + g + r;
         }
     }
-    return col / (width * height)/3;
+    return col / (width * height) / 3;
 }
 
 double SSIM::var(QImage* img, double mu)

@@ -52,4 +52,8 @@ void MainWindow::on_pushButton_2_clicked()
    double ssim = mainmanager.getSSIM();
    ui->Results->append("SSIM: ");
    ui->Results->append(QString::number(ssim));
+
+   double psnr = mainmanager.getPSNR();
+   ui->Results->append("PSNR: ");
+   ui->Results->append(QString::number(psnr));
 }
