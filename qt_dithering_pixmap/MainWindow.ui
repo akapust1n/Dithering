@@ -6,88 +6,160 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1037</width>
+    <height>699</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QFormLayout" name="formLayout_2">
-    <item row="0" column="1">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>Открыть файл</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Random dither                         </string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>Rate the quality</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QPushButton" name="pushButton_3">
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1031</width>
+      <height>551</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="img2">
+       <property name="text">
+        <string>                                         image before</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="img1">
+       <property name="maximumSize">
+        <size>
+         <width>1000</width>
+         <height>1000</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>                                                 image after</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QTextEdit" name="Results">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>560</y>
+      <width>361</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="undoRedoEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>550</y>
+      <width>531</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QComboBox" name="comboBox">
+       <property name="maximumSize">
+        <size>
+         <width>150</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="currentText">
+        <string>White noise</string>
+       </property>
+       <item>
         <property name="text">
-         <string>Исходник</string>
+         <string>White noise</string>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton_2">
+       </item>
+       <item>
         <property name="text">
-         <string>Дизеред</string>
+         <string>Blue noise</string>
         </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item row="2" column="1">
-     <widget class="QProgressBar" name="progressBar">
-      <property name="value">
-       <number>24</number>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>Выполнение</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QTextEdit" name="Results">
-      <property name="undoRedoEnabled">
-       <bool>true</bool>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
+       </item>
+       <item>
+        <property name="text">
+         <string>Brow noise</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Violet noise</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Pink noise</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>Transform</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="maximumSize">
+        <size>
+         <width>150</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Открыть файл</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="maximumSize">
+        <size>
+         <width>150</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
-     <height>20</height>
+     <width>1000</width>
+     <height>26</height>
     </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1000</width>
+     <height>1000</height>
+    </size>
    </property>
    <widget class="QMenu" name="menuDIthering">
     <property name="title">

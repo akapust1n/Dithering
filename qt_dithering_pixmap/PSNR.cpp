@@ -24,10 +24,10 @@ double PSNR::getMSE(QImage* image1, QImage* image2)
             b2 = pixel2.blue();
             g2 = pixel2.green();
             r2 = pixel2.red();
-            sum += pow(((abs(b1 - b2) + abs(g1 - g2) + abs(r1 - r2)) / 3), 2);
+            sum += pow(((abs(b1 - b2) + abs(g1 - g2) + abs(r1 - r2)) ), 2);
         }
     }
-    return sum / (width * height);
+    return sum / (width * height)/3;
 }
 
 double PSNR::calculate(int depth, double MSE)

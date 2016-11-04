@@ -2,6 +2,7 @@
 #include <SSIM.h>
 #include <cmath>
 #include <iostream>
+#include <iomanip>
 
 double SSIM::getResult(QImage* _image1, QImage* _image2)
 {
@@ -18,7 +19,8 @@ double SSIM::getResult(QImage* _image1, QImage* _image2)
     std::cout << std::endl
               << "Comparsion " << ox << " vs " << oxy << std::endl;
     double temp = calculate(_image1->depth());
-
+    std::cout<<_image1->depth()<<"DEPTH"<<std::endl;
+    std::cout<<std::setprecision(15)<<std::fixed<<"Result "<<temp<<std::endl;
     return temp;
 }
 

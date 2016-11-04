@@ -12,6 +12,9 @@ public:
 protected:
     QRgb NewCOLOR(QColor pixel, int number);
     QMap<QRgb,int> map;
+    int width;
+    int height;
+    int color_num = 0;
 
 
 };
@@ -40,6 +43,13 @@ class BlueNoiseDithering : public Dithering {
 public:
     virtual void Dither(QImage*& image1, QImage*& image2);
 };
+/*
+class BlueNoiseDithering : public Dithering {
+
+public:
+    virtual void Dither(QImage*& image1, QImage*& image2);
+};
+*/
 
 
 #endif // DITHERING_H

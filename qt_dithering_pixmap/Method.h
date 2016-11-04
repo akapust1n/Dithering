@@ -4,7 +4,7 @@
 class Method{
 public:
     virtual double getResult(QImage *image1, QImage *image2)=0;
-    double getBitDepth(int depth);
+    static double getBitDepth(int depth);
 };
 
 #endif // METHOD_H

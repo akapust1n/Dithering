@@ -12,10 +12,9 @@ public:
 
    void dither(dither_kind kind);
    void init(DataManager::kind kindImage);
-   void loadFile(QString &fname, DataManager::kind kindImage);
-   void changeDepth(int depthk, DataManager::kind kindImage);
-   void initSampleImage();
-   void initDitheredImage();
+   void loadFile(QString fname, DataManager::kind kindImage);
+   void saveAsFile(int depthk, DataManager::kind kindImage);
+   void saveOriginalImage();
    double getSSIM();
    double getPSNR();
 private:

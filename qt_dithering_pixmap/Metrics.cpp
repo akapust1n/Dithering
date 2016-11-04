@@ -2,7 +2,7 @@
 #include <iostream>
 double Metrics::getSSIM()
 {
-    return ssim.getResult(image1, image2);
+    return 1/(1-ssim.getResult(image1, image2));
 }
 
 double Metrics::getPSNR()
