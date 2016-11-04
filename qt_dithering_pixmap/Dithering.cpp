@@ -1,6 +1,8 @@
 #include <Dithering.h>
 #include <cstdlib>
 #include <iostream>
+#include <DataManager.h>
+
 QRgb Dithering::NewCOLOR(QColor pixel, int number)
 {
     int red, blue, green;
@@ -47,7 +49,7 @@ void WhiteNoiseDithering::Dither(QImage*& image1, QImage*& image2)
             }
             image2->setPixel(j, i, map.value(value));
         }
-    image2->save("0_WHITE_noise.bmp", "bmp");
+    image2->save(DataManager::getImageName(WHITE_DITH));
     delete image2;
     map.clear();
 }
@@ -84,7 +86,7 @@ void BrownNoiseDithering::Dither(QImage*& image1, QImage*& image2)
             number[0] = rand() % 256;
         }
 
-    image2->save("0_BROWN_noise.bmp", "bmp");
+    image2->save(DataManager::getImageName(BROWN_DITH));
 
     key++;
     delete image2;
@@ -121,7 +123,7 @@ void VioletNoiseDithering::Dither(QImage*& image1, QImage*& image2)
             number[1] = number[0];
             number[0] = rand() % 256;
         }
-    image2->save("0_VIOLET_noise.bmp", "bmp");
+    image2->save(DataManager::getImageName(VIOLET_DITH));
     delete image2;
     map.clear();
 }
@@ -157,7 +159,7 @@ void PinkNoiseDithering::Dither(QImage*& image1, QImage*& image2)
             number[0] = rand() % 256;
         }
 
-    image2->save("0_PINK_noise.bmp", "bmp");
+    image2->save(DataManager::getImageName(PINK_DITH));
     delete image2;
     map.clear();
 }
@@ -191,7 +193,7 @@ void BlueNoiseDithering::Dither(QImage*& image1, QImage*& image2)
             number[1] = number[0];
             number[0] = rand() % 256;
         }
-    image2->save("0_BLUE_noise.gif", "gif");
+    image2->save(DataManager::getImageName(BLUE_DITH));
     delete image2;
     map.clear();
 }

@@ -13,7 +13,7 @@ public:
    void dither(dither_kind kind);
    void init(DataManager::kind kindImage);
    void loadFile(QString fname, DataManager::kind kindImage);
-   void saveAsFile(int depthk, DataManager::kind kindImage);
+   void saveAsFiles(int depthk, DataManager::kind kindImage);
    void saveOriginalImage();
    double getSSIM();
    double getPSNR();

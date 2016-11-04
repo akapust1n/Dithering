@@ -112,6 +112,12 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_2">
+       <property name="maximumSize">
+        <size>
+         <width>150</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="text">
         <string>Transform</string>
        </property>
@@ -127,19 +133,6 @@
        </property>
        <property name="text">
         <string>Открыть файл</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QProgressBar" name="progressBar">
-       <property name="maximumSize">
-        <size>
-         <width>150</width>
-         <height>16777215</height>
-        </size>
-       </property>
-       <property name="value">
-        <number>24</number>
        </property>
       </widget>
      </item>

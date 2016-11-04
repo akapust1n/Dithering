@@ -25,11 +25,14 @@ void MainManager::init(DataManager::kind kindImage)
     }
 }
 
-void MainManager::saveAsFile(int depthk, DataManager::kind kindImage)
+void MainManager::saveAsFiles(int depthk, DataManager::kind kindImage)
 {
     //тут в теории можно будет изменять глубину цвета
     QImage* temp = *dataManager.getImage(kindImage);
+    //save original image
+    temp->save(DataManager::getImageName());
     dataManager.convertTo4Bit(temp);
+
 }
 
 
