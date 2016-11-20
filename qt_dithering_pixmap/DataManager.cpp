@@ -2,6 +2,7 @@
 #include <iostream>
 //открываем изображение и приводим его к 8ми-битному
 //не очень хорошая логика, но пойдет
+#include "ImageMagick-6/Magick++.h"
 QImage* DataManager::openImage(QString filename)
 {
 
@@ -21,18 +22,31 @@ DataManager::~DataManager()
     delete imageSample;
 }
 
-void DataManager::convertTo4Bit(QImage*& image)
+void DataManager::save(QImage*& image)
 {
-    *image = image->convertToFormat(QImage::Format_Indexed8, Qt::AvoidDither);
+   // *image = image->convertToFormat(QImage::Format_Indexed8, Qt::AvoidDither);
     image->save(getImageName(NO_DITH));
 }
 
 void DataManager::loadImage(QString filename, DataManager::kind kindImage)
 {
-    QImage* openedImage = openImage(filename);
+    Magick::Image image;
+    Magick::Image netscape;
+    try {
+        netscape.read("netscape.gif");
+        const std::string name  =filename.toStdString();
+        image.read(name.c_str());
+        image.map(netscape, false);
+        image.write("img1.gif");
+
+    } catch (Magick::Exception &error_ ) {
+        std::cout<<"cant read file";
+
+    }
+
+    QImage* openedImage = openImage("img1.gif");
     QImage** temp2 = getImage(kindImage);
     *temp2 = openedImage;
-    std::cout << "test;";
 }
 
 //неочевидная функция :)
@@ -75,6 +89,9 @@ QImage** DataManager::getImage(DataManager::kind kindImage)
     }
     case BLUE_DITH: {
         return  (static_cast<QString>("blue_noise_dith.bmp"));
+    }
+    case FLOYDSD_DITH: {
+        return  (static_cast<QString>("floydsd_noise_dith.bmp"));
     }
     case NO_DITH: {
         return  (static_cast<QString>("sample_img.bmp"));

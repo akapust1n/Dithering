@@ -28,6 +28,10 @@ void DitherManager::dither(dither_kind kind)
         blndithering.Dither(image1, image2);
         break;
     }
+    case (FLOYDSD_DITH): {
+        floydSDdithering.Dither(image1, image2);
+        break;
+    }
     default:
         break;
     };

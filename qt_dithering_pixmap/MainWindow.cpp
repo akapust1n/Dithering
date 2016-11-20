@@ -96,6 +96,13 @@ void MainWindow::on_pushButton_2_clicked()
         ui->img2->setPixmap(temp);
         break;
     }
+    case 5: {
+        mainmanager.dither(FLOYDSD_DITH);
+        mainmanager.loadFile(DataManager::getImageName(FLOYDSD_DITH), DataManager::IMAGE_DITHERED);
+        QPixmap temp(DataManager::getImageName(FLOYDSD_DITH));
+        ui->img2->setPixmap(temp);
+        break;
+    }
     };
 
     mainmanager.init(DataManager::IMAGE_DITHERED);

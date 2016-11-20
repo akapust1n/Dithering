@@ -35,3 +35,8 @@ HEADERS  += MainWindow.h \
 
 FORMS    += MainWindow.ui
 CONFIG += c++14
+
+QMAKE_CXXFLAGS += $(shell Magick++-config --cppflags --cxxflags)
+LIBS += -lMagick++
+
+

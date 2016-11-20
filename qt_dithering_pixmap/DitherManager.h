@@ -9,6 +9,7 @@ enum dither_kind {
     PINK_DITH,
     VIOLET_DITH,
     BLUE_DITH,
+    FLOYDSD_DITH,
     NO_DITH,
     OTHER
 };
@@ -24,6 +25,7 @@ private:
     VioletNoiseDithering vndithering;
     PinkNoiseDithering pndithering;
     BlueNoiseDithering blndithering;
+    FloydSDDithering floydSDdithering;
 
     QImage* image1;
     QImage* image2;
