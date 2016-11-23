@@ -17,19 +17,16 @@ void MainWindow::on_pushButton_clicked()
 {
     QString sourceName = QFileDialog::getOpenFileName(this, QString::fromUtf8("Открыть файл"),
         QDir::currentPath(), "images (*.*)");
+    if(!sourceName.isEmpty()) {
     mainmanager.loadFile(sourceName, DataManager::IMAGE_FOR_DITH);
     mainmanager.saveAsFiles(4, DataManager::IMAGE_FOR_DITH);
     mainmanager.init(DataManager::IMAGE_FOR_DITH);
     QPixmap temp(DataManager::getImageName(NO_DITH));
     ui->img1->setPixmap(temp);
 
-//    QPixmap image1("/home/alexey/15/cg_cursach/build/4bit.bmp");
-//    ui->img1->setPixmap(image1);
-//    QPixmap image2("/home/alexey/15/cg_cursach/build/0_PINK_noise.bmp");
-//    ui->img2->setPixmap(image2);
 
     mainmanager.loadFile(DataManager::getImageName(NO_DITH), DataManager::IMAGE_DITHERED);
-    mainmanager.init(DataManager::IMAGE_DITHERED);\
+    mainmanager.init(DataManager::IMAGE_DITHERED);
     mainmanager.loadFile(DataManager::getImageName(), DataManager::IMAGE_SAMPLE);
     mainmanager.init(DataManager::IMAGE_SAMPLE);
     double ssim = mainmanager.getSSIM();
@@ -39,6 +36,7 @@ void MainWindow::on_pushButton_clicked()
     double psnr = mainmanager.getPSNR();
     ui->Results->append("Starter PSNR: ");
     ui->Results->append(QString::number(psnr));
+    }
 }
 
 void MainWindow::on_pushButton_3_clicked()
@@ -57,6 +55,7 @@ void MainWindow::on_pushButton_2_clicked()
      * 2)Brown noise
      * 3)Violet noise
      * 4)Pink noise
+     * 5)Floyd-Steindberg
      */
     int _index = ui->comboBox->currentIndex();
     switch (_index) {

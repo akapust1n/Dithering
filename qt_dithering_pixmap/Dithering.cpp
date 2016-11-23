@@ -204,96 +204,72 @@ void FloydSDDithering::Dither(QImage*& image1, QImage*& image2)
 {
     image2 = new QImage;
     *image2 = image1->copy();
-    width = image2->width();
-    height = image2->height();
-    vector<vector<double> > Ired(width + 1, vector<double>(height + 1, 0));
-    vector<vector<double> > Iblue(width + 1, vector<double>(height + 1, 0));
-    vector<vector<double> > Igreen(width + 1, vector<double>(height + 1, 0));
-    std::cout<<"begin dithering"<<std::endl;
-    std::cout<<Ired.size()<<std::endl;
-
+    width = image2->width() - 1;
+    height = image2->height() - 1;
+    vector<vector<double> > red(width + 1, vector<double>(height + 1, 0));
+    vector<vector<double> > blue(width + 1, vector<double>(height + 1, 0));
+    vector<vector<double> > green(width + 1, vector<double>(height + 1, 0));
     for (size_t i = 0; i < height; i++)
         for (size_t j = 0; j < width; j++) {
             auto color = image1->pixelColor(j, i);
-            Ired[j][i] = color.red();
-            Iblue[j][i] = color.blue();
-            Igreen[j][i] = color.green();
-          //  std::cout<<"intro"<<std::endl;
+            red[j][i] = color.red();
+            blue[j][i] = color.blue();
+            green[j][i] = color.green();
+            //  std::cout<<"intro"<<std::endl;
         }
-    std::cout<<"array created"<<std::endl;
-    for (size_t i = 1; i < height; i++)
-        for (size_t j = 1; j < width; j++) {
-            QColor value = NewCOLOR(image1->pixelColor(j, i), Ired, Iblue, Igreen, 128, i, j);
 
+    for (int i = 1; i < height; i++)
+        for (int j = 1; j < width; j++) {
+            int oldpixelR = red[j][i];
+            int oldpixelG = green[j][i];
+            int oldpixelB = blue[j][i];
+            QColor oldpixel(oldpixelR,oldpixelG,oldpixelB);
+            QColor value = NewCOLOR(oldpixel);
             if (!map.contains(value.rgb())) {
                 map.insert(value.rgb(), color_num);
                 image2->setColor(color_num, value.rgb());
                 color_num++;
-                std::cout << "th" << map.value(value.rgb()) << "\n";
+                //   std::cout << "th" << map.value(value) << "\n";
             }
-            std::cout<<"MAP SIZE"<<map.size()<<std::endl;
+            int error1 = oldpixelR-value.red();
+            int error2 = oldpixelR-value.green();
+            int error3 = oldpixelR-value.blue();
 
+
+            red[j + 1][i] += 7 / 16 * error1;
+            green[j + 1][i] += 7 / 16 * error2;
+            blue[j + 1][i] += 7 / 16 * error3;
+
+            red[j + 1][i + 1] += 1 / 16 * error1;
+            green[j + 1][i + 1] += 1 / 16 * error2;
+            blue[j + 1][i + 1] += 1 / 16 * error3;
+
+            red[j][i + 1] += 5 / 16 * error1;
+            green[j][i + 1] += 5 / 16 * error2;
+            blue[j][i + 1] += 5 / 16 * error3;
+
+            red[j - 1][i] += 3 / 16 * error1;
+            green[j - 1][i] += 3 / 16 * error2;
+            blue[j - 1][i] += 3 / 16 * error3;
+
+            QRgb _value;
+            value = qRgb(red[j][i], green[j][i], blue[j][i]);
             image2->setPixel(j, i, map.value(value.rgb()));
         }
-    std::cout<<"image created"<<std::endl;
+    std::cout << "image created" << std::endl;
 
-    image2->save(DataManager::getImageName(BLUE_DITH));
+    image2->save(DataManager::getImageName(FLOYDSD_DITH));
     delete image2;
-    map.clear();
-
-    //
-    //            if( I(pixel) > Threshold )
-    //                  {
-    //                      I(pixel) = Белый;
-    //                      Error = I(pixel) - Белый;
-    //                  }
-    //                  else
-    //                  {
-    //                      I(pixel) = Черный;
-    //                      Error = I(pixel) - Черный;
-    //                  }
-    //                  I(pixel.right)+= 7/16 * Error;
-    //                  I(pixel.down_right)+= 1/16 * Error;
-    //                  I(pixel.down)+= 5/16 * Error;
-    //                  I(pixel.down_left)+= 3/16 * Error;
-    //        }
+    map.clear();;
 }
 
-QRgb FloydSDDithering::NewCOLOR(QColor pixel, auto& red, auto& green, auto& blue, int value, size_t i, size_t j)
+QRgb FloydSDDithering::NewCOLOR(QColor pixel)
 {
-    int error1 = 0;
-    int error2 = 0;
-    int error3 = 0;
-
-    if (red[j][i] > value) {
-        red[j][i] = 255;
-        error1 = pixel.red() - 255;
-    }
-    if (green[j][i] > value) {
-        green[j][i] = 255;
-        error2 = pixel.green() - 255;
-    }
-    if (blue[j][i] > value) {
-        blue[j][i] = 255;
-        error3 = pixel.blue() - 255;
-    }
-    red[j + 1][i] += 7 / 16 * error1;
-    green[j + 1][i] += 7 / 16 * error2;
-    blue[j + 1][i] += 7 / 16 * error3;
-
-    red[j + 1][i + 1] += 1 / 16 * error1;
-    green[j + 1][i + 1] += 1 / 16 * error2;
-    blue[j + 1][i + 1] += 1 / 16 * error3;
-
-    red[j][i + 1] += 5 / 16 * error1;
-    green[j][i + 1] += 5 / 16 * error2;
-    blue[j][i + 1] += 5 / 16 * error3;
-
-    red[j - 1][i] += 3 / 16 * error1;
-    green[j - 1][i] += 3 / 16 * error2;
-    blue[j - 1][i] += 3 / 16 * error3;
+    int rw = 51 * ((pixel.red()) + 25) / 51;
+    int gw = 51 * ((pixel.green()) + 25) / 51;
+    int bw = 51 * ((pixel.blue()) + 25) / 51;
 
     QRgb _value;
-    value = qRgb(red[j][i], green[j][i], blue[j][i]);
+    _value = qRgb(rw, gw, bw);
     return _value;
 }

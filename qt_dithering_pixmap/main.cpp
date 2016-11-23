@@ -1,6 +1,6 @@
 #include "MainWindow.h"
 #include <QApplication>
-#include "ImageMagick-6/Magick++.h"
+#include "Magick++.h"
 
 int main(int argc, char *argv[])
 {

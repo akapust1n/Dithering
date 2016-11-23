@@ -2,7 +2,7 @@
 #include <iostream>
 //открываем изображение и приводим его к 8ми-битному
 //не очень хорошая логика, но пойдет
-#include "ImageMagick-6/Magick++.h"
+#include "Magick++.h"
 QImage* DataManager::openImage(QString filename)
 {
 
@@ -24,12 +24,13 @@ DataManager::~DataManager()
 
 void DataManager::save(QImage*& image)
 {
-   // *image = image->convertToFormat(QImage::Format_Indexed8, Qt::AvoidDither);
+   *image = image->convertToFormat(QImage::Format_Indexed8, Qt::AvoidDither);
     image->save(getImageName(NO_DITH));
 }
 
 void DataManager::loadImage(QString filename, DataManager::kind kindImage)
 {
+    if (kindImage==DataManager::IMAGE_FOR_DITH){
     Magick::Image image;
     Magick::Image netscape;
     try {
@@ -38,15 +39,20 @@ void DataManager::loadImage(QString filename, DataManager::kind kindImage)
         image.read(name.c_str());
         image.map(netscape, false);
         image.write("img1.gif");
+        QImage* openedImage = openImage("img1.gif");
+        QImage** temp2 = getImage(kindImage);
+        *temp2 = openedImage;
 
     } catch (Magick::Exception &error_ ) {
         std::cout<<"cant read file";
 
     }
-
-    QImage* openedImage = openImage("img1.gif");
+    }
+else {
+    QImage* openedImage = openImage(filename);
     QImage** temp2 = getImage(kindImage);
     *temp2 = openedImage;
+    }
 }
 
 //неочевидная функция :)

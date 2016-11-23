@@ -5,6 +5,7 @@
 #include <QPixmap>
 #include <stdlib.h>
 #include <time.h>
+#include <array>
 
 class Dithering {
 public:
@@ -44,7 +45,9 @@ class FloydSDDithering : public Dithering {
 public:
     virtual void Dither(QImage*& image1, QImage*& image2);
 private:
-    QRgb NewCOLOR(QColor pixel,auto& red,auto &green,auto & blue, int value, size_t i, size_t j);
+    QRgb NewCOLOR(QColor pixel);
+
+
 };
 
 #endif // DITHERING_H
