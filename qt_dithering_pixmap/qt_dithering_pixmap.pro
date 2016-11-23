@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     Metrics.cpp \
     PSNR.cpp \
     SSIM.cpp \
-    Method.cpp
+    Method.cpp \
+    ColorMap.cpp
 
 HEADERS  += MainWindow.h \
     Dithering.h \
@@ -31,7 +32,8 @@ HEADERS  += MainWindow.h \
     Metrics.h \
     PSNR.h \
     SSIM.h \
-    Method.h
+    Method.h \
+    ColorMap.h
 
 FORMS    += MainWindow.ui
 CONFIG += c++14
