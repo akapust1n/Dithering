@@ -13,5 +13,5 @@ build*
 *bmp
 *png
 *PNG
-*pro.user
+*.pro.user
 
