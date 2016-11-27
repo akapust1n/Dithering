@@ -6,7 +6,7 @@
 #include <memory>
 class Dithering {
 public:
-    virtual void Dither(std::shared_ptr<QImage> image1 , std::shared_ptr<QImage> image2 ) = 0;
+    virtual void Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2) = 0;
 
 protected:
     QRgb NewCOLOR(QColor pixel, int number);
@@ -16,31 +16,29 @@ protected:
 
 class WhiteNoiseDithering : public Dithering {
 public:
-    virtual void Dither(std::shared_ptr<QImage> image1 , std::shared_ptr<QImage> image2);
+    virtual void Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2);
 };
 class BrownNoiseDithering : public Dithering {
 public:
-    virtual void Dither(std::shared_ptr<QImage> image1 , std::shared_ptr<QImage> image2);
+    virtual void Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2);
 };
 class VioletNoiseDithering : public Dithering {
 public:
-    virtual void Dither(std::shared_ptr<QImage> image1 , std::shared_ptr<QImage> image2);
+    virtual void Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2);
 };
 class PinkNoiseDithering : public Dithering {
 
 public:
-    virtual void Dither(std::shared_ptr<QImage> image1 , std::shared_ptr<QImage> image2);
+    virtual void Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2);
 };
 class BlueNoiseDithering : public Dithering {
 
 public:
-    virtual void Dither(std::shared_ptr<QImage> image1 , std::shared_ptr<QImage> image2);
+    virtual void Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2);
 };
 class FloydSDDithering : public Dithering {
 public:
-    virtual void Dither(std::shared_ptr<QImage> image1 , std::shared_ptr<QImage> image2);
-
-
+    virtual void Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2);
 };
 
 #endif // DITHERING_H

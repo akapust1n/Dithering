@@ -15,8 +15,9 @@ public:
         floyd_sd
     };
     void Dither(kind_dither kindDither);
-    void initImages(std::shared_ptr<QImage> _image1, std::shared_ptr<QImage> _image2);
+    void initImages(std::shared_ptr<QImage> &_image1, std::shared_ptr<QImage> &_image2);
     static  QString getImageName(kind_dither kindDither);
+    std::shared_ptr<QImage> &getImage();
 
 private:
     WhiteNoiseDithering whiteNoiseDithering;

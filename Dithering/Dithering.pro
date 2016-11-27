@@ -18,14 +18,18 @@ SOURCES += main.cpp\
     MainManager.cpp \
     DitherManager.cpp \
     Dithering.cpp \
-    ColorMap.cpp
+    ColorMap.cpp \
+    MetricsManager.cpp \
+    Metrics.cpp
 
 HEADERS  += MainWindow.h \
     DataManager.h \
     MainManager.h \
     DitherManager.h \
     Dithering.h \
-    ColorMap.h
+    ColorMap.h \
+    MetricsManager.h \
+    Metrics.h
 
 FORMS    += MainWindow.ui
 CONFIG += c++14

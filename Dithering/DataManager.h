@@ -12,7 +12,8 @@ public:
         dithered_image
     };
     void loadImage(QString filename, kind kindImage);
-     std::shared_ptr<QImage> getImage(kind kindImage);
+    void loadImage(std::shared_ptr<QImage>& image, kind kindImage);
+    std::shared_ptr<QImage> &getImage(kind kindImage);
     static QString getImageName(kind kindImage);
 
 private:

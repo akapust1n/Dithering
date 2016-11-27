@@ -71,4 +71,8 @@ void MainWindow::on_pushButton_clicked()
     mainManager.dither(kindDither);
     QPixmap temp(DataManager::getImageName(DataManager::dithered_image));
     ui->wo_dith->setPixmap(temp);
+    QString psnr;
+    psnr = psnr.number(mainManager.getMetrics(MetricsManager::psnr));
+    ui->textEdit->append(ui->comboBox->currentText());
+    ui->textEdit->append("PSNR: "+ psnr);
 }

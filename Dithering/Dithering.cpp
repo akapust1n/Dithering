@@ -21,7 +21,7 @@ QRgb Dithering::NewCOLOR(QColor pixel, int number=0)
     _value = qRgb(rw, gw, bw);
     return _value;
 }
-void WhiteNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<QImage> image2)
+void WhiteNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage> &image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
@@ -35,7 +35,7 @@ void WhiteNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr
     image2->save(DitherManager::getImageName(DitherManager::white_noise));
 }
 
-void BrownNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<QImage> image2)
+void BrownNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
@@ -57,7 +57,7 @@ void BrownNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr
     image2->save(DitherManager::getImageName(DitherManager::brown_noise));
 }
 
-void VioletNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<QImage> image2)
+void VioletNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
@@ -82,7 +82,7 @@ void VioletNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_pt
     image2->save(DitherManager::getImageName(DitherManager::violet_noise));
 }
 
-void BlueNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<QImage> image2)
+void BlueNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage> &image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
@@ -106,7 +106,7 @@ void BlueNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<
     image2->save(DitherManager::getImageName(DitherManager::blue_noise));
 }
 
-void PinkNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<QImage> image2)
+void PinkNoiseDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<QImage> &image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
@@ -128,16 +128,13 @@ void PinkNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<
     image2->save(DitherManager::getImageName(DitherManager::pink_noise));
 }
 
-void FloydSDDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<QImage> image2)
+void FloydSDDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<QImage> &image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
     height = image2->height();
-    std::cout<<"start_dith"<<std::endl;
     ColorMap colorMap(width, height);
     colorMap.initImage(image1.get());
-    std::cout<<"init_dith"<<std::endl;
-
     for (int i = 1; i < height; i++)
         for (int j = 1; j < width; j++) {
             mRgb oldPixel = colorMap.getPixel(j, i);
@@ -147,8 +144,10 @@ void FloydSDDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<QI
             mRgb error(value.red(), value.green(), value.blue());
             error = oldPixel - error;
             colorMap.updateValues(7 / 16, error, j + 1, i);
-            colorMap.updateValues(1 / 16, error, j + 1, i + 1);
+            colorMap.updateValues(1 / 16, error, j +1, i + 1);
             colorMap.updateValues(5 / 16, error, j - 1, i);
+            colorMap.updateValues(3 / 16, error, j - 1, i+1);
+
 
             image2->setPixel(j, i, value.rgb());
         }

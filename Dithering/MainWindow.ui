@@ -130,7 +130,7 @@
        <item>
         <widget class="QPushButton" name="pushButton">
          <property name="text">
-          <string>PushButton</string>
+          <string>Transform</string>
          </property>
         </widget>
        </item>
@@ -144,6 +144,22 @@
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>383</x>
+      <y>10</y>
+      <width>361</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+    <property name="placeholderText">
+     <string>Metrics</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
