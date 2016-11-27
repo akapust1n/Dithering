@@ -29,7 +29,41 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-    mainManager.dither(DitherManager::white_noise);
+    /* enum kind_dither {
+        white_noise,
+        blue_noise,
+        brown_noise,
+        red_noise,
+        violet_noise
+    };*/
+    int index = ui->comboBox->currentIndex();
+    DitherManager::kind_dither kindDither;
+    switch(index){
+    case 0:{
+        kindDither = DitherManager::white_noise;
+        break;
+    }
+    case 1:{
+        kindDither = DitherManager::blue_noise;
+        break;
+    }
+    case 2:{
+        kindDither = DitherManager::brown_noise;
+        break;
+    }
+    case 3:{
+        kindDither = DitherManager::violet_noise;
+        break;
+    }
+    case 4:{
+        kindDither = DitherManager::pink_noise;
+        break;
+    }
+    default:
+        kindDither = DitherManager::white_noise;
+    }
+
+    mainManager.dither(kindDither);
     QPixmap temp(DataManager::getImageName(DataManager::dithered_image));
     ui->wo_dith->setPixmap(temp);
 }

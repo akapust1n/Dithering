@@ -92,7 +92,33 @@
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QComboBox" name="comboBox"/>
+      <widget class="QComboBox" name="comboBox">
+       <item>
+        <property name="text">
+         <string>White noise</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Blue noise</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Brown noise</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Violet noise</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Pink noise</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">

@@ -10,13 +10,19 @@ public:
         white_noise,
         blue_noise,
         brown_noise,
-        red_noise,
+        pink_noise,
         violet_noise
     };
     void Dither(kind_dither kindDither);
-    void initImages(std::shared_ptr<QImage> _image1,std::shared_ptr<QImage> _image2);
+    void initImages(std::shared_ptr<QImage> _image1, std::shared_ptr<QImage> _image2);
+    static  QString getImageName(kind_dither kindDither);
+
 private:
     WhiteNoiseDithering whiteNoiseDithering;
+    BlueNoiseDithering blueNoiseDithering;
+    PinkNoiseDithering pinkNoiseDithering;
+    BrownNoiseDithering brownNoiseDithering;
+    VioletNoiseDithering violetNoiseDithering;
     std::shared_ptr<QImage> image1;
     std::shared_ptr<QImage> image2;
 };
