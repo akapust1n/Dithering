@@ -11,12 +11,18 @@ void MainManager::loadImage(QString filename)
 void MainManager::dither(DitherManager::kind_dither kindDither)
 {
     ditherManager.Dither(kindDither);
-    dataManager.loadImage(ditherManager.getImage(), DataManager::dithered_image);
+    dataManager.loadImage(ditherManager.getImage());
 }
-double MainManager::getMetrics(MetricsManager::kind_metrics kindMetrics)
+double MainManager::getMetrics(MetricsManager::kind_metrics kindMetrics, DataManager::kind kindImage)
 {
-    auto image1 = dataManager.getImage(DataManager::start_image);
-    auto image2 = dataManager.getImage(DataManager::dithered_image);
+    std::shared_ptr<QImage> image1;
+    std::shared_ptr<QImage> image2;
+    image1 = dataManager.getImage(DataManager::start_image);
+    if (kindImage == DataManager::dithered_image) {
+        image2 = dataManager.getImage(DataManager::dithered_image);
+    } else {
+        image2 = dataManager.getImage(DataManager::converted_image);
+    }
     if (!image2.get())
         std::cout << "Empty image2 in MainManager" << std::endl;
     if (!image1.get())
@@ -32,7 +38,7 @@ void MainManager::convert()
     Magick::Image netscape;
     try {
         netscape.read("netscape.gif");
-        std::cout<<filename.toStdString()<<std::endl;
+        std::cout << filename.toStdString() << std::endl;
         const std::string name = filename.toStdString();
         image.read(name.c_str());
         image.map(netscape, false);
@@ -41,4 +47,5 @@ void MainManager::convert()
     } catch (Magick::Exception& error_) {
         std::cout << "cant read file";
     }
+    dataManager.loadImage(DataManager::getImageName(DataManager::converted_image), DataManager::converted_image);
 }

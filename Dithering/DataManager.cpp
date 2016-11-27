@@ -2,19 +2,17 @@
 
 void DataManager::loadImage(QString filename, kind kindImage)
 {
-    start_image1.reset(new QImage(filename));
-    start_image1->save(getImageName(kindImage));
+    if (kindImage == converted_image) {
+        converted_image1.reset(new QImage(filename));
+    } else {
+        start_image1.reset(new QImage(filename));
+        start_image1->save(getImageName(kindImage));
+    }
 }
 
-void DataManager::loadImage(std::shared_ptr<QImage>& image, DataManager::kind kindImage)
+void DataManager::loadImage(std::shared_ptr<QImage>& image)
 {
-    switch (kindImage) {
-    case (converted_image):
-        converted_image1 = image;
-        break;
-    default:
-        dithered_image1 = image;
-    }
+    dithered_image1 = image;
 }
 
 std::shared_ptr<QImage>& DataManager::getImage(DataManager::kind kindImage)

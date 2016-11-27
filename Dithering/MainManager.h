@@ -11,7 +11,7 @@ public:
     void loadImage(QString filename);
 
     void dither(DitherManager::kind_dither kindDither);
-    double getMetrics(MetricsManager::kind_metrics kindMetrics);
+    double getMetrics(MetricsManager::kind_metrics kindMetrics, DataManager::kind kindImage);
     void convert();
 private:
     DataManager dataManager;

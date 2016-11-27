@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "MainManager.h"
 #include <thread>
+#include <mutex>
 
 
 namespace Ui {
@@ -22,11 +23,14 @@ private slots:
     void on_pushButton_2_clicked();
 
     void on_pushButton_clicked();
-
+    void on_convert_end();
+signals:
+    void convert_end();
 private:
     Ui::MainWindow *ui;
     MainManager mainManager;
     void convert();
+    std::mutex _mutex;
 };
 
 #endif // MAINWINDOW_H

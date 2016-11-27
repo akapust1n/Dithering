@@ -1,14 +1,15 @@
 #include "MainWindow.h"
+#include "Magick++.h"
 #include "ui_MainWindow.h"
 #include <QFileDialog>
 #include <QPixmap>
-#include "Magick++.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect(this, SIGNAL(convert_end()), this, SLOT(on_convert_end()));
 }
 
 MainWindow::~MainWindow()
@@ -27,7 +28,6 @@ void MainWindow::on_pushButton_2_clicked()
     ui->start_image->setPixmap(temp);
     std::thread thr(&MainWindow::convert, this);
     thr.detach();
-
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -42,28 +42,28 @@ void MainWindow::on_pushButton_clicked()
     };*/
     int index = ui->comboBox->currentIndex();
     DitherManager::kind_dither kindDither;
-    switch(index){
-    case 0:{
+    switch (index) {
+    case 0: {
         kindDither = DitherManager::white_noise;
         break;
     }
-    case 1:{
+    case 1: {
         kindDither = DitherManager::blue_noise;
         break;
     }
-    case 2:{
+    case 2: {
         kindDither = DitherManager::brown_noise;
         break;
     }
-    case 3:{
+    case 3: {
         kindDither = DitherManager::violet_noise;
         break;
     }
-    case 4:{
+    case 4: {
         kindDither = DitherManager::pink_noise;
         break;
     }
-    case 5:{
+    case 5: {
         kindDither = DitherManager::floyd_sd;
         break;
     }
@@ -75,14 +75,24 @@ void MainWindow::on_pushButton_clicked()
     QPixmap temp(DataManager::getImageName(DataManager::dithered_image));
     ui->wo_dith->setPixmap(temp);
     QString psnr;
-    psnr = psnr.number(mainManager.getMetrics(MetricsManager::psnr));
+    psnr = psnr.number(mainManager.getMetrics(MetricsManager::psnr, DataManager::dithered_image));
     ui->textEdit->append(ui->comboBox->currentText());
-    ui->textEdit->append("PSNR: "+ psnr);
+    ui->textEdit->append("PSNR: " + psnr);
+}
+
+void MainWindow::on_convert_end()
+{
+    QPixmap temp2(DataManager::getImageName(DataManager::converted_image));
+    ui->bad_image->setPixmap(temp2);
+    QString psnr;
+    psnr = psnr.number(mainManager.getMetrics(MetricsManager::psnr, DataManager::converted_image));
+
+    ui->textEdit->append("PSNR 8bit image: " + psnr);
 }
 
 void MainWindow::convert()
 {
+    std::lock_guard<std::mutex> guard(_mutex);
     mainManager.convert();
-    QPixmap temp2(DataManager::getImageName(DataManager::converted_image));
-    ui->bad_image->setPixmap(temp2);
+    emit convert_end();
 }
