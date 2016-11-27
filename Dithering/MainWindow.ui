@@ -118,6 +118,11 @@
          <string>Pink noise</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>Floyd-Sd</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item>

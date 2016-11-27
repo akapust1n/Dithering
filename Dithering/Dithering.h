@@ -40,8 +40,7 @@ class FloydSDDithering : public Dithering {
 public:
     virtual void Dither(std::shared_ptr<QImage> image1 , std::shared_ptr<QImage> image2);
 
-private:
-    QRgb NewCOLOR(QColor pixel);
+
 };
 
 #endif // DITHERING_H

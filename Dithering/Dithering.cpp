@@ -1,17 +1,19 @@
 #include "Dithering.h"
+#include <ColorMap.h>
 #include <DataManager.h>
 #include <DitherManager.h>
 #include <QImage>
 #include <ctime>
+#include <iostream>
 
-QRgb Dithering::NewCOLOR(QColor pixel, int number)
+QRgb Dithering::NewCOLOR(QColor pixel, int number=0)
 {
     int move = number > 128 ? 1 : 0;
 
     int rw = 51 * (((pixel.red()) + 25) / 51 + move);
     int gw = 51 * (((pixel.green()) + 25) / 51 + move);
     int bw = 51 * (((pixel.blue()) + 25) / 51 + move);
-    rw = rw > 204 ? 204 : rw;
+    rw = rw > 204 ? 204 : rw; //max value for web-safe palette
     gw = gw > 204 ? 204 : gw;
     bw = bw > 204 ? 204 : bw;
 
@@ -53,7 +55,6 @@ void BrownNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr
         }
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::brown_noise));
-
 }
 
 void VioletNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<QImage> image2)
@@ -79,7 +80,6 @@ void VioletNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_pt
         }
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::violet_noise));
-
 }
 
 void BlueNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<QImage> image2)
@@ -104,7 +104,6 @@ void BlueNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<
         }
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::blue_noise));
-
 }
 
 void PinkNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<QImage> image2)
@@ -127,5 +126,32 @@ void PinkNoiseDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<
         }
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::pink_noise));
+}
 
+void FloydSDDithering::Dither(std::shared_ptr<QImage> image1, std::shared_ptr<QImage> image2)
+{
+    image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
+    width = image2->width();
+    height = image2->height();
+    std::cout<<"start_dith"<<std::endl;
+    ColorMap colorMap(width, height);
+    colorMap.initImage(image1.get());
+    std::cout<<"init_dith"<<std::endl;
+
+    for (int i = 1; i < height; i++)
+        for (int j = 1; j < width; j++) {
+            mRgb oldPixel = colorMap.getPixel(j, i);
+
+            QColor newPixel(oldPixel.getRed(), oldPixel.getGreen(), oldPixel.getBlue());
+            QColor value = NewCOLOR(newPixel);
+            mRgb error(value.red(), value.green(), value.blue());
+            error = oldPixel - error;
+            colorMap.updateValues(7 / 16, error, j + 1, i);
+            colorMap.updateValues(1 / 16, error, j + 1, i + 1);
+            colorMap.updateValues(5 / 16, error, j - 1, i);
+
+            image2->setPixel(j, i, value.rgb());
+        }
+    image2->save(DataManager::getImageName(DataManager::dithered_image));
+    image2->save(DitherManager::getImageName(DitherManager::floyd_sd));
 }

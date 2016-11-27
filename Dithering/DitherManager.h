@@ -11,7 +11,8 @@ public:
         blue_noise,
         brown_noise,
         pink_noise,
-        violet_noise
+        violet_noise,
+        floyd_sd
     };
     void Dither(kind_dither kindDither);
     void initImages(std::shared_ptr<QImage> _image1, std::shared_ptr<QImage> _image2);
@@ -23,6 +24,7 @@ private:
     PinkNoiseDithering pinkNoiseDithering;
     BrownNoiseDithering brownNoiseDithering;
     VioletNoiseDithering violetNoiseDithering;
+    FloydSDDithering floydSDDithering;
     std::shared_ptr<QImage> image1;
     std::shared_ptr<QImage> image2;
 };

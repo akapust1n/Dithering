@@ -23,6 +23,10 @@ void DitherManager::Dither(DitherManager::kind_dither kindDither)
         brownNoiseDithering.Dither(image1, image2);
         break;
     }
+    case floyd_sd: {
+        floydSDDithering.Dither(image1,image2);
+        break;
+    }
     default:
         whiteNoiseDithering.Dither(image1, image2);
     };
@@ -52,9 +56,9 @@ QString DitherManager::getImageName(DitherManager::kind_dither kindDither)
     case blue_noise: {
         return (static_cast<QString>("blue_noise_dith.bmp"));
     }
-    //        case FLOYDSD_DITH: {
-    //            return  (static_cast<QString>("floydsd_noise_dith.bmp"));
-    //        }
+    case floyd_sd: {
+        return (static_cast<QString>("floydsd_noise_dith.bmp"));
+    }
     default:
         return (static_cast<QString>("smth.bmp"));
     }
