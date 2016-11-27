@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "MainManager.h"
+#include <thread>
+
 
 namespace Ui {
 class MainWindow;
@@ -24,6 +26,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     MainManager mainManager;
+    void convert();
 };
 
 #endif // MAINWINDOW_H

@@ -2,6 +2,7 @@
 #include "ui_MainWindow.h"
 #include <QFileDialog>
 #include <QPixmap>
+#include "Magick++.h"
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
@@ -24,6 +25,8 @@ void MainWindow::on_pushButton_2_clicked()
     }
     QPixmap temp(DataManager::getImageName(DataManager::start_image));
     ui->start_image->setPixmap(temp);
+    std::thread thr(&MainWindow::convert, this);
+    thr.detach();
 
 }
 
@@ -75,4 +78,11 @@ void MainWindow::on_pushButton_clicked()
     psnr = psnr.number(mainManager.getMetrics(MetricsManager::psnr));
     ui->textEdit->append(ui->comboBox->currentText());
     ui->textEdit->append("PSNR: "+ psnr);
+}
+
+void MainWindow::convert()
+{
+    mainManager.convert();
+    QPixmap temp2(DataManager::getImageName(DataManager::converted_image));
+    ui->bad_image->setPixmap(temp2);
 }

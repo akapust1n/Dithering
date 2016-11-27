@@ -24,11 +24,11 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>Tab 1</string>
+      <string>Original</string>
      </attribute>
      <widget class="QLabel" name="start_image">
       <property name="geometry">
@@ -46,7 +46,7 @@
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>With dithering</string>
      </attribute>
      <widget class="QLabel" name="wo_dith">
       <property name="geometry">
@@ -64,19 +64,19 @@
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
-      <string>Page</string>
+      <string>Without dithering</string>
      </attribute>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="bad_image">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>120</y>
-        <width>64</width>
-        <height>15</height>
+        <x>10</x>
+        <y>10</y>
+        <width>741</width>
+        <height>420</height>
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>Without dithering image</string>
       </property>
      </widget>
     </widget>

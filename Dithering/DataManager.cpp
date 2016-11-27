@@ -35,7 +35,7 @@ QString DataManager::getImageName(DataManager::kind kindImage)
     case (start_image):
         return (static_cast<QString>("start_image.bmp"));
     case (converted_image):
-        return (static_cast<QString>("converted_image.bmp"));
+        return (static_cast<QString>("converted_image.gif"));
     default:
         return (static_cast<QString>("dithered_image.bmp"));
     }
