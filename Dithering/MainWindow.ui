@@ -30,17 +30,17 @@
      <attribute name="title">
       <string>Tab 1</string>
      </attribute>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="start_image">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>120</y>
-        <width>64</width>
-        <height>15</height>
+        <x>10</x>
+        <y>10</y>
+        <width>720</width>
+        <height>420</height>
        </rect>
       </property>
       <property name="text">
-       <string>start image</string>
+       <string>Start image</string>
       </property>
      </widget>
     </widget>
@@ -48,17 +48,35 @@
      <attribute name="title">
       <string>Tab 2</string>
      </attribute>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="wo_dith">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>120</y>
-        <width>221</width>
-        <height>16</height>
+        <x>10</x>
+        <y>10</y>
+        <width>741</width>
+        <height>420</height>
        </rect>
       </property>
       <property name="text">
        <string>without dithering image</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Page</string>
+     </attribute>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>120</y>
+        <width>64</width>
+        <height>15</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
     </widget>
@@ -68,7 +86,7 @@
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>273</width>
+      <width>354</width>
       <height>78</height>
      </rect>
     </property>

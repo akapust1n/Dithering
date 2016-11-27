@@ -6,6 +6,7 @@ void DataManager::loadImage(QString filename, kind kindImage)
     switch (kindImage) {
     case (start_image): {
         start_image1.reset(new QImage(filename));
+        start_image1->save(getImageName(kindImage));
         break;
     }
     case (converted_image):
@@ -17,7 +18,7 @@ void DataManager::loadImage(QString filename, kind kindImage)
     return;
 }
 
-auto DataManager::getImage(DataManager::kind kindImage)
+ std::shared_ptr<QImage> DataManager::getImage(DataManager::kind kindImage)
 {
     switch (kindImage) {
     case (start_image):
