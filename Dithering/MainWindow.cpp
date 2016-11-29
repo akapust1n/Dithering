@@ -78,16 +78,23 @@ void MainWindow::on_pushButton_clicked()
     psnr = psnr.number(mainManager.getMetrics(MetricsManager::psnr, DataManager::dithered_image));
     ui->textEdit->append(ui->comboBox->currentText());
     ui->textEdit->append("PSNR: " + psnr);
+    QString ssim;
+    ssim = ssim.number(mainManager.getMetrics(MetricsManager::ssim, DataManager::dithered_image));
+    ui->textEdit->append("SSIM: " + ssim);
 }
 
 void MainWindow::on_convert_end()
 {
     QPixmap temp2(DataManager::getImageName(DataManager::converted_image));
     ui->bad_image->setPixmap(temp2);
+
     QString psnr;
     psnr = psnr.number(mainManager.getMetrics(MetricsManager::psnr, DataManager::converted_image));
+    ui->textEdit->append("PSNR web-safe image: " + psnr);
 
-    ui->textEdit->append("PSNR 8bit image: " + psnr);
+    QString ssim;
+    ssim = ssim.number(mainManager.getMetrics(MetricsManager::ssim, DataManager::converted_image));
+    ui->textEdit->append("SSIM web-safe image: " + ssim);
 }
 
 void MainWindow::convert()

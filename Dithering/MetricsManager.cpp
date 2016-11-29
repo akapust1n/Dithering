@@ -7,6 +7,7 @@ double MetricsManager::getMetrics(std::shared_ptr<QImage> image1, std::shared_pt
        return  _psnr.getValue(image1, image2);
     }
     default:
+        return _ssim.getValue(image1,image2);
         break;
     }
 }
