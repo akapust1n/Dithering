@@ -6,8 +6,6 @@
 class Metrics{
 public:
     virtual double getValue(std::shared_ptr<QImage> &image1, std::shared_ptr<QImage> &image2)=0;
-protected:
-    double getBitDepth(int depth);
 };
 class PSNR:public Metrics{
 public:
@@ -32,8 +30,7 @@ private:
     double ox;
     double oy;
     double oxy;
-    double getC1(int depth);
-    double getC2(int depth);
+
 };
 
 #endif // METRICS_H

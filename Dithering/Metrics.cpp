@@ -4,11 +4,6 @@
 #include <iomanip>
 #include <iostream>
 
-double Metrics::getBitDepth(int depth)
-{
-    return (pow(2, depth) - 1);
-}
-
 double PSNR::getValue(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     double result = calculate(8, sqrt(getMSE(image1, image2)));
@@ -35,16 +30,16 @@ double PSNR::getMSE(std::shared_ptr<QImage> image1, std::shared_ptr<QImage> imag
             b2 = pixel2.blue();
             g2 = pixel2.green();
             r2 = pixel2.red();
-            sum += pow(((abs(b1 - b2) + abs(g1 - g2) + abs(r1 - r2))), 2);
+            sum += pow(((abs(b1 - b2) + abs(g1 - g2) + abs(r1 - r2)))/3, 2);
         }
     }
-    return sum / (width * height) / 3;
+    return sum / (width * height);
 }
 
 double PSNR::calculate(int depth, double MSE)
 {
-    double MAX = getBitDepth(depth);
-    double result = 20 * log10(MAX / MSE);
+    double MAX = 255;
+    double result = 10 * log10(MAX * MAX / MSE);
     return result;
 }
 
@@ -70,8 +65,8 @@ double SSIM::getValue(std::shared_ptr<QImage>& _image1, std::shared_ptr<QImage>&
 
 double SSIM::avg(std::shared_ptr<QImage>& img)
 {
-    int width = img->width() ;
-    int height = img->height() ;
+    int width = img->width();
+    int height = img->height();
     int x, y, b = 0, g = 0, r = 0;
     double col = 0;
 
@@ -82,7 +77,7 @@ double SSIM::avg(std::shared_ptr<QImage>& img)
             b = pixel.blue();
             g = pixel.green(); // вот так мы как раз обращаемся к различным компонентам цветов
             r = pixel.red(); // b - blue, r - red, g - green
-            col +=( b + g + r);
+            col += (b + g + r);
         }
     }
     return col / (width * height) / 3.0;
@@ -91,20 +86,20 @@ double SSIM::avg(std::shared_ptr<QImage>& img)
 double SSIM::var(std::shared_ptr<QImage>& img, double mu)
 { //variance
 
-    int width = img->width() ;
+    int width = img->width();
     int height = img->height();
     int x, y, b = 0, g = 0, r = 0;
 
     double col = 0;
 
-    for (x = 0; x <width; x++) {
+    for (x = 0; x < width; x++) {
         for (y = 0; y < height; y++) {
 
             QColor pixel = img->pixel(x, y);
             b = pixel.blue();
             col += (1.0 * b - mu) * (1.0 * b - mu);
             g = pixel.green();
-            col += (1.0 * g - mu)* (1.0 * g - mu);
+            col += (1.0 * g - mu) * (1.0 * g - mu);
             r = pixel.red();
             col += (1.0 * r - mu) * (1.0 * r - mu);
         }
@@ -118,8 +113,8 @@ double SSIM::cov(std::shared_ptr<QImage>& img1, std::shared_ptr<QImage>& img2, d
     int x, y;
     double b1 = 0, g1 = 0, b2 = 0, g2 = 0, r1 = 0, r2 = 0;
     double col = 0;
-    int width = img1->width() ;
-    int height = img1->height() ;
+    int width = img1->width();
+    int height = img1->height();
 
     for (x = 0; x < width; x++) {
         for (y = 0; y < height; y++) {
@@ -152,10 +147,6 @@ double SSIM::calculate()
     std::cout << "temp1 " << temp1 << std::endl;
     std::cout << "temp2 " << temp2 << std::endl;
 
-    //    double result_part1 = (2.0 * ux * uy + 1.0*getC1(depth)) * (2.0 * oxy + 1.0*getC2(depth));
-    //    double result_part2 = (ux * ux + uy * uy +1.0 *getC1(depth)) * (ox + oy + 1.0*getC2(depth));
-//        double result_part1 = (2.0 * ux * uy +6.5025) * (2.0 * oxy +58.5225);
-//        double result_part2 = (ux * ux + uy * uy +6.5025) * (ox + oy +58.5225);
     //заранее посчитал c1 и с2 для сравнения 8 бит на канал и 8 бит всего.
     double result_part1 = (2.0 * ux * uy + 6.5025) * (2.0 * oxy + 0.0324);
     double result_part2 = (ux * ux + uy * uy + 6.5025) * (ox + oy + 0.0324);
@@ -163,16 +154,4 @@ double SSIM::calculate()
     std::cout << "result_part1 " << result_part1 << std::endl;
     std::cout << "result_part2 " << result_part2 << std::endl;
     return result_part1 / result_part2;
-}
-
-double SSIM::getC1(int depth)
-{
-    double bitnost = getBitDepth(depth);
-    return (0.01 * bitnost) * (0.01 * bitnost);
-}
-
-double SSIM::getC2(int depth)
-{
-    double bitnost = getBitDepth(depth);
-    return (0.03 * bitnost) * (0.03 * bitnost);
 }
