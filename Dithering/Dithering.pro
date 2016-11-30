@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT += core gui widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -35,4 +35,6 @@ FORMS    += MainWindow.ui
 CONFIG += c++14
 QMAKE_CXXFLAGS += -std=c++1z
 QMAKE_CXXFLAGS += $(shell Magick++-config --cppflags --cxxflags)
-LIBS += -lMagick++
+#LIBS += -lMagick++
+LIBS +=$(shell Magick++-config --ldflags --libs)
+#INCLUDEPATH += /usr/include/ImageMagick-6

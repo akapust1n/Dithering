@@ -28,7 +28,7 @@ void WhiteNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_pt
     height = image2->height();
     for (int i = 0; i < height; i++)
         for (int j = 0; j < width; j++) {
-            QRgb color = NewCOLOR(image1->pixelColor(j, i), rand() % 256);
+            QRgb color = NewCOLOR(image1->pixel(j, i), rand() % 256);
             image2->setPixel(j, i, color);
         }
     image2->save(DataManager::getImageName(DataManager::dithered_image));
@@ -50,7 +50,7 @@ void BrownNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_pt
             number[2] = 0.5 * (number[0] + number[1]);
             if (number[2] > 255)
                 number[2] = 255;
-            QRgb color = NewCOLOR(image1->pixelColor(j, i), number[2]);
+            QRgb color = NewCOLOR(image1->pixel(j, i), number[2]);
             image2->setPixel(j, i, color);
         }
     image2->save(DataManager::getImageName(DataManager::dithered_image));
@@ -75,7 +75,7 @@ void VioletNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_p
                 number[2] = -number[2];
             if (number[2] > 255)
                 number[2] = 255;
-            QRgb color = NewCOLOR(image1->pixelColor(j, i), number[2]);
+            QRgb color = NewCOLOR(image1->pixel(j, i), number[2]);
             image2->setPixel(j, i, color);
         }
     image2->save(DataManager::getImageName(DataManager::dithered_image));
@@ -99,7 +99,7 @@ void BlueNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr
                 number[2] = -number[2];
             if (number[2] > 255)
                 number[2] = 255;
-            QRgb color = NewCOLOR(image1->pixelColor(j, i), number[2]);
+            QRgb color = NewCOLOR(image1->pixel(j, i), number[2]);
             image2->setPixel(j, i, color);
         }
     image2->save(DataManager::getImageName(DataManager::dithered_image));
@@ -121,7 +121,7 @@ void PinkNoiseDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr
             number[2] = 0.3 * (number[0] + number[1]);
             if (number[2] > 255)
                 number[2] = 255;
-            QRgb color = NewCOLOR(image1->pixelColor(j, i), number[2]);
+            QRgb color = NewCOLOR(image1->pixel(j, i), number[2]);
             image2->setPixel(j, i, color);
         }
     image2->save(DataManager::getImageName(DataManager::dithered_image));

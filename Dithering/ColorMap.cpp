@@ -33,11 +33,11 @@ void ColorMap::initImage(QImage* image)
 {
     for (size_t i = 0; i < height-1; i++)
         for (size_t j = 0; j < width-1; j++) {
-            auto color = image->pixelColor(j, i);
+            auto color = image->pixel(j, i);
             //std::cout<<color.red()<<" "<<color.blue()<<std::endl;
-            red[j][i] = color.red();
-            blue[j][i] = color.blue();
-            green[j][i] = color.green();
+            red[j][i] = qRed(color);
+            blue[j][i] = qRed(color);
+            green[j][i] = qRed(color);
         }
 }
 

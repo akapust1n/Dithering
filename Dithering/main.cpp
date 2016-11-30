@@ -1,5 +1,5 @@
 #include "MainWindow.h"
-#include <QApplication>
+#include <QtWidgets/QApplication>
 #include <Magick++.h>
 
 int main(int argc, char *argv[])
