@@ -143,13 +143,13 @@ void FloydSDDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<Q
             QColor value = NewCOLOR(newPixel);
             mRgb error(value.red(), value.green(), value.blue());
             error = oldPixel - error;
-            colorMap.updateValues(7 / 16, error, j + 1, i);
-            colorMap.updateValues(1 / 16, error, j +1, i + 1);
-            colorMap.updateValues(5 / 16, error, j - 1, i);
-            colorMap.updateValues(3 / 16, error, j - 1, i+1);
+            colorMap.updateValues(7.0 / 16, error, j + 1, i);
+            colorMap.updateValues(1.0 / 16, error, j +1, i + 1);
+            colorMap.updateValues(5.0 / 16, error, j - 1, i);
+            colorMap.updateValues(3.0 / 16, error, j - 1, i+1);
 
 
-            image2->setPixel(j, i, value.rgb());
+            image2->setPixelColor(j, i, value);
         }
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::floyd_sd));

@@ -30,6 +30,7 @@ public:
 private:
     int width;
     int height;
+    void checkValue(double &value);
     vector<vector<double> > red;
     vector<vector<double> > blue;
     vector<vector<double> > green;
