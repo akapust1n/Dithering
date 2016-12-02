@@ -1,8 +1,11 @@
 #include "DitherManager.h"
 #include <iostream>
 
+
 void DitherManager::Dither(DitherManager::kind_dither kindDither)
 {
+     std::chrono::time_point<std::chrono::system_clock> start, end;
+     start = std::chrono::system_clock::now();
     switch (kindDither) {
     case white_noise: {
         whiteNoiseDithering.Dither(image1, image2);
@@ -31,6 +34,9 @@ void DitherManager::Dither(DitherManager::kind_dither kindDither)
     default:
         whiteNoiseDithering.Dither(image1, image2);
     };
+    end = std::chrono::system_clock::now();
+    last_elapsed_seconds = std::chrono::duration_cast<std::chrono::milliseconds>
+                                 (end-start).count();
     if(!image2.get())
     std::cout<<"image2 is null in DitherManager"<<std::endl;
 
@@ -75,4 +81,9 @@ QString DitherManager::getImageName(DitherManager::kind_dither kindDither)
 std::shared_ptr<QImage> &DitherManager::getImage()
 {
     return image2;
+}
+
+int DitherManager::getTime()
+{
+    return last_elapsed_seconds;
 }

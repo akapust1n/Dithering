@@ -8,10 +8,12 @@ void MainManager::loadImage(QString filename)
     ditherManager.initImages(dataManager.getImage(DataManager::start_image), dataManager.getImage(DataManager::dithered_image));
 }
 
-void MainManager::dither(DitherManager::kind_dither kindDither)
+int MainManager::dither(DitherManager::kind_dither kindDither)
 {
     ditherManager.Dither(kindDither);
+    int time = ditherManager.getTime();
     dataManager.loadImage(ditherManager.getImage());
+    return time;
 }
 double MainManager::getMetrics(MetricsManager::kind_metrics kindMetrics, DataManager::kind kindImage)
 {

@@ -24,6 +24,11 @@ private slots:
 
     void on_pushButton_clicked();
     void on_convert_end();
+
+    void on_plus_clicked();
+
+    void on_minus_clicked();
+
 signals:
     void convert_end();
 private:
@@ -31,6 +36,10 @@ private:
     MainManager mainManager;
     void convert();
     std::mutex _mutex;
+    int width;
+    int height;
+    double scaleFactors[3];
+
 };
 
 #endif // MAINWINDOW_H

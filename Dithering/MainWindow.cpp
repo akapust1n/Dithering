@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget* parent)
 {
     ui->setupUi(this);
     connect(this, SIGNAL(convert_end()), this, SLOT(on_convert_end()));
+    for (int i = 0; i < 3; i++)
+        scaleFactors[i] = 1;
 }
 
 MainWindow::~MainWindow()
@@ -23,11 +25,15 @@ void MainWindow::on_pushButton_2_clicked()
         QDir::currentPath(), "images (*.*)");
     if (!sourceName.isEmpty()) {
         mainManager.loadImage(sourceName);
+        QPixmap temp(DataManager::getImageName(DataManager::start_image));
+        width = temp.width();
+        height = temp.height();
+        ui->start_image->setPixmap(temp);
+        ui->start_image->resize(temp.size());
+        //ui->originalArea->widget()->releaseShortcut()
+        std::thread thr(&MainWindow::convert, this);
+        thr.detach();
     }
-    QPixmap temp(DataManager::getImageName(DataManager::start_image));
-    ui->start_image->setPixmap(temp);
-    std::thread thr(&MainWindow::convert, this);
-    thr.detach();
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -71,9 +77,12 @@ void MainWindow::on_pushButton_clicked()
         kindDither = DitherManager::white_noise;
     }
 
-    mainManager.dither(kindDither);
+    int _time = mainManager.dither(kindDither);
+
     QPixmap temp(DataManager::getImageName(DataManager::dithered_image));
-    ui->wo_dith->setPixmap(temp);
+    ui->w_dith->setPixmap(temp);
+    ui->w_dith->resize(temp.size());
+
     QString psnr;
     psnr = psnr.number(mainManager.getMetrics(MetricsManager::psnr, DataManager::dithered_image));
     ui->textEdit->append(ui->comboBox->currentText());
@@ -81,12 +90,16 @@ void MainWindow::on_pushButton_clicked()
     QString ssim;
     ssim = ssim.number(mainManager.getMetrics(MetricsManager::ssim, DataManager::dithered_image));
     ui->textEdit->append("SSIM: " + ssim);
+    QString time;
+    time = time.number(_time);
+    ui->textEdit->append("Time, ms: " + time);
 }
 
 void MainWindow::on_convert_end()
 {
     QPixmap temp2(DataManager::getImageName(DataManager::converted_image));
     ui->bad_image->setPixmap(temp2);
+    ui->bad_image->resize(temp2.size());
 
     QString psnr;
     psnr = psnr.number(mainManager.getMetrics(MetricsManager::psnr, DataManager::converted_image));
@@ -102,4 +115,75 @@ void MainWindow::convert()
     std::lock_guard<std::mutex> guard(_mutex);
     mainManager.convert();
     emit convert_end();
+}
+
+void MainWindow::on_plus_clicked()
+{
+    double scale = 1.2;
+
+    int tab = ui->tabWidget->currentIndex();
+    switch (tab) {
+    case (0): {
+        auto temp = ui->start_image->pixmap();
+        scaleFactors[0] *= scale;
+        if (scaleFactors[0] > 4)
+            scaleFactors[0] = 4;
+        ui->start_image->setPixmap(temp->scaled(width * scaleFactors[0], height * scaleFactors[0], Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        break;
+    }
+    case (1): {
+        auto temp = ui->w_dith->pixmap();
+        scaleFactors[1] *= scale;
+        if (scaleFactors[1] > 4)
+            scaleFactors[1] = 4;
+
+        ui->w_dith->setPixmap(temp->scaled(width * scaleFactors[1], height * scaleFactors[1], Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        break;
+    }
+    case (2): {
+        auto temp = ui->bad_image->pixmap();
+        scaleFactors[2] *= scale;
+        if (scaleFactors[2] > 4)
+            scaleFactors[2] = 4;
+
+        ui->bad_image->setPixmap(temp->scaled(width * scaleFactors[2], height * scaleFactors[2], Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        break;
+    }
+    }
+}
+#include <iostream>
+void MainWindow::on_minus_clicked()
+{
+    double scale = 0.8;
+
+    int tab = ui->tabWidget->currentIndex();
+    switch (tab) {
+    case (0): {
+        auto temp = ui->start_image->pixmap();
+        scaleFactors[0] *= scale;
+        if (scaleFactors[0] < 0.4)
+            scaleFactors[0] = 0.4;
+
+        ui->start_image->setPixmap(temp->scaled(width * scaleFactors[0], height * scaleFactors[0], Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        break;
+    }
+    case (1): {
+        auto temp = ui->w_dith->pixmap();
+        scaleFactors[1] *= scale;
+        if (scaleFactors[1] < 0.4)
+            scaleFactors[1] = 0.4;
+
+        ui->w_dith->setPixmap(temp->scaled(width * scaleFactors[1], height * scaleFactors[1], Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        break;
+    }
+    case (2): {
+        auto temp = ui->bad_image->pixmap();
+        scaleFactors[2] *= scale;
+        if (scaleFactors[2] < 0.4)
+            scaleFactors[2] = 0.4;
+
+        ui->bad_image->setPixmap(temp->scaled(width * scaleFactors[2], height * scaleFactors[2], Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        break;
+    }
+    }
 }

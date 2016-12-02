@@ -154,3 +154,9 @@ void FloydSDDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<Q
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::floyd_sd));
 }
+
+
+void Yliluoma1::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<QImage> &image2)
+{
+
+}

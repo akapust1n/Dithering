@@ -1,5 +1,6 @@
 #include "ColorMap.h"
 #include <iostream>
+//ещё алгоритмов дизеринга          ordered
 const mRgb mRgb::operator-(mRgb obj)
 {
     this->red -= obj.red;

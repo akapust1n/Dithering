@@ -3,6 +3,8 @@
 
 #include <Dithering.h>
 #include <memory>
+#include <chrono>
+#include <ctime>
 
 class DitherManager {
 public:
@@ -18,6 +20,7 @@ public:
     void initImages(std::shared_ptr<QImage> &_image1, std::shared_ptr<QImage> &_image2);
     static  QString getImageName(kind_dither kindDither);
     std::shared_ptr<QImage> &getImage();
+    int getTime();
 
 private:
     WhiteNoiseDithering whiteNoiseDithering;
@@ -28,6 +31,7 @@ private:
     FloydSDDithering floydSDDithering;
     std::shared_ptr<QImage> image1;
     std::shared_ptr<QImage> image2;
+    int last_elapsed_seconds = 0;
 };
 
 #endif // DITHERMANAGER_H

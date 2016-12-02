@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     Dithering.cpp \
     ColorMap.cpp \
     MetricsManager.cpp \
-    Metrics.cpp
+    Metrics.cpp \
+    ImageViewer.cpp
 
 HEADERS  += MainWindow.h \
     DataManager.h \
@@ -29,7 +30,8 @@ HEADERS  += MainWindow.h \
     Dithering.h \
     ColorMap.h \
     MetricsManager.h \
-    Metrics.h
+    Metrics.h \
+    ImageViewer.h
 
 FORMS    += MainWindow.ui
 CONFIG += c++14
