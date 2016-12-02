@@ -6,7 +6,7 @@
 #include <ctime>
 #include <iostream>
 
-QRgb Dithering::NewCOLOR(QColor pixel, int number=0)
+QRgb Dithering::NewCOLOR(QColor pixel, int number = 0)
 {
     int move = number > 128 ? 1 : 0;
 
@@ -21,7 +21,7 @@ QRgb Dithering::NewCOLOR(QColor pixel, int number=0)
     _value = qRgb(rw, gw, bw);
     return _value;
 }
-void WhiteNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage> &image2)
+void WhiteNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
@@ -82,7 +82,7 @@ void VioletNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_p
     image2->save(DitherManager::getImageName(DitherManager::violet_noise));
 }
 
-void BlueNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage> &image2)
+void BlueNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
@@ -106,7 +106,7 @@ void BlueNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr
     image2->save(DitherManager::getImageName(DitherManager::blue_noise));
 }
 
-void PinkNoiseDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<QImage> &image2)
+void PinkNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
@@ -128,7 +128,7 @@ void PinkNoiseDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr
     image2->save(DitherManager::getImageName(DitherManager::pink_noise));
 }
 
-void FloydSDDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<QImage> &image2)
+void FloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
@@ -144,10 +144,9 @@ void FloydSDDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<Q
             mRgb error(value.red(), value.green(), value.blue());
             error = oldPixel - error;
             colorMap.updateValues(7.0 / 16, error, j + 1, i);
-            colorMap.updateValues(1.0 / 16, error, j +1, i + 1);
+            colorMap.updateValues(1.0 / 16, error, j + 1, i + 1);
             colorMap.updateValues(5.0 / 16, error, j - 1, i);
-            colorMap.updateValues(3.0 / 16, error, j - 1, i+1);
-
+            colorMap.updateValues(3.0 / 16, error, j, i + 1);
 
             image2->setPixelColor(j, i, value);
         }
@@ -155,8 +154,31 @@ void FloydSDDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<Q
     image2->save(DitherManager::getImageName(DitherManager::floyd_sd));
 }
 
-
-void Yliluoma1::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<QImage> &image2)
+void Yliluoma1::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
+}
 
+void FalseFloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
+{
+    image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
+    width = image2->width();
+    height = image2->height();
+    ColorMap colorMap(width, height);
+    colorMap.initImage(image1.get());
+    for (int i = height - 1; i > 0; i--)
+        for (int j = width - 1; j > 0; j--) {
+            mRgb oldPixel = colorMap.getPixel(j, i);
+
+            QColor newPixel(oldPixel.getRed(), oldPixel.getGreen(), oldPixel.getBlue());
+            QColor value = NewCOLOR(newPixel);
+            mRgb error(value.red(), value.green(), value.blue());
+            error = oldPixel - error;
+            colorMap.updateValues(3.0 / 8, error, j - 1, i);
+            colorMap.updateValues(2.0 / 8, error, j - 1, i - 1);
+            colorMap.updateValues(3.0 / 8, error, j, i - 1);
+
+            image2->setPixelColor(j, i, value);
+        }
+    image2->save(DataManager::getImageName(DataManager::dithered_image));
+    image2->save(DitherManager::getImageName(DitherManager::false_floyd_sd));
 }

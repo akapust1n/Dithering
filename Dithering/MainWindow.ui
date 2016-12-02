@@ -201,6 +201,11 @@
          <string>Floyd-Sd</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>False Floyd-Sd</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item>
