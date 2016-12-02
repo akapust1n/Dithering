@@ -182,3 +182,38 @@ void FalseFloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::false_floyd_sd));
 }
+
+void JJNDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<QImage> &image2)
+{
+    image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
+    width = image2->width();
+    height = image2->height();
+    ColorMap colorMap(width+2, height+2);
+    colorMap.initImage(image1.get());
+    for (int i = 2; i < height; i++)
+        for (int j = 0; j < width; j++) {
+            mRgb oldPixel = colorMap.getPixel(j, i);
+
+            QColor newPixel(oldPixel.getRed(), oldPixel.getGreen(), oldPixel.getBlue());
+            QColor value = NewCOLOR(newPixel);
+            mRgb error(value.red(), value.green(), value.blue());
+            error = oldPixel - error;
+            colorMap.updateValues(3.0 / 48, error, j + 1, i+2);
+            colorMap.updateValues(5.0 / 48, error, j + 1, i+1);
+            colorMap.updateValues(7.0 / 48, error, j + 1, i);
+            colorMap.updateValues(5.0 / 48, error, j + 1, i-1);
+            colorMap.updateValues(3.0 / 48, error, j + 1, i-2);
+            colorMap.updateValues(1.0 / 48, error, j + 2, i+2);
+            colorMap.updateValues(3.0 / 48, error, j + 2, i+1);
+            colorMap.updateValues(5.0 / 48, error, j + 2, i);
+            colorMap.updateValues(3.0 / 48, error, j + 2, i-1);
+            colorMap.updateValues(1.0 / 48, error, j + 2, i-2);
+            colorMap.updateValues(7.0 / 48, error, j , i+1);
+            colorMap.updateValues(5.0 / 48, error, j, i+2);
+
+            image2->setPixelColor(j, i, value);
+        }
+    image2->save(DataManager::getImageName(DataManager::dithered_image));
+    image2->save(DitherManager::getImageName(DitherManager::jjn));
+
+}

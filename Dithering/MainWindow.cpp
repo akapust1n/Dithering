@@ -45,7 +45,8 @@ void MainWindow::on_pushButton_clicked()
         red_noise,
         violet_noise
         floyd_sd,
-        false_floyd_sd
+        false_floyd_sd,
+        jjn
     };*/
     int index = ui->comboBox->currentIndex();
     DitherManager::kind_dither kindDither;
@@ -76,6 +77,10 @@ void MainWindow::on_pushButton_clicked()
     }
     case 6: {
         kindDither = DitherManager::false_floyd_sd;
+        break;
+    }
+    case 7: {
+        kindDither = DitherManager::jjn;
         break;
     }
     default:
