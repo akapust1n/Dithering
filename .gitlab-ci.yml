@@ -12,7 +12,7 @@ build:
   #   - apt update && apt -y install make autoconf 
   script: 
     #- g++ helloworld.cpp -o mybinary
-    - make
+    - make all
   artifacts:
     paths:
       - mybinary
