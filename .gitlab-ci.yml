@@ -12,6 +12,8 @@ build:
   #   - apt update && apt -y install make autoconf 
   script: 
     #- g++ helloworld.cpp -o mybinary
+    -  cd Dithering/
+    - qmake
     - make all
   artifacts:
     paths:
