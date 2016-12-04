@@ -13,9 +13,9 @@ QRgb Dithering::NewCOLOR(QColor pixel, int number = 0)
     int rw = 51 * (((pixel.red()) + 25) / 51 + move);
     int gw = 51 * (((pixel.green()) + 25) / 51 + move);
     int bw = 51 * (((pixel.blue()) + 25) / 51 + move);
-    rw = rw > 204 ? 204 : rw; //max value for web-safe palette
-    gw = gw > 204 ? 204 : gw;
-    bw = bw > 204 ? 204 : bw;
+    rw = rw > 255 ? 255 : rw; //max value for web-safe palette
+    gw = gw > 255 ? 255 : gw;
+    bw = bw > 255 ? 255 : bw;
 
     QRgb _value;
     _value = qRgb(rw, gw, bw);
@@ -154,9 +154,6 @@ void FloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<Q
     image2->save(DitherManager::getImageName(DitherManager::floyd_sd));
 }
 
-void Yliluoma1::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
-{
-}
 
 void FalseFloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {

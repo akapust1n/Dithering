@@ -48,9 +48,7 @@ class JJNDithering : public Dithering {
 public:
     virtual void Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2);
 };
-class Yliluoma1: public Dithering{
-public:
-    virtual void Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2);
-};
+
+
 
 #endif // DITHERING_H

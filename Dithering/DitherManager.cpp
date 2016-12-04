@@ -39,6 +39,10 @@ void DitherManager::Dither(DitherManager::kind_dither kindDither)
         jjnDithering.Dither(image1,image2);
         break;
     }
+    case yliluoma1:{
+        yliluoma1Dithering.Dither(image1, image2);
+        break;
+    }
 
     default:
         whiteNoiseDithering.Dither(image1, image2);
@@ -87,6 +91,9 @@ QString DitherManager::getImageName(DitherManager::kind_dither kindDither)
     }
     case jjn: {
         return (static_cast<QString>("jjn_noise_dith.bmp"));
+    }
+    case yliluoma1: {
+        return (static_cast<QString>("yliluoma1_noise_dith.bmp"));
     }
     default:
         return (static_cast<QString>("smth.bmp"));

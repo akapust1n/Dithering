@@ -56,8 +56,8 @@ mRgb ColorMap::getPixel(int j, int i)
 
 void ColorMap::checkValue(double& value)
 {
-    if (value > 204)
-        value = 204;
+    if (value > 255)
+        value = 255;
     else if (value < 0)
         value = 0;
 }

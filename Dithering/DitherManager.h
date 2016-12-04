@@ -5,6 +5,7 @@
 #include <memory>
 #include <chrono>
 #include <ctime>
+#include "YlioumaDith.h"
 
 class DitherManager {
 public:
@@ -16,7 +17,8 @@ public:
         violet_noise,
         floyd_sd,
         false_floyd_sd,
-        jjn
+        jjn,
+        yliluoma1
     };
     void Dither(kind_dither kindDither);
     void initImages(std::shared_ptr<QImage> &_image1, std::shared_ptr<QImage> &_image2);
@@ -33,6 +35,7 @@ private:
     FloydSDDithering floydSDDithering;
     FalseFloydSDDithering falseFloydSDDithering;
     JJNDithering jjnDithering;
+    Yliluoma1 yliluoma1Dithering;
     std::shared_ptr<QImage> image1;
     std::shared_ptr<QImage> image2;
     int last_elapsed_seconds = 0;

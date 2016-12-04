@@ -7,6 +7,8 @@
 QT += core gui widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QMAKE_CXXFLAGS += -fopenmp
+LIBS += -fopenmp
 
 TARGET = Dithering
 TEMPLATE = app
@@ -21,7 +23,8 @@ SOURCES += main.cpp\
     ColorMap.cpp \
     MetricsManager.cpp \
     Metrics.cpp \
-    ImageViewer.cpp
+    ImageViewer.cpp \
+    YlioumaDith.cpp
 
 HEADERS  += MainWindow.h \
     DataManager.h \
@@ -31,7 +34,8 @@ HEADERS  += MainWindow.h \
     ColorMap.h \
     MetricsManager.h \
     Metrics.h \
-    ImageViewer.h
+    ImageViewer.h \
+    YlioumaDith.h
 
 FORMS    += MainWindow.ui
 CONFIG += c++14
