@@ -4,22 +4,23 @@
 #include <cmath>
 #include <iostream>
 constexpr double Yliluoma1::map1[64];
+//constexpr unsigned Yliluoma1::pal[16];
 
 Yliluoma1::Yliluoma1()
 {
     int index = 0;
-    for (int r = 0; r < 256; r += 51)
-        for (int g = 0; g < 256; g += 51)
-            for (int b = 0; b < 256; b += 51) {
+    for (int r = 255; r >= 0; r -= 51)
+        for (int g = 255; g >= 0; g -= 51)
+            for (int b = 255; b >= 0; b -= 51) {
                 unsigned rgb = ((r & 0x0ff) << 16) | ((g & 0x0ff) << 8) | (b & 0x0ff);
                 pal[index++] = rgb;
             }
-std::cout<<index<<"INDEX"<<std::endl;
+    std::cout << index << "INDEX" << std::endl;
 }
 
 void Yliluoma1::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
- std::cout<<"START"<<std::endl;
+    std::cout << "START" << std::endl;
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
     height = image2->height();
@@ -27,24 +28,27 @@ void Yliluoma1::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>&
     for (unsigned y = 0; y < height; ++y) {
         for (unsigned x = 0; x < width; ++x) {
             //unsigned color = gdImageGetTrueColorPixel(srcim, x, y);
-            QColor temp= image1->pixelColor(x, y);
+            QColor temp = image1->pixelColor(x, y);
 
             unsigned color = qColorToint(temp);
+          //  std::cout << "before " << color << std::endl;
             MixingPlan plan = DeviseBestMixingPlan(color);
             if (plan.ratio == 4.0) // Tri-tone or quad-tone dithering
             {
                 QColor color = rgbToQColor(plan.colors[((y & 1) * 2 + (x & 1))]);
                 image2->setPixelColor(x, y, color);
             } else {
-                 double map_value = Yliluoma1::map1[(x & 7) + ((y & 7) << 3)];
-                    QColor color = rgbToQColor(plan.colors[map_value < plan.ratio ? 1 : 0]);
-                    image2->setPixelColor(x, y, color);
-               // std::cout<<"BLACK"<<std::endl;
+                double map_value = Yliluoma1::map1[(x & 7) + ((y & 7) << 3)];
+                QColor color;
+               // std::cout << plan.colors[map_value < plan.ratio ? 1 : 0] << std::endl;
+                color = rgbToQColor(plan.colors[map_value < plan.ratio ? 1 : 0]);
+                image2->setPixelColor(x, y, color);
+                // std::cout<<"BLACK"<<std::endl;
             }
         }
-       std::cout << y << std::endl;
+        std::cout << y << std::endl;
     }
-    std::cout<<"SAVE"<<std::endl;
+    std::cout << "SAVE" << std::endl;
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::yliluoma1));
 }
@@ -104,12 +108,12 @@ Yliluoma1::MixingPlan Yliluoma1::DeviseBestMixingPlan(unsigned color)
                 ratio / double(64));
             if (penalty < least_penalty) {
                 least_penalty = penalty;
-                result.colors[0] = index1;
-                result.colors[1] = index2;
+                result.colors[0] = pal[index1];
+                result.colors[1] = pal[index2];
                 result.ratio = ratio / double(64);
             }
             if (index1 != index2)
-                for (unsigned index3 = 0; index3 < 16; ++index3) {
+                for (unsigned index3 = 0; index3 < 216; ++index3) {
                     if (index3 == index2 || index3 == index1)
                         continue;
                     // 50% index3, 25% index2, 25% index1
@@ -123,10 +127,10 @@ Yliluoma1::MixingPlan Yliluoma1::DeviseBestMixingPlan(unsigned color)
                         + ColorCompare((r1 + g1) / 2, (g1 + g2) / 2, (b1 + b2) / 2, r3, g3, b3) * 0.025;
                     if (penalty < least_penalty) {
                         least_penalty = penalty;
-                        result.colors[0] = index3; // (0,0) index3 occurs twice
-                        result.colors[1] = index1; // (0,1)
-                        result.colors[2] = index2; // (1,0)
-                        result.colors[3] = index3; // (1,1)
+                        result.colors[0] = pal[index3]; // (0,0) index3 occurs twice
+                        result.colors[1] = pal[index1]; // (0,1)
+                        result.colors[2] = pal[index2]; // (1,0)
+                        result.colors[3] = pal[index3]; // (1,1)
                         result.ratio = 4.0;
                     }
                 }
@@ -137,6 +141,7 @@ Yliluoma1::MixingPlan Yliluoma1::DeviseBestMixingPlan(unsigned color)
 QColor Yliluoma1::rgbToQColor(unsigned color1)
 {
     unsigned r1 = color1 >> 16, g1 = (color1 >> 8) & 0xFF, b1 = color1 & 0xFF;
+    //  std::cout<<r1<<" "<<g1<<" "<<b1<<std::endl;
 
     QColor result(r1, g1, b1);
     return result;
@@ -144,9 +149,12 @@ QColor Yliluoma1::rgbToQColor(unsigned color1)
 
 unsigned Yliluoma1::qColorToint(QColor& color)
 {
-    int r = color.red();
-    int g = color.green();
-    int b = color.blue();
+    unsigned r = color.red();
+    unsigned g = color.green();
+    unsigned b = color.blue();
+    // std::cout<<r<<" "<<g<<" "<<b<<std::endl;
+
     unsigned rgb = ((r & 0x0ff) << 16) | ((g & 0x0ff) << 8) | (b & 0x0ff);
+    //  std::cout << rgb << std::endl;
     return rgb;
 }

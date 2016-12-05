@@ -28,6 +28,11 @@ private:
     };
 #undef d
     unsigned pal[216];
+//   constexpr static const unsigned pal[16] =
+//    {0x080000,0x201A0B,0x432817,0x492910,
+//     0x234309,0x5D4F1E,0x9C6B20,0xA9220F,
+//     0x2B347C,0x2B7409,0xD0CA40,0xE8A077,
+//     0x6A94AB,0xD5C4B3,0xFCE76E,0xFCFAE2 };
     double ColorCompare(int r1, int g1, int b1, int r2, int g2, int b2);
     double EvaluateMixingError(int r,int g,int b,
                                int r0,int g0,int b0,
