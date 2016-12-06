@@ -1,18 +1,30 @@
 #ifndef MAINMANAGER_H
 #define MAINMANAGER_H
-#include <QImage>
 #include "DataManager.h"
-#include <QString>
-#include <DitherManager.h>
 #include "MetricsManager.h"
-class MainManager
-{
+#include <DitherManager.h>
+#include <QImage>
+#include <QString>
+struct fileSizes {
+    int newFileSize = 0;
+    int oldFileSize = 0;
+};
+
+struct info {
+    fileSizes imageSize;
+    int timeDither = 0;
+};
+//in KBytes
+
+class MainManager {
 public:
     void loadImage(QString filename);
 
-    int  dither(DitherManager::kind_dither kindDither);
+    info dither(DitherManager::kind_dither kindDither);
     double getMetrics(MetricsManager::kind_metrics kindMetrics, DataManager::kind kindImage);
     void convert();
+    fileSizes convert(DitherManager::kind_dither kind);
+
 private:
     DataManager dataManager;
     DitherManager ditherManager;

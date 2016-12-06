@@ -1,6 +1,9 @@
 #include <Magick++.h>
 #include <MainManager.h>
 #include <iostream>
+#include <thread>
+#include <QFileInfo>
+
 void MainManager::loadImage(QString filename)
 {
     dataManager.loadImage(filename, DataManager::start_image);
@@ -8,12 +11,21 @@ void MainManager::loadImage(QString filename)
     ditherManager.initImages(dataManager.getImage(DataManager::start_image), dataManager.getImage(DataManager::dithered_image));
 }
 
-int MainManager::dither(DitherManager::kind_dither kindDither)
+info MainManager::dither(DitherManager::kind_dither kindDither)
 {
-    ditherManager.Dither(kindDither);
-    int time = ditherManager.getTime();
+    //пока не знаю как распараллелить
+    //    auto dither = [this](DitherManager::kind_dither kindDither)->int{
+
+    //        int time = ditherManager.Dither(kindDither);
+    //        convert(kindDither);
+    //    };
+    //    std::thread newDither(dither);
+    info result;
+    result.timeDither = ditherManager.Dither(kindDither);
+    result.imageSize = convert(kindDither);
+
     dataManager.loadImage(ditherManager.getImage());
-    return time;
+    return result;
 }
 double MainManager::getMetrics(MetricsManager::kind_metrics kindMetrics, DataManager::kind kindImage)
 {
@@ -33,6 +45,7 @@ double MainManager::getMetrics(MetricsManager::kind_metrics kindMetrics, DataMan
     return metricsManager.getMetrics(image1, image2, kindMetrics);
 }
 
+//плохо, что две функции, их МОЖНО слить в одну(наверное)
 void MainManager::convert()
 {
     QString filename = DataManager::getImageName(DataManager::start_image);
@@ -50,4 +63,30 @@ void MainManager::convert()
         std::cout << "cant read file";
     }
     dataManager.loadImage(DataManager::getImageName(DataManager::converted_image), DataManager::converted_image);
+}
+
+//return new and old file sizes
+fileSizes MainManager::convert(DitherManager::kind_dither kind)
+{
+    QString filename = DitherManager::getImageName(kind);
+    Magick::Image image;
+    Magick::Image netscape;
+    try {
+        netscape.read("netscape.gif");
+        std::cout << filename.toStdString() << std::endl;
+        const std::string name = filename.toStdString();
+        image.read(name.c_str());
+        image.map(netscape, false);
+        image.write(DitherManager::getImageName(kind, true).toStdString());
+
+    } catch (Magick::Exception& error_) {
+        std::cout << "cant read file";
+    }
+    QFileInfo newFile(DitherManager::getImageName(kind,true));
+    QFileInfo oldFile(DataManager::getImageName(DataManager::start_image));
+    fileSizes result;
+    result.newFileSize =static_cast<int>(newFile.size()/1024);
+    result.oldFileSize = static_cast<int>(oldFile.size()/1024);
+    return  result;
+    //dataManager.loadImage(DataManager::getImageName(DataManager::converted_image), DataManager::converted_image);
 }

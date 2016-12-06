@@ -92,7 +92,7 @@ void MainWindow::on_pushButton_clicked()
         kindDither = DitherManager::white_noise;
     }
 
-    int _time = mainManager.dither(kindDither);
+    auto _info = mainManager.dither(kindDither);
 
     QPixmap temp(DataManager::getImageName(DataManager::dithered_image));
     ui->w_dith->setPixmap(temp);
@@ -106,8 +106,14 @@ void MainWindow::on_pushButton_clicked()
     ssim = ssim.number(mainManager.getMetrics(MetricsManager::ssim, DataManager::dithered_image));
     ui->textEdit->append("SSIM: " + ssim);
     QString time;
-    time = time.number(_time);
+    time = time.number(_info.timeDither);
     ui->textEdit->append("Time, ms: " + time);
+    QString oldFileSize;
+    oldFileSize= oldFileSize.number(_info.imageSize.oldFileSize);
+    ui->textEdit->append("OldFileSize, KB: " + oldFileSize);
+    QString newFileSize;
+    newFileSize= newFileSize.number(_info.imageSize.newFileSize);
+    ui->textEdit->append("NewFileSize, KB: " + newFileSize);
 }
 
 void MainWindow::on_convert_end()
@@ -166,7 +172,6 @@ void MainWindow::on_plus_clicked()
     }
     }
 }
-#include <iostream>
 void MainWindow::on_minus_clicked()
 {
     double scale = 0.8;

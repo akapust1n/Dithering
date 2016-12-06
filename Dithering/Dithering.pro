@@ -23,7 +23,6 @@ SOURCES += main.cpp\
     ColorMap.cpp \
     MetricsManager.cpp \
     Metrics.cpp \
-    ImageViewer.cpp \
     YlioumaDith.cpp
 
 HEADERS  += MainWindow.h \
@@ -34,7 +33,6 @@ HEADERS  += MainWindow.h \
     ColorMap.h \
     MetricsManager.h \
     Metrics.h \
-    ImageViewer.h \
     YlioumaDith.h
 
 FORMS    += MainWindow.ui

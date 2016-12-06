@@ -5,6 +5,8 @@
 #include <QImage>
 #include <ctime>
 #include <iostream>
+#include <Magick++.h>
+
 
 QRgb Dithering::NewCOLOR(QColor pixel, int number = 0)
 {
@@ -21,27 +23,35 @@ QRgb Dithering::NewCOLOR(QColor pixel, int number = 0)
     _value = qRgb(rw, gw, bw);
     return _value;
 }
-void WhiteNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
+int WhiteNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
     height = image2->height();
+    start = std::chrono::system_clock::now();
     for (int i = 0; i < height; i++)
         for (int j = 0; j < width; j++) {
             QRgb color = NewCOLOR(image1->pixel(j, i), rand() % 256);
             image2->setPixel(j, i, color);
         }
+    end = std::chrono::system_clock::now();
+    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>
+                                 (end-start).count();
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::white_noise));
+    return  elapsed_time;
+
 }
 
-void BrownNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
+
+int BrownNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
     height = image2->height();
     int number[3];
     srand(time(0));
+    start = std::chrono::system_clock::now();
 
     for (int i = 0; i < height; i++)
         for (int j = 0; j < width; j++) {
@@ -53,17 +63,23 @@ void BrownNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_pt
             QRgb color = NewCOLOR(image1->pixel(j, i), number[2]);
             image2->setPixel(j, i, color);
         }
+    end = std::chrono::system_clock::now();
+    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>
+                                 (end-start).count();
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::brown_noise));
+    return  elapsed_time;
+
 }
 
-void VioletNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
+int VioletNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
     height = image2->height();
     int number[3];
     srand(time(0));
+    start = std::chrono::system_clock::now();
 
     for (int i = 0; i < height; i++)
         for (int j = 0; j < width; j++) {
@@ -78,17 +94,23 @@ void VioletNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_p
             QRgb color = NewCOLOR(image1->pixel(j, i), number[2]);
             image2->setPixel(j, i, color);
         }
+    end = std::chrono::system_clock::now();
+    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>
+                                 (end-start).count();
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::violet_noise));
+    return  elapsed_time;
+
 }
 
-void BlueNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
+int BlueNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
     height = image2->height();
     int number[3];
     srand(time(0));
+    start = std::chrono::system_clock::now();
 
     for (int i = 0; i < height; i++)
         for (int j = 0; j < width; j++) {
@@ -102,17 +124,23 @@ void BlueNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr
             QRgb color = NewCOLOR(image1->pixel(j, i), number[2]);
             image2->setPixel(j, i, color);
         }
+    end = std::chrono::system_clock::now();
+    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>
+                                 (end-start).count();
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::blue_noise));
+    return  elapsed_time;
+
 }
 
-void PinkNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
+int PinkNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
     height = image2->height();
     int number[3];
     srand(time(0));
+    start = std::chrono::system_clock::now();
 
     for (int i = 0; i < height; i++)
         for (int j = 0; j < width; j++) {
@@ -124,17 +152,24 @@ void PinkNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr
             QRgb color = NewCOLOR(image1->pixel(j, i), number[2]);
             image2->setPixel(j, i, color);
         }
+    end = std::chrono::system_clock::now();
+    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>
+                                 (end-start).count();
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::pink_noise));
+    return  elapsed_time;
+
 }
 
-void FloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
+int FloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
     height = image2->height();
     ColorMap colorMap(width, height);
     colorMap.initImage(image1.get());
+    start = std::chrono::system_clock::now();
+
     for (int i = 1; i < height; i++)
         for (int j = 1; j < width; j++) {
             mRgb oldPixel = colorMap.getPixel(j, i);
@@ -150,18 +185,25 @@ void FloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<Q
 
             image2->setPixelColor(j, i, value);
         }
+    end = std::chrono::system_clock::now();
+    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>
+                                 (end-start).count();
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::floyd_sd));
+    return  elapsed_time;
+
 }
 
 
-void FalseFloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
+int FalseFloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
     height = image2->height();
     ColorMap colorMap(width, height);
     colorMap.initImage(image1.get());
+    start = std::chrono::system_clock::now();
+
     for (int i = height - 1; i > 0; i--)
         for (int j = width - 1; j > 0; j--) {
             mRgb oldPixel = colorMap.getPixel(j, i);
@@ -176,17 +218,24 @@ void FalseFloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_
 
             image2->setPixelColor(j, i, value);
         }
+    end = std::chrono::system_clock::now();
+    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>
+                                 (end-start).count();
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::false_floyd_sd));
+    return  elapsed_time;
+
 }
 
-void JJNDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<QImage> &image2)
+int JJNDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<QImage> &image2)
 {
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
     height = image2->height();
     ColorMap colorMap(width+2, height+2);
     colorMap.initImage(image1.get());
+    start = std::chrono::system_clock::now();
+
     for (int i = 2; i < height; i++)
         for (int j = 0; j < width; j++) {
             mRgb oldPixel = colorMap.getPixel(j, i);
@@ -210,7 +259,11 @@ void JJNDithering::Dither(std::shared_ptr<QImage> &image1, std::shared_ptr<QImag
 
             image2->setPixelColor(j, i, value);
         }
+    end = std::chrono::system_clock::now();
+    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>
+                                 (end-start).count();
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::jjn));
+    return  elapsed_time;
 
 }

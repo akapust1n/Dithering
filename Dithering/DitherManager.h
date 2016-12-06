@@ -20,9 +20,9 @@ public:
         jjn,
         yliluoma1
     };
-    void Dither(kind_dither kindDither);
+    int Dither(kind_dither kindDither);
     void initImages(std::shared_ptr<QImage> &_image1, std::shared_ptr<QImage> &_image2);
-    static  QString getImageName(kind_dither kindDither);
+    static  QString getImageName(kind_dither kindDither, bool isGIF = false);
     std::shared_ptr<QImage> &getImage();
     int getTime();
 
@@ -38,7 +38,6 @@ private:
     Yliluoma1 yliluoma1Dithering;
     std::shared_ptr<QImage> image1;
     std::shared_ptr<QImage> image2;
-    int last_elapsed_seconds = 0;
 };
 
 #endif // DITHERMANAGER_H

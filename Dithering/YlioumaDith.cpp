@@ -18,12 +18,14 @@ Yliluoma1::Yliluoma1()
     std::cout << index << "INDEX" << std::endl;
 }
 
-void Yliluoma1::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
+int Yliluoma1::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2)
 {
     std::cout << "START" << std::endl;
     image2.reset(new QImage(image1->width(), image1->height(), QImage::Format_RGB888));
     width = image2->width();
     height = image2->height();
+    start = std::chrono::system_clock::now();
+
 #pragma omp parallel for
     for (unsigned y = 0; y < height; ++y) {
         for (unsigned x = 0; x < width; ++x) {
@@ -48,9 +50,13 @@ void Yliluoma1::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>&
         }
         std::cout << y << std::endl;
     }
+    end = std::chrono::system_clock::now();
+    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>
+                                 (end-start).count();
     std::cout << "SAVE" << std::endl;
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::yliluoma1));
+    return  elapsed_time;
 }
 
 double Yliluoma1::ColorCompare(int r1, int g1, int b1, int r2, int g2, int b2)
