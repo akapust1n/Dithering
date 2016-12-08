@@ -1,8 +1,9 @@
 #include <Magick++.h>
 #include <MainManager.h>
-#include <iostream>
-#include <thread>
 #include <QFileInfo>
+#include <iostream>
+#include <mutex>
+#include <thread>
 
 void MainManager::loadImage(QString filename)
 {
@@ -82,11 +83,31 @@ fileSizes MainManager::convert(DitherManager::kind_dither kind)
     } catch (Magick::Exception& error_) {
         std::cout << "cant read file";
     }
-    QFileInfo newFile(DitherManager::getImageName(kind,true));
+    QFileInfo newFile(DitherManager::getImageName(kind, true));
     QFileInfo oldFile(DataManager::getImageName(DataManager::start_image));
     fileSizes result;
-    result.newFileSize =static_cast<int>(newFile.size()/1024);
-    result.oldFileSize = static_cast<int>(oldFile.size()/1024);
-    return  result;
+    result.newFileSize = static_cast<int>(newFile.size() / 1024);
+    result.oldFileSize = static_cast<int>(oldFile.size() / 1024);
+    return result;
     //dataManager.loadImage(DataManager::getImageName(DataManager::converted_image), DataManager::converted_image);
+}
+
+int MainManager::benchmack(DitherManager::kind_dither kindDither)
+{
+    int result = 0;
+    std::mutex _mutex;
+
+    auto dither = [this](DitherManager::kind_dither kindDither, int& result,std::mutex &_mutex) -> void {
+        std::lock_guard<std::mutex> tt(_mutex);
+        result += ditherManager.Benchmark(kindDither);
+        std::cout<<"ITERATION"<<std::endl;
+    };
+    for (int i = 0; i < 10; i++) {
+       std::thread _thread(dither, std::ref(kindDither), std::ref(result),std::ref(_mutex));
+        _thread.join();
+        //dither(kindDither,result);
+    }
+    //тут нужно что-то вроде std::future
+    std::cout<<"RESULT "<<result<<std::endl;
+    return result / 10;
 }

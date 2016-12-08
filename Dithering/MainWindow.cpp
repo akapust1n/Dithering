@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget* parent)
 {
     ui->setupUi(this);
     connect(this, SIGNAL(convert_end()), this, SLOT(on_convert_end()));
+    //connect(this,SIGNAL(process_start()),this,SLOT())
     for (int i = 0; i < 3; i++)
         scaleFactors[i] = 1;
 }
@@ -138,6 +139,64 @@ void MainWindow::convert()
     emit convert_end();
 }
 
+DitherManager::kind_dither MainWindow::currentDither()
+{
+    /* enum kind_dither {
+        white_noise,
+        blue_noise,
+        brown_noise,
+        red_noise,
+        violet_noise
+        floyd_sd,
+        false_floyd_sd,
+        jjn,
+        yliouma1
+    };*/
+    int index = ui->comboBox->currentIndex();
+    DitherManager::kind_dither kindDither;
+    switch (index) {
+    case 0: {
+        kindDither = DitherManager::white_noise;
+        break;
+    }
+    case 1: {
+        kindDither = DitherManager::blue_noise;
+        break;
+    }
+    case 2: {
+        kindDither = DitherManager::brown_noise;
+        break;
+    }
+    case 3: {
+        kindDither = DitherManager::violet_noise;
+        break;
+    }
+    case 4: {
+        kindDither = DitherManager::pink_noise;
+        break;
+    }
+    case 5: {
+        kindDither = DitherManager::floyd_sd;
+        break;
+    }
+    case 6: {
+        kindDither = DitherManager::false_floyd_sd;
+        break;
+    }
+    case 7: {
+        kindDither = DitherManager::jjn;
+        break;
+    }
+    case 8: {
+        kindDither = DitherManager::yliluoma1;
+        break;
+    }
+    default:
+        kindDither = DitherManager::white_noise;
+    }
+
+}
+
 void MainWindow::on_plus_clicked()
 {
     double scale = 1.2;
@@ -206,4 +265,14 @@ void MainWindow::on_minus_clicked()
         break;
     }
     }
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+  auto dither= currentDither();
+  int result = mainManager.benchmack(dither);
+  QString benchmark;
+  benchmark = benchmark.number(result);
+  ui->textEdit->append(ui->comboBox->currentText());
+  ui->textEdit->append("Benchmark(ms for dither): " + benchmark);
 }

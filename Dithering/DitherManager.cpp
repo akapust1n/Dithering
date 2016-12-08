@@ -49,6 +49,50 @@ int DitherManager::Dither(DitherManager::kind_dither kindDither)
 
 }
 
+int DitherManager::Benchmark(DitherManager::kind_dither kindDither)
+{ switch (kindDither) {
+    case white_noise: {
+       return whiteNoiseDithering.Dither(image1);
+        break;
+    }
+    case blue_noise: {
+        return blueNoiseDithering.Dither(image1, image2);
+    }
+    case violet_noise: {
+        violetNoiseDithering.Dither(image1, image2);
+        break;
+    }
+    case pink_noise: {
+        pinkNoiseDithering.Dither(image1, image2);
+        break;
+    }
+    case brown_noise: {
+        brownNoiseDithering.Dither(image1);
+        break;
+    }
+    case floyd_sd: {
+        floydSDDithering.Dither(image1);
+        break;
+    }
+    case false_floyd_sd: {
+        falseFloydSDDithering.Dither(image1);
+        break;
+    }
+    case jjn:{
+        jjnDithering.Dither(image1);
+        break;
+    }
+    case yliluoma1:{
+        yliluoma1Dithering.Dither(image1);
+        break;
+    }
+
+    default:
+        whiteNoiseDithering.Dither(image1);
+    };
+
+}
+
 void DitherManager::initImages(std::shared_ptr<QImage> &_image1, std::shared_ptr<QImage> &_image2)
 {
     image1 = _image1;

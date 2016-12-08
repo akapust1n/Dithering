@@ -105,8 +105,6 @@
        </layout>
       </widget>
      </widget>
-     <zorder>withDIthArea</zorder>
-     <zorder>horizontalLayoutWidget</zorder>
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -166,7 +164,7 @@
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>361</width>
+      <width>351</width>
       <height>71</height>
      </rect>
     </property>
@@ -256,69 +254,68 @@
      <string>Metrics</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QWidget" name="horizontalLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>80</y>
-      <width>97</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Benchmark</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
+      <x>460</x>
       <y>70</y>
-      <width>71</width>
+      <width>281</width>
       <height>41</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <layout class="QHBoxLayout" name="horizontalLayout_7">
      <item>
-      <widget class="QPushButton" name="plus">
-       <property name="font">
-        <font>
-         <family>GFS Complutum</family>
-         <pointsize>36</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>+</string>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="value">
+        <number>24</number>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="minus">
-       <property name="font">
-        <font>
-         <family>STIXSizeFiveSym</family>
-         <pointsize>36</pointsize>
-        </font>
-       </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QPushButton" name="plus">
+         <property name="font">
+          <font>
+           <family>GFS Complutum</family>
+           <pointsize>36</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>+</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="minus">
+         <property name="font">
+          <font>
+           <family>STIXSizeFiveSym</family>
+           <pointsize>36</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>-</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_3">
        <property name="text">
-        <string>-</string>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
+        <string>Benchmark</string>
        </property>
       </widget>
      </item>
     </layout>
    </widget>
-   <zorder>tabWidget</zorder>
-   <zorder>horizontalLayoutWidget_2</zorder>
-   <zorder>textEdit</zorder>
-   <zorder>pushButton_3</zorder>
-   <zorder>horizontalLayoutWidget</zorder>
-   <zorder>minus</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

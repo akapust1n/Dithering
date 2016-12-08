@@ -13,6 +13,9 @@ private:
 public:
     Yliluoma1();
     virtual int Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& image2);
+    virtual int Dither(std::shared_ptr<QImage>& image1);
+
+
 
 private:
 #define d(x) x / 64.0

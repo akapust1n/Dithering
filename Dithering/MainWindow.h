@@ -29,8 +29,12 @@ private slots:
 
     void on_minus_clicked();
 
+    void on_pushButton_3_clicked();
+
 signals:
     void convert_end();
+    void process_start();
+    void process_end();
 private:
     Ui::MainWindow *ui;
     MainManager mainManager;
@@ -39,6 +43,7 @@ private:
     int width;
     int height;
     double scaleFactors[3];
+    DitherManager::kind_dither currentDither();
 
 };
 

@@ -59,6 +59,12 @@ int Yliluoma1::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage>& 
     return  elapsed_time;
 }
 
+int Yliluoma1::Dither(std::shared_ptr<QImage> &image1)
+{
+//to slow for implement
+    return 0;
+}
+
 double Yliluoma1::ColorCompare(int r1, int g1, int b1, int r2, int g2, int b2)
 {
     double luma1 = (r1 * 299 + g1 * 587 + b1 * 114) / (255.0 * 1000);

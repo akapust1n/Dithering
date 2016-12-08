@@ -21,6 +21,7 @@ public:
         yliluoma1
     };
     int Dither(kind_dither kindDither);
+    int Benchmark(kind_dither kindDither);
     void initImages(std::shared_ptr<QImage> &_image1, std::shared_ptr<QImage> &_image2);
     static  QString getImageName(kind_dither kindDither, bool isGIF = false);
     std::shared_ptr<QImage> &getImage();

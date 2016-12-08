@@ -24,11 +24,13 @@ public:
     double getMetrics(MetricsManager::kind_metrics kindMetrics, DataManager::kind kindImage);
     void convert();
     fileSizes convert(DitherManager::kind_dither kind);
+    int benchmack(DitherManager::kind_dither kindDither);
 
 private:
     DataManager dataManager;
     DitherManager ditherManager;
     MetricsManager metricsManager;
+    const int benchSize =100;
 };
 
 #endif // MAINMANAGER_H
