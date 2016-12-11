@@ -7,42 +7,36 @@ int DitherManager::Dither(DitherManager::kind_dither kindDither)
     switch (kindDither) {
     case white_noise: {
        return whiteNoiseDithering.Dither(image1, image2);
-        break;
     }
     case blue_noise: {
         return blueNoiseDithering.Dither(image1, image2);
     }
     case violet_noise: {
-        violetNoiseDithering.Dither(image1, image2);
-        break;
+       return violetNoiseDithering.Dither(image1, image2);
     }
     case pink_noise: {
-        pinkNoiseDithering.Dither(image1, image2);
-        break;
+       return pinkNoiseDithering.Dither(image1, image2);
+
     }
     case brown_noise: {
-        brownNoiseDithering.Dither(image1, image2);
-        break;
+       return brownNoiseDithering.Dither(image1, image2);
     }
     case floyd_sd: {
-        floydSDDithering.Dither(image1,image2);
-        break;
+       return floydSDDithering.Dither(image1,image2);
     }
     case false_floyd_sd: {
-        falseFloydSDDithering.Dither(image1,image2);
-        break;
+       return falseFloydSDDithering.Dither(image1,image2);
     }
     case jjn:{
-        jjnDithering.Dither(image1,image2);
-        break;
+       return jjnDithering.Dither(image1,image2);
+
     }
     case yliluoma1:{
-        yliluoma1Dithering.Dither(image1, image2);
-        break;
+       return yliluoma1Dithering.Dither(image1, image2);
     }
 
     default:
-        whiteNoiseDithering.Dither(image1, image2);
+       return whiteNoiseDithering.Dither(image1, image2);
     };
 
 
@@ -59,36 +53,36 @@ int DitherManager::Benchmark(DitherManager::kind_dither kindDither)
         return blueNoiseDithering.Dither(image1, image2);
     }
     case violet_noise: {
-        violetNoiseDithering.Dither(image1, image2);
-        break;
+        return violetNoiseDithering.Dither(image1, image2);
+
     }
     case pink_noise: {
-        pinkNoiseDithering.Dither(image1, image2);
-        break;
+         return pinkNoiseDithering.Dither(image1, image2);
+
     }
     case brown_noise: {
-        brownNoiseDithering.Dither(image1);
-        break;
+        return brownNoiseDithering.Dither(image1);
+
     }
     case floyd_sd: {
-        floydSDDithering.Dither(image1);
-        break;
+        return floydSDDithering.Dither(image1);
+
     }
     case false_floyd_sd: {
-        falseFloydSDDithering.Dither(image1);
-        break;
+        return falseFloydSDDithering.Dither(image1);
+
     }
     case jjn:{
-        jjnDithering.Dither(image1);
-        break;
+        return jjnDithering.Dither(image1);
+
     }
     case yliluoma1:{
-        yliluoma1Dithering.Dither(image1);
-        break;
+        return yliluoma1Dithering.Dither(image1);
+
     }
 
     default:
-        whiteNoiseDithering.Dither(image1);
+        return whiteNoiseDithering.Dither(image1);
     };
 
 }

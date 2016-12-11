@@ -5,7 +5,8 @@
 #include "MainManager.h"
 #include <thread>
 #include <mutex>
-
+#include <memory>
+#include <QOpenGLTexture>
 
 namespace Ui {
 class MainWindow;
@@ -44,6 +45,8 @@ private:
     int height;
     double scaleFactors[3];
     DitherManager::kind_dither currentDither();
+    std::unique_ptr <QOpenGLTexture> texture;
+    QString sourceName;
 
 };
 

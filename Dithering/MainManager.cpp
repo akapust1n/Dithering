@@ -102,12 +102,12 @@ int MainManager::benchmack(DitherManager::kind_dither kindDither)
         result += ditherManager.Benchmark(kindDither);
         std::cout<<"ITERATION"<<std::endl;
     };
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < benchSize; i++) {
        std::thread _thread(dither, std::ref(kindDither), std::ref(result),std::ref(_mutex));
         _thread.join();
         //dither(kindDither,result);
     }
     //тут нужно что-то вроде std::future
     std::cout<<"RESULT "<<result<<std::endl;
-    return result / 10;
+    return result / benchSize;
 }

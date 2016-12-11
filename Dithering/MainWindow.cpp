@@ -22,7 +22,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    QString sourceName = QFileDialog::getOpenFileName(this, QString::fromUtf8("Открыть файл"),
+    sourceName = QFileDialog::getOpenFileName(this, QString::fromUtf8("Открыть файл"),
         QDir::currentPath(), "images (*.*)");
     if (!sourceName.isEmpty()) {
         mainManager.loadImage(sourceName);
@@ -34,6 +34,7 @@ void MainWindow::on_pushButton_2_clicked()
         //ui->originalArea->widget()->releaseShortcut()
         std::thread thr(&MainWindow::convert, this);
         thr.detach();
+        texture.reset(new QOpenGLTexture(QImage(sourceName)));
     }
 }
 
@@ -48,7 +49,8 @@ void MainWindow::on_pushButton_clicked()
         floyd_sd,
         false_floyd_sd,
         jjn,
-        yliouma1
+        yliouma1,
+        shader
     };*/
     int index = ui->comboBox->currentIndex();
     DitherManager::kind_dither kindDither;
@@ -89,6 +91,9 @@ void MainWindow::on_pushButton_clicked()
         kindDither = DitherManager::yliluoma1;
         break;
     }
+    case 9: {
+        //ui->openGLWidget->
+    }
     default:
         kindDither = DitherManager::white_noise;
     }
@@ -110,10 +115,10 @@ void MainWindow::on_pushButton_clicked()
     time = time.number(_info.timeDither);
     ui->textEdit->append("Time, ms: " + time);
     QString oldFileSize;
-    oldFileSize= oldFileSize.number(_info.imageSize.oldFileSize);
+    oldFileSize = oldFileSize.number(_info.imageSize.oldFileSize);
     ui->textEdit->append("OldFileSize, KB: " + oldFileSize);
     QString newFileSize;
-    newFileSize= newFileSize.number(_info.imageSize.newFileSize);
+    newFileSize = newFileSize.number(_info.imageSize.newFileSize);
     ui->textEdit->append("NewFileSize, KB: " + newFileSize);
 }
 
@@ -194,7 +199,6 @@ DitherManager::kind_dither MainWindow::currentDither()
     default:
         kindDither = DitherManager::white_noise;
     }
-
 }
 
 void MainWindow::on_plus_clicked()
@@ -204,29 +208,31 @@ void MainWindow::on_plus_clicked()
     int tab = ui->tabWidget->currentIndex();
     switch (tab) {
     case (0): {
-        auto temp = ui->start_image->pixmap();
+        QPixmap temp(DataManager::getImageName(DataManager::start_image));
         scaleFactors[0] *= scale;
         if (scaleFactors[0] > 4)
             scaleFactors[0] = 4;
-        ui->start_image->setPixmap(temp->scaled(width * scaleFactors[0], height * scaleFactors[0], Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        ui->start_image->setPixmap(temp.scaled(width * scaleFactors[0], height * scaleFactors[0], Qt::KeepAspectRatio, Qt::SmoothTransformation));
         break;
     }
     case (1): {
-        auto temp = ui->w_dith->pixmap();
+        QPixmap temp(DataManager::getImageName(DataManager::dithered_image));
         scaleFactors[1] *= scale;
         if (scaleFactors[1] > 4)
             scaleFactors[1] = 4;
 
-        ui->w_dith->setPixmap(temp->scaled(width * scaleFactors[1], height * scaleFactors[1], Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        ui->w_dith->setPixmap(temp.scaled(width * scaleFactors[1], height * scaleFactors[1], Qt::KeepAspectRatio, Qt::SmoothTransformation));
         break;
     }
     case (2): {
-        auto temp = ui->bad_image->pixmap();
+        QPixmap temp(DataManager::getImageName(DataManager::converted_image));
+
+        // auto temp = ui->bad_image->pixmap();
         scaleFactors[2] *= scale;
         if (scaleFactors[2] > 4)
             scaleFactors[2] = 4;
 
-        ui->bad_image->setPixmap(temp->scaled(width * scaleFactors[2], height * scaleFactors[2], Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        ui->bad_image->setPixmap(temp.scaled(width * scaleFactors[2], height * scaleFactors[2], Qt::KeepAspectRatio, Qt::SmoothTransformation));
         break;
     }
     }
@@ -238,30 +244,31 @@ void MainWindow::on_minus_clicked()
     int tab = ui->tabWidget->currentIndex();
     switch (tab) {
     case (0): {
-        auto temp = ui->start_image->pixmap();
+        QPixmap temp(DataManager::getImageName(DataManager::start_image));
         scaleFactors[0] *= scale;
         if (scaleFactors[0] < 0.4)
             scaleFactors[0] = 0.4;
 
-        ui->start_image->setPixmap(temp->scaled(width * scaleFactors[0], height * scaleFactors[0], Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        ui->start_image->setPixmap(temp.scaled(width * scaleFactors[0], height * scaleFactors[0], Qt::KeepAspectRatio, Qt::SmoothTransformation));
         break;
     }
     case (1): {
-        auto temp = ui->w_dith->pixmap();
+        QPixmap temp(DataManager::getImageName(DataManager::dithered_image));
         scaleFactors[1] *= scale;
         if (scaleFactors[1] < 0.4)
             scaleFactors[1] = 0.4;
 
-        ui->w_dith->setPixmap(temp->scaled(width * scaleFactors[1], height * scaleFactors[1], Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        ui->w_dith->setPixmap(temp.scaled(width * scaleFactors[1], height * scaleFactors[1], Qt::KeepAspectRatio, Qt::SmoothTransformation));
         break;
     }
     case (2): {
-        auto temp = ui->bad_image->pixmap();
+        QPixmap temp(DataManager::getImageName(DataManager::converted_image));
+        // auto temp = ui->bad_image->pixmap();
         scaleFactors[2] *= scale;
         if (scaleFactors[2] < 0.4)
             scaleFactors[2] = 0.4;
-
-        ui->bad_image->setPixmap(temp->scaled(width * scaleFactors[2], height * scaleFactors[2], Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        //ui->bad_image->resize(width * scaleFactors[2],height * scaleFactors[2]);
+        ui->bad_image->setPixmap(temp.scaled(width * scaleFactors[2], height * scaleFactors[2], Qt::KeepAspectRatio, Qt::SmoothTransformation));
         break;
     }
     }
@@ -269,10 +276,10 @@ void MainWindow::on_minus_clicked()
 
 void MainWindow::on_pushButton_3_clicked()
 {
-  auto dither= currentDither();
-  int result = mainManager.benchmack(dither);
-  QString benchmark;
-  benchmark = benchmark.number(result);
-  ui->textEdit->append(ui->comboBox->currentText());
-  ui->textEdit->append("Benchmark(ms for dither): " + benchmark);
+    auto dither = currentDither();
+    int result = mainManager.benchmack(dither);
+    QString benchmark;
+    benchmark = benchmark.number(result);
+    ui->textEdit->append(ui->comboBox->currentText());
+    ui->textEdit->append("Benchmark(ms for dither): " + benchmark);
 }
