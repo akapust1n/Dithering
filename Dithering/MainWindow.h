@@ -45,7 +45,6 @@ private:
     int height;
     double scaleFactors[3];
     DitherManager::kind_dither currentDither();
-    std::unique_ptr <QOpenGLTexture> texture;
     QString sourceName;
 
 };

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core gui widgets
+QT += core gui widgets opengl
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 QMAKE_CXXFLAGS += -fopenmp
@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     ColorMap.cpp \
     MetricsManager.cpp \
     Metrics.cpp \
-    YlioumaDith.cpp
+    YlioumaDith.cpp \
+    OGLWidget.cpp
 
 HEADERS  += MainWindow.h \
     DataManager.h \
@@ -33,7 +34,8 @@ HEADERS  += MainWindow.h \
     ColorMap.h \
     MetricsManager.h \
     Metrics.h \
-    YlioumaDith.h
+    YlioumaDith.h \
+    OGLWidget.h
 
 FORMS    += MainWindow.ui
 CONFIG += c++14

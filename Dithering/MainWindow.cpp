@@ -34,7 +34,10 @@ void MainWindow::on_pushButton_2_clicked()
         //ui->originalArea->widget()->releaseShortcut()
         std::thread thr(&MainWindow::convert, this);
         thr.detach();
-        texture.reset(new QOpenGLTexture(QImage(sourceName)));
+
+        ui->openGLWidget->setFilename(sourceName);
+
+      //  ui->openGLWidget->
     }
 }
 
