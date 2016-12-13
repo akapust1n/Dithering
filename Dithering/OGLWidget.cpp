@@ -1,6 +1,7 @@
 #include "OGLWidget.h"
 #include <QPainter>
 #include <iostream>
+#include <chrono>
 OGLWidget::OGLWidget(QWidget* parent)
     : QOpenGLWidget(parent)
 
@@ -92,8 +93,14 @@ void OGLWidget::paintEvent(QPaintEvent* event)
 
     QPainter painter(this);
     // native draw
+    std::chrono::time_point<std::chrono::system_clock>
+        start, end;
     painter.beginNativePainting();
+    start = std::chrono::system_clock::now();
+
     drawGL();
+    end = std::chrono::system_clock::now();
+std::cout<<"SHADER TIME"<<std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()<<std::endl;
     painter.endNativePainting();
 }
 

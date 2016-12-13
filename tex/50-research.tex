@@ -1,17 +1,108 @@
-%\chapter{Экспериментальный раздел}
+\chapter{Исследовательский раздел}
 %\chapter{Заключение}
-%\label{cha:research}
+\label{cha:research}
+\section{Время дизеринга раличных алгоритмов}
 
 %В данном разделе проводятся вычислительные эксперименты.
-%А на рис.~\ref{fig:spire01} показана схема мыслительного процесса автора...
+Рассмотрим время работы различных алгоритмов для различных размеров изображения.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{img/img9.png}
+	\caption{Диаграмма времени дизеринга(логарифмическая шкала)}
+	\label{fig:spire05}
+\end{figure}
 
+\begin{tabular}{|@{\hspace*{2mm}}l||*{3}{c|}}\hline
+
+	&\makebox[12em]{Размер, пиксели}&\makebox[6em]{Время, мкс}
+	%	&\makebox[3em]{6/3}&\makebox[3em]{6/4}
+	\\\hline\hline
+	White noise&133x90&862\\\hline
+	Blue noise&133x90&930\\\hline
+	Brown noise&133x90&934\\\hline
+	Violet noise &133x90&937\\\hline
+	Pink noise noise&133x90&930\\\hline
+	Floyd-SD&133x90&1200\\\hline
+	F. Floyd-SDe&133x90&1093\\\hline
+	JJN &133x90&1909\\\hline
+	White noise&458x458&15735\\\hline
+	Blue noise&458x458&19374\\\hline
+	Brown noise&458x458&19432\\\hline
+	Violet noise &458x458&18787\\\hline
+	Pink noise noise&458x458&18129\\\hline
+	Floyd-SD&458x458&27173\\\hline
+	F. Floyd-SDe&458x458&26424\\\hline
+	JJN &458x458&47201\\\hline
+	White noise&458x458&194376\\\hline
+	Blue noise&458x458&200577\\\hline
+	Brown noise&458x458&208400\\\hline
+	Violet noise &458x458&251294\\\hline
+	Pink noise noise&458x458&258775\\\hline
+	Floyd-SD&458x458&251294\\\hline
+	F. Floyd-SDe&458x458&387104\\\hline
+	JJN &458x458&857481\\\hline
+\end{tabular}
+\bigskip
+\\
+Из рассмотрения вынесены алгоритм Юлиомы в вследствие того, что он значительно медленней других алгоритмо(2732568 мкс для изображения 113х90) в и алгоритм Байера, реализованный при помощи шейдеров, вследствии того, что он не не укладывается в рамки требуемой палитры (при этом он работает очень быстро 64 мс для изображени 640х480)ю
+\section{Качество получаемого изображения}
+\begin{tabular}{|@{\hspace*{2mm}}l||*{3}{c|}}\hline
+	
+	&\makebox[15em]{PSNR}&\makebox[6em]{SSIM}
+	%	&\makebox[3em]{6/3}&\makebox[3em]{6/4}
+	\\\hline\hline
+	White noise&33.2894&0.914778\\\hline
+	Blue noise& 36.1756&0.971626\\\hline
+	Brown noise&33.32370&0.915767\\hline
+	Violet noise &37.63480&0.984574\\\hline
+	Pink noise &36.4484&0.974718\\\hline
+	Floyd-SD& 37.0553&0.979173\\\hline
+	F. Floyd-SDe&36.8401&0.976452\\\hline
+	JJN &37.30740&0.981688\\\hline
+	Yliouma&36.2359&0.967796\\\hline
+	Without dithering&37.6348&0.984574\\\hline
+\end{tabular}
+\bigskip
+\\
+Несмотря на то, что некоторые сложные алгоритмы дизеринга диффузии ошибок обещают получения хорошего качества изображений,некоторые алгоритмы случайного дизеринга на конкретных изображениях дают лучший результат. Для того чтобы получить наилучший результат дизеринга, следует проанализировать результаты дизеринга нескольких изображений и выбрать среди них наилучшее.
+Так же следует отметить некоторую необъективность метрик: результат метрик не всегда совпадает с человеческим восприятием картинки.
 %\begin{figure}
  % \centering
  % \caption{Как страшно жить}
  % \label{fig:spire01}
 %\end{figure}
-
-
+\section{Размер получаемого изображения}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{img/img10.png}
+	\caption{Диаграмма размера изображения(логарифмическая шкала)}
+	\label{fig:spire06}
+\end{figure}
+\begin{tabular}{|@{\hspace*{2mm}}l||*{3}{c|}}\hline
+	
+	&\makebox[8em]{Разрешение, пикс}&\makebox[5em]{Размер, кб} &\makebox[7em]{Исх. раз., кб}
+	%	&\makebox[3em]{6/3}&\makebox[3em]{6/4}
+	\\\hline\hline
+	White noise&900x675&186&\multirow{6}{*}{2373 bmp,1779 png} \\\cline{1-3}
+	Blue noise& 900x675&135& \\\cline{1-3}
+	Brown noise&900x6750&186&\\\cline{1-3}
+	Violet noise &900x675&98&\\\cline{1-3}
+	Pink noise &900x675&1158&\\\cline{1-3}
+	Floyd-SD& 900x675&1273&\\\cline{1-3}
+	F. Floyd-SDe&900x675&143&\\\cline{1-3}
+	JJN &900x675&117&\\\hline
+	White noise&3984х32355&3431&\multirow{6}{*}{50344 bmp,37758 png} \\\cline{1-3}
+	Blue noise& 3984х3235&2570& \\\cline{1-3}
+	Brown noise&3984х3235&3432&\\\cline{1-3}
+	Violet noise &3984х3235&1950&\\\cline{1-3}
+	Pink noise &3984х3235&2406&\\\cline{1-3}
+	Floyd-SD& 3984х32355&3605&\\\cline{1-3}
+	F. Floyd-SDe&3984х3235&4269&\\\cline{1-3}
+	JJN &3984х3235&3716&\\\hline
+\end{tabular}
+\bigskip
+\\
+Из вышеприведенной таблицы, можно заметить, размер изображения после дизеринга значительно уменьшиается,достирается выигрыш в размере изображение до 15 раз, в зависимости от иходного контейнера изображения и выбранного способра дизеринга.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "rpz"

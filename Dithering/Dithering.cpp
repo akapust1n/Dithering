@@ -33,7 +33,7 @@ int WhiteNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr
             image2->setPixelColor(j, i, color);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::white_noise));
@@ -56,7 +56,7 @@ int WhiteNoiseDithering::Dither(std::shared_ptr<QImage>& image1)
             image2->setPixelColor(j, i, color);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
     std::cout << "TIME " << elapsed_time << std::endl;
     return elapsed_time;
 }
@@ -81,7 +81,7 @@ int BrownNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr
             image2->setPixelColor(j, i, color);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::brown_noise));
@@ -112,7 +112,7 @@ int BrownNoiseDithering::Dither(std::shared_ptr<QImage>& image1)
             image2->setPixelColor(j, i, color);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::brown_noise));
@@ -143,7 +143,7 @@ int VioletNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_pt
             image2->setPixelColor(j, i, color);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::violet_noise));
@@ -177,7 +177,7 @@ int VioletNoiseDithering::Dither(std::shared_ptr<QImage>& image1)
             image2->setPixelColor(j, i, color);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
 
     return elapsed_time;
@@ -205,7 +205,7 @@ int BlueNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<
             image2->setPixelColor(j, i, color);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::blue_noise));
@@ -238,7 +238,7 @@ int BlueNoiseDithering::Dither(std::shared_ptr<QImage>& image1)
             image2->setPixelColor(j, i, color);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
 
 
@@ -267,7 +267,7 @@ int PinkNoiseDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<
             image2->setPixelColor(j, i, color);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::pink_noise));
@@ -300,7 +300,7 @@ int PinkNoiseDithering::Dither(std::shared_ptr<QImage>& image1)
             image2->setPixelColor(j, i, color);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
 
      return elapsed_time;
@@ -314,7 +314,16 @@ int FloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QI
     ColorMap colorMap(width, height);
     colorMap.initImage(image1.get());
     start = std::chrono::system_clock::now();
-
+    for (int i = 0; i < width; i++)
+        for (int j = 0; j < 2; j++) {
+            QColor color= NewCOLOR(image1->pixel(i, j));
+            image2->setPixelColor(i, j, color);
+        }
+    for (int i = 0; i < height; i++)
+        for (int j = 0; j < 2; j++) {
+            QColor color= NewCOLOR(image1->pixel(j, i));
+            image2->setPixelColor(j, i, color);
+        }
     for (int i = 1; i < height; i++)
         for (int j = 1; j < width; j++) {
             mRgb oldPixel = colorMap.getPixel(j, i);
@@ -331,7 +340,7 @@ int FloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QI
             image2->setPixelColor(j, i, value);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::floyd_sd));
@@ -367,7 +376,7 @@ int FloydSDDithering::Dither(std::shared_ptr<QImage>& image1)
             image2->setPixelColor(j, i, value);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
     return elapsed_time;
 }
@@ -406,7 +415,7 @@ int FalseFloydSDDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_p
             image2->setPixelColor(j, i, value);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::false_floyd_sd));
@@ -451,7 +460,7 @@ int FalseFloydSDDithering::Dither(std::shared_ptr<QImage>& image1)
             image2->setPixelColor(j, i, value);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
 
     return elapsed_time;
@@ -495,7 +504,7 @@ int JJNDithering::Dither(std::shared_ptr<QImage>& image1, std::shared_ptr<QImage
             image2->setPixelColor(j, i, value);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
     image2->save(DataManager::getImageName(DataManager::dithered_image));
     image2->save(DitherManager::getImageName(DitherManager::jjn));
 
@@ -543,7 +552,7 @@ int JJNDithering::Dither(std::shared_ptr<QImage>& image1)
             image2->setPixelColor(j, i, value);
         }
     end = std::chrono::system_clock::now();
-    elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
 
     return elapsed_time;

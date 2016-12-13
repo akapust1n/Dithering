@@ -48,6 +48,7 @@ for x in range(height):
         else:
             P(x,y) = 0
 \end{lstlisting}
+
 \section{Виды случайных распределений} 
 \subsection{Белый шум}
 Белый шумом называют сигнал с равномерной спектральной плотностью на всех частотах и дисперсией, равной бесконечности. Является стационарным случайным процессом.
@@ -56,7 +57,7 @@ for x in range(height):
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{img/8_white_noise.png}
-	\caption{Диаграмма белого шума//почему-то очень много места сверху}
+	\caption{Диаграмма белого шума}
 	\label{fig:spire05}
 \end{figure}
 
@@ -111,40 +112,104 @@ return output
 
 \subsection{Розовый и синий шумы}
 Розовый и синий шумы представляют собой "промежуточные" шумы.Изобржаение с розовым шумом темнее  изображения с белым шумом, но светлее изображения с коричневым шумом. Изображение с синим шумом светлее изображения с белым шумом, но темнее чем изображение с фиолетовым шумом. Их получение аналогично получению со коричневого и фиолетового шумов.
-
+\section{Алгоритм Байера}
+  
+  \begin{lstlisting}[style=pseudocode,caption={Алгоритм Флойда-Стейнберга}]
+For each pixel, Input,:
+    Factor  = ThresholdMatrix[xcoordinate % X][ycoordinate % Y];
+    Attempt = Input + Factor * Threshold
+    Color = FindClosestColorFrom(Palette, Attempt)
+  \end{lstlisting}
 \section{Алгоритм Флойда-Стейнберга}
 Рассмотрим более детально алгоритм Флойда-Стейнберга.
 P(x,y) - цвет пикселя в точке x,y
 I(x,y) - предполгаемый цвет пикселя с учетом ошибки(действительное число)
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=\textwidth]{img/1.png}
+ 	\includegraphics[width=\textwidth]{img/1.png}
 	\caption{Схема рассеивания ошибки}
 	\label{fig:spire03}
 \end{figure}
+Следует отметить, что сумма "долей" рассевания ошибки и для других алгоритмов упорядоченного дизеринга будет равна единице.
 \begin{lstlisting}[style=pseudocode,caption={Алгоритм Флойда-Стейнберга}]
 for x in range(width):
     for y in range(height):
        P(x,y) = trunc(I(x,y)+0.5)
        e = I(x,y) - P(x,y)
-       I(x,y+1) += alpha*e
-       I(x+1, y-1) += beta*e
-       I(x+1, y) += gamma*e
-       I(x+1, y+1) += sigma*e
+       I(x,y-1) += 7/16*e
+       I(x+1, y-1) += 3/16*e
+       I(x+1, y) += 5/16*e
+       I(x+1, y+1) += 1/16*e
 \end{lstlisting}
-\section{Комбинация алгоритмов Флойда-Стейнберга и алгоритма случайного распределения}
-Комбинируя алгоритмы Флойда-Стейнберга и алгоритм случайнгого распределения, мы, возможно, получим алгоритм, превосходящий их по метрикам SSIM и PSNR.
-Идея совмещения заключается в том, что коэффициенты диффузии ошибки вычисляются при помощи генерации элемента последовательти шума. Например, для коэффициента 3/16 и алгоритма белоого шума, можно будет равновероятности получить вместо этого коэффициентв 0/16,1/16,2/16,3/16.\\
-Алгоритм комбинации для белого шума, комбинации остальных шумов и алгоритма Флойда-Стейнберга тривиальны и аналогичны. 
-\begin{lstlisting}[style=pseudocode,caption={Алгоритм Флойда-Стейнберга и белый шум}]
+\section{Ложный алгоритм Флойда-Стейнберга}
+Отличительной особенностью ложного алгоритма Флойда-Стейнберга является по пикселям изображения справа-налево, а не слева-направо как в большинстве других алгоритмов.
+\begin{lstlisting}[style=pseudocode,caption={Ложный алгоритм Флойда-Стейнберга}]
 for x in range(width):
     for y in range(height):
         P(x,y) = trunc(I(x,y)+0.5)
         e = I(x,y) - P(x,y)
-        I(x,y+1) += random.randint(1,alpha*16)/16*e
-        I(x+1, y-1) += random.randint(1,beta*16)/16*e
-        I(x+1, y) += random.randint(1,gamma*16)/16*e
-        I(x+1, y+1) +=  random.randint(1,sigma*16)/16*e
+        P(x,y) = trunc(I(x,y)+0.5)
+        e = I(x,y) - P(x,y)
+        I(x,y-1) += 3/8*e
+        I(x-1, y-1) += 2/8*e
+        I(x-1, y) += 3/8*e
+\end{lstlisting}
+\section{Алгоритм Джарвиса,Джунка и Нинка}
+
+\begin{lstlisting}[style=pseudocode,caption={Алгоритм Джарвиса,Джунка и Нинка}]
+for x in range(width):
+    for y in range(height):
+        P(x,y) = trunc(I(x,y)+0.5)
+        e = I(x,y) - P(x,y)
+        P(x,y) = trunc(I(x,y)+0.5)
+        e = I(x,y) - P(x,y)
+        I(x,y-1) += 3/48*e
+        I(x+1,y+1) += 5/48*e
+        I(x,y+1) += 7/48*e
+        I(x-1,y+1) += 5/48*e
+        I(x-2,y+1) += 3/48*e
+        I(x-1,y+1) += 5/48*e
+        I(x+2,y+2) += 1/48*e
+        I(x+1,y+2) += 3/48*e
+        I(x, y+2) += 5/48*e
+        I(x-1,y+2) += 3/48*e
+        I(x-2,y+2) += 1/48*e
+        I(x+1,y) += 7/48*e
+        I(x+2,y) += 5/48*e
+
+\end{lstlisting}
+\section{Первый алгоритм Юлиомы}
+\begin{lstlisting}[style=pseudocode,caption={Первый алгоритм Юлиомы}]
+For each pixel, Input, in the original picture:
+    Factor  = ThresholdMatrix[xcoordinate % X][ycoordinate % Y];
+    Make a Plan, based on Input and the Palette.
+
+    If Factor < Plan.ratio,
+        Draw pixel using Plan.color2
+    else,
+        Draw pixel using Plan.color1
+\end{lstlisting}
+
+\begin{lstlisting}[style=pseudocode,caption={План нахождения цвета пикселя}]
+SmallestPenalty = 10^99 
+For each unique combination of two colors from the palette, Color1 and Color2:
+    For each possible Ratio, 0 .. (X*Y-1):
+        Mixed = Color1 + Ratio * (Color2 - Color1) / (X*Y)
+        Penalty = Evaluate the difference of Input and Mixed.
+
+        If Penalty < SmallestPenalty,
+        SmallestPenalty = Penalty
+        Plan = { Color1, Color2, Ratio / (X*Y) }1
+\end{lstlisting}
+\begin{lstlisting}[style=pseudocode,caption={Вспомогательная матрица перого Алгоритма Юлиомы}]
+     [0/64, 48/64, 12/64, 60/64, 3/64, 51/64, 15/64, 63/64,
+     32/64, 16/64, 44/64, 28/64, 35/64, 19/64, 47/64, 31/64,
+     8/64, 56/64, 4/64, 52/64, 11/64, 59/64, 7/64, 55/64,
+     40/64, 24/64, 36/64, 20/64, 43/64, 27/64, 39/64, 23/64,
+     2/64, 50/64, 14/64, 62/64, 1/64, 49/64, 13/64, 61/64,
+     34/64, 18/64, 46/64, 30/64, 33/64, 17/64, 54/64, 29/64,
+     10/64, 58/64, 6/64, 54/64, 9/64, 57/64, 5/64, 53/64,
+     42/64, 26/64, 38/64, 22/64, 41/64, 25/64, 37/64, 21/64]
 \end{lstlisting}
 
 

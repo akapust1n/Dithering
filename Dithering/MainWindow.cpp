@@ -116,7 +116,7 @@ void MainWindow::on_pushButton_clicked()
     ui->textEdit->append("SSIM: " + ssim);
     QString time;
     time = time.number(_info.timeDither);
-    ui->textEdit->append("Time, ms: " + time);
+    ui->textEdit->append("Time, mks: " + time);
     QString oldFileSize;
     oldFileSize = oldFileSize.number(_info.imageSize.oldFileSize);
     ui->textEdit->append("OldFileSize, KB: " + oldFileSize);
@@ -284,5 +284,5 @@ void MainWindow::on_pushButton_3_clicked()
     QString benchmark;
     benchmark = benchmark.number(result);
     ui->textEdit->append(ui->comboBox->currentText());
-    ui->textEdit->append("Benchmark(ms for dither): " + benchmark);
+    ui->textEdit->append("Benchmark(mks for dither): " + benchmark);
 }
